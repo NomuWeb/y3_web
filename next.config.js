@@ -1,8 +1,7 @@
+// /Users/apple/Desktop/開発案件/y3_web/project/next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // 静的エクスポート設定を削除または無効化
-  // output: 'export',
 
   // サーバーアクションを有効化
   experimental: {
