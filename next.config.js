@@ -1,10 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  eslint: {
-    ignoreDuringBuilds: true,
+  reactStrictMode: true,
+  // 静的エクスポート設定を削除または無効化
+  // output: 'export',
+
+  // サーバーアクションを有効化
+  experimental: {
+    serverActions: true,
   },
-  images: { unoptimized: true },
 };
 
 module.exports = nextConfig;
