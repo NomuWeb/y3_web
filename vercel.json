@@ -1,6 +1,6 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": "out",
+  "outputDirectory": ".next",
   "routes": [
     { "src": "/contact", "dest": "app/contact/page.tsx" },
     { "src": "/api/contact", "dest": "app/api/contact/route.ts" }
