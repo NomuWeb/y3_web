@@ -8,6 +8,19 @@ interface HeaderProps {
   variant?: "main" | "contact";
 }
 
+const scrollToSection = (sectionId: string) => {
+  const element = document.getElementById(sectionId);
+  if (element) {
+    const headerHeight = 64;
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
+  }
+};
+
 export default function Header({ variant = "main" }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -30,10 +43,13 @@ export default function Header({ variant = "main" }: HeaderProps) {
           <div className="hidden md:flex space-x-8">
             {variant === "main" ? (
               <>
-                <a href="#services" className="hover:text-blue-400 transition-colors hover:translate-y-[-2px] transform">
+                <a
+                  onClick={() => scrollToSection("services")}
+                  className="hover:text-blue-400 transition-colors hover:translate-y-[-2px] transform cursor-pointer"
+                >
                   Services
                 </a>
-                <a href="#about" className="hover:text-blue-400 transition-colors hover:translate-y-[-2px] transform">
+                <a onClick={() => scrollToSection("about")} className="hover:text-blue-400 transition-colors hover:translate-y-[-2px] transform cursor-pointer">
                   About
                 </a>
                 <Link href="/contact" className="hover:text-blue-400 transition-colors hover:translate-y-[-2px] transform">
@@ -41,7 +57,7 @@ export default function Header({ variant = "main" }: HeaderProps) {
                 </Link>
               </>
             ) : (
-              <Link href="/#contact" className="hover:text-blue-400 transition-colors flex items-center hover:translate-y-[-2px] transform">
+              <Link href="/" className="hover:text-blue-400 transition-colors flex items-center hover:translate-y-[-2px] transform">
                 <ChevronLeft size={20} className="mr-1" />
                 Home
               </Link>
@@ -56,18 +72,21 @@ export default function Header({ variant = "main" }: HeaderProps) {
           <div className="px-2 pt-2 pb-3 space-y-1">
             {variant === "main" ? (
               <>
-                <a href="#services" className="block px-3 py-2 hover:text-blue-400 transition-colors">
+                <a
+                  onClick={() => scrollToSection("services")}
+                  className="hover:text-blue-400 transition-colors hover:translate-y-[-2px] transform cursor-pointer"
+                >
                   Services
                 </a>
-                <a href="#about" className="block px-3 py-2 hover:text-blue-400 transition-colors">
+                <a onClick={() => scrollToSection("about")} className="hover:text-blue-400 transition-colors hover:translate-y-[-2px] transform cursor-pointer">
                   About
                 </a>
-                <Link href="/contact" className="block px-3 py-2 hover:text-blue-400 transition-colors">
+                <Link href="/contact" className="hover:text-blue-400 transition-colors hover:translate-y-[-2px] transform">
                   Contact
                 </Link>
               </>
             ) : (
-              <Link href="/#contact" className="block px-3 py-2 hover:text-blue-400 transition-colors flex items-center">
+              <Link href="/contact" className="block px-3 py-2 hover:text-blue-400 transition-colors flex items-center">
                 <ChevronLeft size={20} className="mr-1" />
                 Home
               </Link>

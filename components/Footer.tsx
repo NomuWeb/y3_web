@@ -1,5 +1,20 @@
+"use client";
+
 import React from "react";
 import { Facebook, Instagram, Mail, MapPinned, Phone, Twitter } from "lucide-react";
+
+const scrollToSection = (sectionId: string) => {
+  const element = document.getElementById(sectionId);
+  if (element) {
+    const headerHeight = 64;
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
+  }
+};
 
 export default function Footer() {
   return (
@@ -26,12 +41,12 @@ export default function Footer() {
             <h3 className="text-xl font-bold mb-4 text-white hover:text-blue-400 transition-colors">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#services" className="text-gray-400 hover:text-blue-400 transition-colors">
+                <a onClick={() => scrollToSection("services")} className="text-gray-400 hover:text-blue-400 transition-colors cursor-pointer">
                   Services
                 </a>
               </li>
               <li>
-                <a href="#about" className="text-gray-400 hover:text-blue-400 transition-colors">
+                <a onClick={() => scrollToSection("about")} className="text-gray-400 hover:text-blue-400 transition-colors cursor-pointer">
                   About Us
                 </a>
               </li>

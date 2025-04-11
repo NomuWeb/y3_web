@@ -37,7 +37,7 @@ interface AnimatedSectionProps {
   id?: string;
 }
 
-const AnimatedSection: React.FC<AnimatedSectionProps> = ({ children, className = "", ...props }) => {
+const AnimatedSection: React.FC<AnimatedSectionProps> = ({ children, className = "", id, ...props }) => {
   const [ref, isIntersecting] = useIntersectionObserver({
     threshold: 0.1,
   });
@@ -45,6 +45,7 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({ children, className =
   return (
     <section
       ref={ref}
+      id={id}
       className={`transition-all duration-1000 ease-out ${isIntersecting ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"} ${className}`}
       {...props}
     >
@@ -202,7 +203,6 @@ export default function HomePage() {
                   <p className="text-gray-700">2025年4月4日</p>
                 </div>
               </div>
-              ≈
             </div>
           </div>
         </div>
