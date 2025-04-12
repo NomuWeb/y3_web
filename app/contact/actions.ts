@@ -9,6 +9,11 @@ type ContactFormData = {
   message: string;
 };
 
+// HTMLをエスケープする関数
+function escapeHtml(text: string) {
+  return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+}
+
 export async function sendContactEmail(formData: ContactFormData) {
   try {
     // バリデーション
@@ -16,6 +21,21 @@ export async function sendContactEmail(formData: ContactFormData) {
       return {
         success: false,
         message: "名前、メールアドレス、メッセージは必須です",
+      };
+    }
+
+    // 文字数制限の確認
+    if (formData.name.length > 50) {
+      return {
+        success: false,
+        message: "名前は50文字以内で入力してください",
+      };
+    }
+
+    if (formData.message.length > 3000) {
+      return {
+        success: false,
+        message: "メッセージは3000文字以内で入力してください",
       };
     }
 
@@ -27,6 +47,11 @@ export async function sendContactEmail(formData: ContactFormData) {
         message: "有効なメールアドレスを入力してください",
       };
     }
+
+    // 入力内容をエスケープ
+    const escapedName = escapeHtml(formData.name);
+    const escapedEmail = escapeHtml(formData.email);
+    const escapedMessage = escapeHtml(formData.message);
 
     // 現在の日時を取得
     const now = new Date();
@@ -40,7 +65,6 @@ export async function sendContactEmail(formData: ContactFormData) {
 
     // 環境変数から認証情報を取得
     const emailUser = process.env.EMAIL_USER; // 受信用Outlookアドレス
-    // const emailPassword = process.env.EMAIL_PASSWORD; // Outlookパスワード（使用しない）
     const gmailUser = process.env.GMAIL_USER; // 送信用Gmailアドレス
     const gmailPassword = process.env.GMAIL_APP_PASSWORD; // Gmailアプリパスワード
 
@@ -57,28 +81,25 @@ export async function sendContactEmail(formData: ContactFormData) {
       },
     });
 
-    // 会社へのメールのみ送信
-    const mailOptions = {
-      from: `"Y3 LLC Contact Form" <${gmailUser}>`,
-      to: emailUser, // 受信はOutlookアドレスに
-      subject: `【お問い合わせ】${formData.name}様からのお問い合わせ`,
-      text: `
+    // メールの本文を作成
+    const textBody = `
 【Y3 LLC お問い合わせ】
 
 受信日時: ${formattedDate}
 
 ■ お問い合わせ内容 ■
-名前: ${formData.name}
-メールアドレス: ${formData.email}
+名前: ${escapedName}
+メールアドレス: ${escapedEmail}
 
 メッセージ:
-${formData.message}
+${escapedMessage}
 
 --
 Y3 LLC（ワイスリー合同会社）
 Setagaya-ku, Tokyo
-      `,
-      html: `
+    `;
+
+    const htmlBody = `
 <!DOCTYPE html>
 <html>
 <head>
@@ -103,13 +124,13 @@ Setagaya-ku, Tokyo
         <table style="width: 100%; border-collapse: collapse;">
           <tr>
             <td style="padding: 8px 0; font-weight: bold; width: 120px;">名前:</td>
-            <td style="padding: 8px 0;">${formData.name}</td>
+            <td style="padding: 8px 0;">${escapedName}</td>
           </tr>
           <tr>
             <td style="padding: 8px 0; font-weight: bold;">メールアドレス:</td>
             <td style="padding: 8px 0;">
-              <a href="mailto:${formData.email}" style="color: #2563eb; text-decoration: none;">
-                ${formData.email}
+              <a href="mailto:${escapedEmail}" style="color: #2563eb; text-decoration: none;">
+                ${escapedEmail}
               </a>
             </td>
           </tr>
@@ -121,7 +142,7 @@ Setagaya-ku, Tokyo
           メッセージ内容
         </h2>
         <div style="background-color: #f8fafc; padding: 20px; border-radius: 4px; border-left: 4px solid #2563eb;">
-          <p style="white-space: pre-line; margin: 0;">${formData.message.replace(/\n/g, "<br>")}</p>
+          <p style="white-space: pre-line; margin: 0;">${escapedMessage.replace(/\n/g, "<br>")}</p>
         </div>
       </div>
     </div>
@@ -135,7 +156,16 @@ Setagaya-ku, Tokyo
   </div>
 </body>
 </html>
-      `,
+    `;
+
+    // 会社へのメールと、BCCでgmailUserにも送信
+    const mailOptions = {
+      from: `"Y3 LLC Contact Form" <${gmailUser}>`,
+      to: emailUser, // 受信はOutlookアドレスに
+      bcc: gmailUser, // BCCでGmailアドレスにも送信
+      subject: `【お問い合わせ】${escapedName}様からのお問い合わせ`,
+      text: textBody,
+      html: htmlBody,
     };
 
     // メールを送信
