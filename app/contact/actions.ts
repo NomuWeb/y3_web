@@ -38,21 +38,29 @@ export async function sendContactEmail(formData: ContactFormData) {
       minute: "2-digit",
     });
 
-    // SMTP設定を直接記述
+    // 環境変数から認証情報を取得
+    const emailUser = process.env.EMAIL_USER;
+    const emailPassword = process.env.EMAIL_PASSWORD;
+
+    if (!emailUser || !emailPassword) {
+      throw new Error("メール送信に必要な環境変数が設定されていません");
+    }
+
+    // Outlook用のSMTP設定
     const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
+      host: "smtp-mail.outlook.com",
       port: 587,
       secure: false,
       auth: {
-        user: "3165071@gmail.com",
-        pass: "xcbvvokiaqmfbaul",
+        user: emailUser,
+        pass: emailPassword,
       },
     });
 
     // 会社へのメールのみ送信
     const mailOptions = {
-      from: `"Y3 LLC Contact Form" <3165071@gmail.com>`,
-      to: "3165071@gmail.com",
+      from: `"Y3 LLC Contact Form" <${emailUser}>`,
+      to: emailUser,
       subject: `【お問い合わせ】${formData.name}様からのお問い合わせ`,
       text: `
 【Y3 LLC お問い合わせ】
