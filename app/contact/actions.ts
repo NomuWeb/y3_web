@@ -39,28 +39,28 @@ export async function sendContactEmail(formData: ContactFormData) {
     });
 
     // 環境変数から認証情報を取得
-    const emailUser = process.env.EMAIL_USER;
-    const emailPassword = process.env.EMAIL_PASSWORD;
+    const emailUser = process.env.EMAIL_USER; // 受信用Outlookアドレス
+    // const emailPassword = process.env.EMAIL_PASSWORD; // Outlookパスワード（使用しない）
+    const gmailUser = process.env.GMAIL_USER; // 送信用Gmailアドレス
+    const gmailPassword = process.env.GMAIL_APP_PASSWORD; // Gmailアプリパスワード
 
-    if (!emailUser || !emailPassword) {
+    if (!emailUser || !gmailUser || !gmailPassword) {
       throw new Error("メール送信に必要な環境変数が設定されていません");
     }
 
-    // Outlook用のSMTP設定
+    // Gmail SMTPを使用
     const transporter = nodemailer.createTransport({
-      host: "smtp-mail.outlook.com",
-      port: 587,
-      secure: false,
+      service: "gmail",
       auth: {
-        user: emailUser,
-        pass: emailPassword,
+        user: gmailUser,
+        pass: gmailPassword,
       },
     });
 
     // 会社へのメールのみ送信
     const mailOptions = {
-      from: `"Y3 LLC Contact Form" <${emailUser}>`,
-      to: emailUser,
+      from: `"Y3 LLC Contact Form" <${gmailUser}>`,
+      to: emailUser, // 受信はOutlookアドレスに
       subject: `【お問い合わせ】${formData.name}様からのお問い合わせ`,
       text: `
 【Y3 LLC お問い合わせ】
