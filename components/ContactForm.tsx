@@ -64,18 +64,18 @@ export default function ContactFormWithServerAction() {
 
   return (
     <div className="rounded-xl overflow-hidden">
-      {/* グラデーションの背景 */}
-      <div className="bg-gradient-to-br from-white via-gray-100 to-gray-200 p-4 sm:p-8 rounded-xl shadow-lg">
+      {/* コーポレートカラーの背景 */}
+      <div className="bg-white p-4 sm:p-8 rounded-xl border border-[#003693]/20 shadow-lg">
         <form className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
           {submitResult && (
             <div
               className={`p-3 sm:p-4 mb-3 sm:mb-4 rounded-md text-sm sm:text-base ${
-                submitResult.success ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
+                submitResult.success ? "bg-[#7A9DC7]/20 text-[#003693]" : "bg-red-100 text-red-800"
               }`}
             >
               <p className="mb-1 sm:mb-2">{submitResult.message}</p>
               {submitResult.success && (
-                <button type="button" onClick={handleReset} className="text-xs sm:text-sm underline text-blue-600 hover:text-blue-800 mt-1 sm:mt-2">
+                <button type="button" onClick={handleReset} className="text-xs sm:text-sm underline text-[#003693] hover:text-[#7A9DC7] mt-1 sm:mt-2">
                   新しい問い合わせを作成
                 </button>
               )}
@@ -83,8 +83,8 @@ export default function ContactFormWithServerAction() {
           )}
 
           <div>
-            <label className="block mb-1 sm:mb-2 flex items-center text-gray-700 text-sm sm:text-base">
-              <User size={16} className="mr-2 text-blue-500" />
+            <label className="block mb-1 sm:mb-2 flex items-center text-[#3E3A39] text-sm sm:text-base">
+              <User size={16} className="mr-2 text-[#003693]" />
               <span>Name / お名前</span>
             </label>
             <input
@@ -93,8 +93,8 @@ export default function ContactFormWithServerAction() {
               value={formData.name}
               onChange={handleChange}
               disabled={isSubmitted}
-              className={`w-full p-2 sm:p-3 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none transition-colors text-gray-800 text-sm sm:text-base
-                ${isSubmitted ? "bg-gray-100 cursor-not-allowed opacity-75" : "hover:border-blue-400"}`}
+              className={`w-full p-2 sm:p-3 bg-white border border-gray-300 rounded-md focus:border-[#003693] focus:outline-none transition-colors text-[#3E3A39] text-sm sm:text-base
+                ${isSubmitted ? "bg-gray-100 cursor-not-allowed opacity-75" : "hover:border-[#7A9DC7]"}`}
               required
               maxLength={50}
               placeholder="例: 山田 太郎"
@@ -102,8 +102,8 @@ export default function ContactFormWithServerAction() {
           </div>
 
           <div>
-            <label className="block mb-1 sm:mb-2 flex items-center text-gray-700 text-sm sm:text-base">
-              <Mail size={16} className="mr-2 text-blue-500" />
+            <label className="block mb-1 sm:mb-2 flex items-center text-[#3E3A39] text-sm sm:text-base">
+              <Mail size={16} className="mr-2 text-[#003693]" />
               <span>Email / メールアドレス</span>
             </label>
             <input
@@ -112,16 +112,16 @@ export default function ContactFormWithServerAction() {
               value={formData.email}
               onChange={handleChange}
               disabled={isSubmitted}
-              className={`w-full p-2 sm:p-3 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none transition-colors text-gray-800 text-sm sm:text-base
-                ${isSubmitted ? "bg-gray-100 cursor-not-allowed opacity-75" : "hover:border-blue-400"}`}
+              className={`w-full p-2 sm:p-3 bg-white border border-gray-300 rounded-md focus:border-[#003693] focus:outline-none transition-colors text-[#3E3A39] text-sm sm:text-base
+                ${isSubmitted ? "bg-gray-100 cursor-not-allowed opacity-75" : "hover:border-[#7A9DC7]"}`}
               required
               placeholder="例: yamada@example.com"
             />
           </div>
 
           <div>
-            <label className="block mb-1 sm:mb-2 flex items-center text-gray-700 text-sm sm:text-base">
-              <MessageSquare size={16} className="mr-2 text-blue-500" />
+            <label className="block mb-1 sm:mb-2 flex items-center text-[#3E3A39] text-sm sm:text-base">
+              <MessageSquare size={16} className="mr-2 text-[#003693]" />
               <span>Message / メッセージ</span>
             </label>
             <textarea
@@ -130,8 +130,8 @@ export default function ContactFormWithServerAction() {
               value={formData.message}
               onChange={handleChange}
               disabled={isSubmitted}
-              className={`w-full p-2 sm:p-3 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none transition-colors text-gray-800 text-sm sm:text-base
-                ${isSubmitted ? "bg-gray-100 cursor-not-allowed opacity-75" : "hover:border-blue-400"}`}
+              className={`w-full p-2 sm:p-3 bg-white border border-gray-300 rounded-md focus:border-[#003693] focus:outline-none transition-colors text-[#3E3A39] text-sm sm:text-base
+                ${isSubmitted ? "bg-gray-100 cursor-not-allowed opacity-75" : "hover:border-[#7A9DC7]"}`}
               required
               maxLength={3000}
               placeholder="お問い合わせ内容をご記入ください"
@@ -143,7 +143,7 @@ export default function ContactFormWithServerAction() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`w-full bg-blue-600 hover:bg-blue-700 text-white py-2 sm:py-3 px-4 rounded-md transition-colors transform hover:translate-y-[-2px] text-sm sm:text-base ${
+              className={`w-full bg-[#003693] hover:bg-[#7A9DC7] text-white py-2 sm:py-3 px-4 rounded-md transition-colors transform hover:translate-y-[-2px] text-sm sm:text-base ${
                 isSubmitting ? "opacity-70 cursor-not-allowed" : ""
               }`}
             >
@@ -153,7 +153,7 @@ export default function ContactFormWithServerAction() {
             <button
               type="button"
               onClick={handleReset}
-              className="w-full bg-gray-500 hover:bg-gray-600 text-white py-2 sm:py-3 px-4 rounded-md transition-colors text-sm sm:text-base"
+              className="w-full bg-[#7A9DC7] hover:bg-[#003693] text-white py-2 sm:py-3 px-4 rounded-md transition-colors text-sm sm:text-base"
             >
               新しい問い合わせを作成
             </button>

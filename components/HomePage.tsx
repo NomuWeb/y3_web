@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef, ReactNode } from "react";
 import { Instagram, Facebook, Twitter, Globe2, BarChart3, Users, Megaphone, Calendar, MapPin, Users2, Mail, ChevronUp } from "lucide-react";
 import ServiceCard from "@/components/ServiceCard";
 import Header from "@/components/Header";
+import Footer from "./Footer";
 
 // Intersection Observer Hook for Scroll Animations
 const useIntersectionObserver = (options: IntersectionObserverInit = {}) => {
@@ -46,7 +47,7 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({ children, className =
     <section
       ref={ref}
       id={id}
-      className={`transition-all duration-1000 ease-out ${isIntersecting ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"} ${className}`}
+      className={`transition-all duration-1000 ease-out ${isIntersecting ? "opacity-100 translate-y-0" : "opacity-0 translate-y-30"} ${className}`}
       {...props}
     >
       {children}
@@ -71,46 +72,34 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-[#3E3A39]">
       {/* Navigation */}
       <Header variant="main" />
 
-      {/* Hero Section */}
-      <div className="relative h-screen">
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: "url(https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80)",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          <div className="absolute inset-0 bg-black/60"></div>
-        </div>
-
-        <div className="relative z-10 flex items-center justify-center h-full">
-          <div className="text-center px-4">
-            <h1 className="text-5xl md:text-7xl font-bold mb-4 gradient-text">Y3 LLC</h1>
-            <p className="text-xl md:text-2xl mb-8">合同会社ワイスリー</p>
-            <p className="text-lg md:text-xl max-w-2xl mx-auto">
-              Shaping the Future of Digital Marketing
-              <br />
-              デジタルマーケティングの未来を創造する
-            </p>
-          </div>
+      {/* Hero Section - Based on Y3 Logo Image */}
+      <div className="relative h-screen bg-[#003693] overflow-hidden flex items-center justify-center">
+        {/* Logo */}
+        <div className="text-center">
+          <h1 className="text-5xl md:text-7xl font-bold mb-4 text-[#7A9DC7]">Y3 LLC</h1>
+          <p className="text-xl md:text-2xl mb-8 text-[#7A9DC7]">合同会社ワイスリー</p>
+          <p className="text-lg md:text-xl max-w-2xl mx-auto text-white px-4">
+            Shaping the Future of Digital Marketing
+            <br />
+            デジタルマーケティングの未来を創造する
+          </p>
         </div>
       </div>
 
       {/* Services Section */}
-      <AnimatedSection id="services" className="py-20 bg-black">
+      <AnimatedSection id="services" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-2 hover:text-blue-600 transition-colors">
-              <span className="bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 hover:text-transparent transition-all duration-300">Services</span>
+            <h2 className="text-4xl font-bold text-[#003693] mb-2 hover:text-[#7A9DC7] transition-colors">
+              <span className="bg-clip-text bg-gradient-to-r from-[#003693] to-[#7A9DC7] hover:text-transparent transition-all duration-300">Services</span>
             </h2>
-            <h3 className="text-2xl font-medium text-gray-300 relative">
+            <h3 className="text-2xl font-medium text-[#3E3A39] relative">
               サービス
-              <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full mt-2 opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
+              <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-[#003693] to-[#7A9DC7] rounded-full mt-2 opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
             </h3>
           </div>
 
@@ -118,8 +107,8 @@ export default function HomePage() {
             <ServiceCard
               icon={
                 <div className="relative">
-                  <div className="absolute inset-0 bg-blue-400 rounded-full opacity-20 animate-ping-slow"></div>
-                  <div className="relative bg-gradient-to-r from-pink-500 to-red-600 text-white p-3 rounded-full transform transition-transform group-hover:rotate-6">
+                  <div className="absolute inset-0 bg-[#7A9DC7] rounded-full opacity-20 animate-ping-slow"></div>
+                  <div className="relative bg-[#003693] text-white p-3 rounded-full transform transition-transform group-hover:rotate-6">
                     <Instagram size={28} />
                   </div>
                 </div>
@@ -127,14 +116,14 @@ export default function HomePage() {
               title="SNS Consulting"
               japaneseTitle="SNSコンサルティング"
               description="戦略的なソーシャルメディア運用と成長戦略のご提案"
-              className="hover:border-pink-500 transition-all duration-500"
+              className="bg-[#7A9DC7]/10 border-[#003693]/30 hover:border-[#003693] transition-all duration-500"
             />
 
             <ServiceCard
               icon={
                 <div className="relative">
-                  <div className="absolute inset-0 bg-blue-400 rounded-full opacity-20 animate-ping-slow"></div>
-                  <div className="relative bg-gradient-to-r from-blue-500 to-blue-700 text-white p-3 rounded-full transform transition-transform group-hover:rotate-6">
+                  <div className="absolute inset-0 bg-[#7A9DC7] rounded-full opacity-20 animate-ping-slow"></div>
+                  <div className="relative bg-[#003693] text-white p-3 rounded-full transform transition-transform group-hover:rotate-6">
                     <Users size={28} />
                   </div>
                 </div>
@@ -142,14 +131,14 @@ export default function HomePage() {
               title="Influencer Marketing"
               japaneseTitle="インフルエンサーマーケティング"
               description="業界の影響力のある人物とのコネクションを活用したマーケティング"
-              className="hover:border-blue-500 transition-all duration-500"
+              className="bg-[#7A9DC7]/10 border-[#003693]/30 hover:border-[#003693] transition-all duration-500"
             />
 
             <ServiceCard
               icon={
                 <div className="relative">
-                  <div className="absolute inset-0 bg-blue-400 rounded-full opacity-20 animate-ping-slow"></div>
-                  <div className="relative bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-3 rounded-full transform transition-transform group-hover:rotate-6">
+                  <div className="absolute inset-0 bg-[#7A9DC7] rounded-full opacity-20 animate-ping-slow"></div>
+                  <div className="relative bg-[#003693] text-white p-3 rounded-full transform transition-transform group-hover:rotate-6">
                     <Globe2 size={28} />
                   </div>
                 </div>
@@ -157,14 +146,14 @@ export default function HomePage() {
               title="Web Marketing"
               japaneseTitle="WEBマーケティング"
               description="包括的なデジタルマーケティングソリューションの提供"
-              className="hover:border-indigo-500 transition-all duration-500"
+              className="bg-[#7A9DC7]/10 border-[#003693]/30 hover:border-[#003693] transition-all duration-500"
             />
 
             <ServiceCard
               icon={
                 <div className="relative">
-                  <div className="absolute inset-0 bg-blue-400 rounded-full opacity-20 animate-ping-slow"></div>
-                  <div className="relative bg-gradient-to-r from-teal-500 to-blue-500 text-white p-3 rounded-full transform transition-transform group-hover:rotate-6">
+                  <div className="absolute inset-0 bg-[#7A9DC7] rounded-full opacity-20 animate-ping-slow"></div>
+                  <div className="relative bg-[#003693] text-white p-3 rounded-full transform transition-transform group-hover:rotate-6">
                     <BarChart3 size={28} />
                   </div>
                 </div>
@@ -172,14 +161,14 @@ export default function HomePage() {
               title="Web Advertising"
               japaneseTitle="WEB広告"
               description="結果を出すターゲットを絞った広告キャンペーンの展開"
-              className="hover:border-teal-500 transition-all duration-500"
+              className="bg-[#7A9DC7]/10 border-[#003693]/30 hover:border-[#003693] transition-all duration-500"
             />
 
             <ServiceCard
               icon={
                 <div className="relative">
-                  <div className="absolute inset-0 bg-blue-400 rounded-full opacity-20 animate-ping-slow"></div>
-                  <div className="relative bg-gradient-to-r from-purple-500 to-indigo-600 text-white p-3 rounded-full transform transition-transform group-hover:rotate-6">
+                  <div className="absolute inset-0 bg-[#7A9DC7] rounded-full opacity-20 animate-ping-slow"></div>
+                  <div className="relative bg-[#003693] text-white p-3 rounded-full transform transition-transform group-hover:rotate-6">
                     <Calendar size={28} />
                   </div>
                 </div>
@@ -187,14 +176,14 @@ export default function HomePage() {
               title="Event Casting"
               japaneseTitle="イベントキャスティング"
               description="イベントのための専門的な人材確保とコーディネート"
-              className="hover:border-purple-500 transition-all duration-500"
+              className="bg-[#7A9DC7]/10 border-[#003693]/30 hover:border-[#003693] transition-all duration-500"
             />
 
             <ServiceCard
               icon={
                 <div className="relative">
-                  <div className="absolute inset-0 bg-blue-400 rounded-full opacity-20 animate-ping-slow"></div>
-                  <div className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white p-3 rounded-full transform transition-transform group-hover:rotate-6">
+                  <div className="absolute inset-0 bg-[#7A9DC7] rounded-full opacity-20 animate-ping-slow"></div>
+                  <div className="relative bg-[#003693] text-white p-3 rounded-full transform transition-transform group-hover:rotate-6">
                     <Megaphone size={28} />
                   </div>
                 </div>
@@ -202,86 +191,86 @@ export default function HomePage() {
               title="Digital Strategy"
               japaneseTitle="デジタル戦略"
               description="カスタマイズされたデジタルトランスフォーメーションの提案"
-              className="hover:border-blue-600 transition-all duration-500"
+              className="bg-[#7A9DC7]/10 border-[#003693]/30 hover:border-[#003693] transition-all duration-500"
             />
           </div>
         </div>
       </AnimatedSection>
 
       {/* Company Information Section */}
-      <AnimatedSection id="about" className="py-20 bg-gradient-to-b from-white via-gray-100 to-gray-200">
+      <AnimatedSection id="about" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-black mb-2 hover:text-blue-600 transition-colors">
-              <span className="bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800 hover:text-transparent transition-all duration-300">
+            <h2 className="text-4xl font-bold text-[#003693] mb-2">
+              <span className="bg-clip-text bg-gradient-to-r from-[#003693] to-[#7A9DC7] hover:text-transparent transition-all duration-300">
                 Company Information
               </span>
             </h2>
-            <h3 className="text-2xl font-medium text-gray-700 relative">
+            <h3 className="text-2xl font-medium text-[#3E3A39] relative">
               企業情報
-              <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full mt-2 opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
+              <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-[#003693] to-[#7A9DC7] rounded-full mt-2 opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
             </h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div className="space-y-8">
-              <div className="border border-gray-200 p-6 hover:border-blue-500 transition-all duration-300 bg-white rounded-lg shadow-sm hover:shadow-md hover:shadow-blue-200 transform hover:-translate-y-1 h-48 flex flex-col group">
+              <div className="border border-[#003693]/30 p-6 hover:border-[#003693] transition-all duration-300 bg-[#7A9DC7]/10 rounded-lg shadow-lg shadow-[#003693]/10 hover:shadow-[#003693]/30 transform hover:-translate-y-1 h-48 flex flex-col group">
                 <div className="flex items-center mb-2">
-                  <div className="bg-blue-100 p-2 rounded-full mr-3 group-hover:bg-blue-500 transition-colors duration-300">
-                    <Users2 className="text-blue-500 group-hover:text-white transition-colors duration-300" size={24} />
+                  <div className="bg-[#003693] p-2 rounded-full mr-3 group-hover:bg-[#7A9DC7] transition-colors duration-300">
+                    <Users2 className="text-white group-hover:text-white transition-colors duration-300" size={24} />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">Representatives / 代表者</h3>
+                  <h3 className="text-xl font-bold text-[#3E3A39] group-hover:text-[#003693] transition-colors">Representatives / 代表者</h3>
                 </div>
                 <div className="mt-1 flex-grow">
-                  <p className="text-gray-700">Managing Members:</p>
-                  <p className="text-gray-700 mt-2">代表社員:</p>
-                  <p className="text-gray-700 font-medium group-hover:text-blue-700 transition-colors">野村優太 ・ 趙竜済</p>
+                  <p className="text-[#3E3A39]">Managing Members:</p>
+                  <p className="text-[#3E3A39] mt-2">代表社員:</p>
+                  <p className="text-[#003693] font-medium group-hover:text-[#7A9DC7] transition-colors">野村優太 ・ 趙竜済</p>
                 </div>
-                <div className="h-1 w-0 bg-gradient-to-r from-blue-400 to-blue-600 group-hover:w-full transition-all duration-500 rounded-full"></div>
+                <div className="h-1 w-0 bg-[#003693] group-hover:w-full transition-all duration-500 rounded-full"></div>
               </div>
 
-              <div className="border border-gray-200 p-6 hover:border-blue-500 transition-all duration-300 bg-white rounded-lg shadow-sm hover:shadow-md hover:shadow-blue-200 transform hover:-translate-y-1 h-48 flex flex-col group">
+              <div className="border border-[#003693]/30 p-6 hover:border-[#003693] transition-all duration-300 bg-[#7A9DC7]/10 rounded-lg shadow-lg shadow-[#003693]/10 hover:shadow-[#003693]/30 transform hover:-translate-y-1 h-48 flex flex-col group">
                 <div className="flex items-center mb-2">
-                  <div className="bg-blue-100 p-2 rounded-full mr-3 group-hover:bg-blue-500 transition-colors duration-300">
-                    <MapPin className="text-blue-500 group-hover:text-white transition-colors duration-300" size={24} />
+                  <div className="bg-[#003693] p-2 rounded-full mr-3 group-hover:bg-[#7A9DC7] transition-colors duration-300">
+                    <MapPin className="text-white group-hover:text-white transition-colors duration-300" size={24} />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">Location / 所在地</h3>
+                  <h3 className="text-xl font-bold text-[#3E3A39] group-hover:text-[#003693] transition-colors">Location / 所在地</h3>
                 </div>
                 <div className="mt-1 flex-grow">
-                  <p className="text-gray-700">Setagaya-ku, Tokyo</p>
-                  <p className="text-gray-700">東京都世田谷区</p>
+                  <p className="text-[#3E3A39]">Setagaya-ku, Tokyo</p>
+                  <p className="text-[#003693]">東京都世田谷区</p>
                 </div>
-                <div className="h-1 w-0 bg-gradient-to-r from-blue-400 to-blue-600 group-hover:w-full transition-all duration-500 rounded-full"></div>
+                <div className="h-1 w-0 bg-[#003693] group-hover:w-full transition-all duration-500 rounded-full"></div>
               </div>
             </div>
 
             <div className="space-y-8">
-              <div className="border border-gray-200 p-6 hover:border-blue-500 transition-all duration-300 bg-white rounded-lg shadow-sm hover:shadow-md hover:shadow-blue-200 transform hover:-translate-y-1 h-48 flex flex-col group">
+              <div className="border border-[#003693]/30 p-6 hover:border-[#003693] transition-all duration-300 bg-[#7A9DC7]/10 rounded-lg shadow-lg shadow-[#003693]/10 hover:shadow-[#003693]/30 transform hover:-translate-y-1 h-48 flex flex-col group">
                 <div className="flex items-center mb-2">
-                  <div className="bg-blue-100 p-2 rounded-full mr-3 group-hover:bg-blue-500 transition-colors duration-300">
-                    <Globe2 className="text-blue-500 group-hover:text-white transition-colors duration-300" size={24} />
+                  <div className="bg-[#003693] p-2 rounded-full mr-3 group-hover:bg-[#7A9DC7] transition-colors duration-300">
+                    <Globe2 className="text-white group-hover:text-white transition-colors duration-300" size={24} />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">Company Name / 会社名</h3>
+                  <h3 className="text-xl font-bold text-[#3E3A39] group-hover:text-[#003693] transition-colors">Company Name / 会社名</h3>
                 </div>
                 <div className="mt-1 flex-grow">
-                  <p className="text-gray-700">Y3 LLC</p>
-                  <p className="text-gray-700">合同会社Y3（ワイスリー）</p>
+                  <p className="text-[#003693]">Y3 LLC</p>
+                  <p className="text-[#3E3A39]">合同会社Y3（ワイスリー）</p>
                 </div>
-                <div className="h-1 w-0 bg-gradient-to-r from-blue-400 to-blue-600 group-hover:w-full transition-all duration-500 rounded-full"></div>
+                <div className="h-1 w-0 bg-[#003693] group-hover:w-full transition-all duration-500 rounded-full"></div>
               </div>
 
-              <div className="border border-gray-200 p-6 hover:border-blue-500 transition-all duration-300 bg-white rounded-lg shadow-sm hover:shadow-md hover:shadow-blue-200 transform hover:-translate-y-1 h-48 flex flex-col group">
+              <div className="border border-[#003693]/30 p-6 hover:border-[#003693] transition-all duration-300 bg-[#7A9DC7]/10 rounded-lg shadow-lg shadow-[#003693]/10 hover:shadow-[#003693]/30 transform hover:-translate-y-1 h-48 flex flex-col group">
                 <div className="flex items-center mb-2">
-                  <div className="bg-blue-100 p-2 rounded-full mr-3 group-hover:bg-blue-500 transition-colors duration-300">
-                    <Calendar className="text-blue-500 group-hover:text-white transition-colors duration-300" size={24} />
+                  <div className="bg-[#003693] p-2 rounded-full mr-3 group-hover:bg-[#7A9DC7] transition-colors duration-300">
+                    <Calendar className="text-white group-hover:text-white transition-colors duration-300" size={24} />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">Established / 設立</h3>
+                  <h3 className="text-xl font-bold text-[#3E3A39] group-hover:text-[#003693] transition-colors">Established / 設立</h3>
                 </div>
                 <div className="mt-1 flex-grow">
-                  <p className="text-gray-700">April 4, 2025</p>
-                  <p className="text-gray-700">2025年4月4日</p>
+                  <p className="text-[#3E3A39]">April 4, 2025</p>
+                  <p className="text-[#003693]">2025年4月4日</p>
                 </div>
-                <div className="h-1 w-0 bg-gradient-to-r from-blue-400 to-blue-600 group-hover:w-full transition-all duration-500 rounded-full"></div>
+                <div className="h-1 w-0 bg-[#003693] group-hover:w-full transition-all duration-500 rounded-full"></div>
               </div>
             </div>
           </div>
@@ -292,7 +281,7 @@ export default function HomePage() {
       <AnimatedSection id="contact" className="py-20 bg-zinc-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-2 hover:text-blue-600 transition-colors">Contact</h2>
+            <h2 className="text-4xl font-bold text-white mb-2 hover:text-[#7A9DC7] transition-colors">Contact</h2>
             <h3 className="text-2xl font-medium text-white">お問い合わせ</h3>
           </div>
           <p className="text-center text-gray-300">お問い合わせは下記のボタンから専用フォームへお進みください。</p>
@@ -302,9 +291,9 @@ export default function HomePage() {
           <div className="flex justify-center mb-12">
             <a
               href="/contact"
-              className="relative inline-flex items-center px-10 py-4 overflow-hidden text-lg font-medium text-white bg-gradient-to-r from-blue-500 via-blue-600 to-indigo-600 rounded-lg group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-blue-500/50"
+              className="relative inline-flex items-center px-10 py-4 overflow-hidden text-lg font-medium text-white bg-gradient-to-r from-[#7A9DC7] via-[#003693] to-[#003693] rounded-lg group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-[#003693]/50"
             >
-              <span className="absolute left-0 block w-full h-0 transition-all bg-gradient-to-r from-indigo-600 via-blue-600 to-blue-500 opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
+              <span className="absolute left-0 block w-full h-0 transition-all bg-gradient-to-r from-[#003693] via-[#003693] to-[#7A9DC7] opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
               <span className="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -361,11 +350,12 @@ export default function HomePage() {
           <p className="text-center text-gray-400 mt-6 text-sm">SNSでも最新情報を発信しています。フォローをお願いします。</p>
         </div>
       </AnimatedSection>
+      <Footer />
 
       {/* Scroll to Top Button */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 bg-blue-500 bg-opacity-70 p-3 text-white rounded-full shadow-lg transition-all duration-300 transform hover:bg-opacity-100 hover:scale-110 hover:rotate-6 ${
+        className={`fixed bottom-8 right-8 bg-[#003693] bg-opacity-70 p-3 text-white rounded-full shadow-lg transition-all duration-300 transform hover:bg-opacity-100 hover:scale-110 hover:rotate-6 ${
           showScrollTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"
         }`}
       >

@@ -26,18 +26,21 @@ export default function Header({ variant = "main" }: HeaderProps) {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   return (
-    <header className="fixed w-full bg-black/90 backdrop-blur-sm z-50">
+    <header className="fixed w-full bg-[#003693]/95 backdrop-blur-sm z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0 font-bold text-2xl">
-            <Link href="/" className="block hover:text-blue-400 transition-all duration-300 transform hover:scale-105">
+            <Link href="/" className="block text-white hover:text-[#7A9DC7] transition-all duration-300 transform hover:scale-105">
               Y3 LLC
             </Link>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white hover:text-blue-400 transition-colors p-2 hover:bg-blue-900/20 rounded-md">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-white hover:text-[#7A9DC7] transition-colors p-2 hover:bg-[#7A9DC7]/20 rounded-md"
+            >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -50,39 +53,39 @@ export default function Header({ variant = "main" }: HeaderProps) {
                   onClick={() => scrollToSection("services")}
                   onMouseEnter={() => setHoveredItem("services")}
                   onMouseLeave={() => setHoveredItem(null)}
-                  className={`py-1 px-2 transition-all duration-300 cursor-pointer relative ${
-                    hoveredItem === "services" ? "text-blue-400 translate-y-[-2px]" : "hover:text-blue-400 hover:translate-y-[-2px]"
+                  className={`py-1 px-2 transition-all duration-300 cursor-pointer relative text-white ${
+                    hoveredItem === "services" ? "text-[#7A9DC7] translate-y-[-2px]" : "hover:text-[#7A9DC7] hover:translate-y-[-2px]"
                   }`}
                 >
                   Services
                   <span
-                    className={`absolute bottom-0 left-0 h-0.5 bg-blue-500 transition-all duration-300 ${hoveredItem === "services" ? "w-full" : "w-0"}`}
+                    className={`absolute bottom-0 left-0 h-0.5 bg-[#7A9DC7] transition-all duration-300 ${hoveredItem === "services" ? "w-full" : "w-0"}`}
                   ></span>
                 </a>
                 <a
                   onClick={() => scrollToSection("about")}
                   onMouseEnter={() => setHoveredItem("about")}
                   onMouseLeave={() => setHoveredItem(null)}
-                  className={`py-1 px-2 transition-all duration-300 cursor-pointer relative ${
-                    hoveredItem === "about" ? "text-blue-400 translate-y-[-2px]" : "hover:text-blue-400 hover:translate-y-[-2px]"
+                  className={`py-1 px-2 transition-all duration-300 cursor-pointer relative text-white ${
+                    hoveredItem === "about" ? "text-[#7A9DC7] translate-y-[-2px]" : "hover:text-[#7A9DC7] hover:translate-y-[-2px]"
                   }`}
                 >
                   About
                   <span
-                    className={`absolute bottom-0 left-0 h-0.5 bg-blue-500 transition-all duration-300 ${hoveredItem === "about" ? "w-full" : "w-0"}`}
+                    className={`absolute bottom-0 left-0 h-0.5 bg-[#7A9DC7] transition-all duration-300 ${hoveredItem === "about" ? "w-full" : "w-0"}`}
                   ></span>
                 </a>
                 <Link
                   href="/contact"
                   onMouseEnter={() => setHoveredItem("contact")}
                   onMouseLeave={() => setHoveredItem(null)}
-                  className={`py-1 px-2 transition-all duration-300 relative ${
-                    hoveredItem === "contact" ? "text-blue-400 translate-y-[-2px]" : "hover:text-blue-400 hover:translate-y-[-2px]"
+                  className={`py-1 px-2 transition-all duration-300 relative text-white ${
+                    hoveredItem === "contact" ? "text-[#7A9DC7] translate-y-[-2px]" : "hover:text-[#7A9DC7] hover:translate-y-[-2px]"
                   }`}
                 >
                   Contact
                   <span
-                    className={`absolute bottom-0 left-0 h-0.5 bg-blue-500 transition-all duration-300 ${hoveredItem === "contact" ? "w-full" : "w-0"}`}
+                    className={`absolute bottom-0 left-0 h-0.5 bg-[#7A9DC7] transition-all duration-300 ${hoveredItem === "contact" ? "w-full" : "w-0"}`}
                   ></span>
                 </Link>
               </>
@@ -91,13 +94,13 @@ export default function Header({ variant = "main" }: HeaderProps) {
                 href="/"
                 onMouseEnter={() => setHoveredItem("home")}
                 onMouseLeave={() => setHoveredItem(null)}
-                className={`py-1 px-2 transition-all duration-300 flex items-center relative ${
-                  hoveredItem === "home" ? "text-blue-400 translate-y-[-2px]" : "hover:text-blue-400 hover:translate-y-[-2px]"
+                className={`py-1 px-2 transition-all duration-300 flex items-center relative text-white ${
+                  hoveredItem === "home" ? "text-[#7A9DC7] translate-y-[-2px]" : "hover:text-[#7A9DC7] hover:translate-y-[-2px]"
                 }`}
               >
                 <ChevronLeft size={20} className="mr-1" />
                 Home
-                <span className={`absolute bottom-0 left-0 h-0.5 bg-blue-500 transition-all duration-300 ${hoveredItem === "home" ? "w-full" : "w-0"}`}></span>
+                <span className={`absolute bottom-0 left-0 h-0.5 bg-[#7A9DC7] transition-all duration-300 ${hoveredItem === "home" ? "w-full" : "w-0"}`}></span>
               </Link>
             )}
           </div>
@@ -106,7 +109,7 @@ export default function Header({ variant = "main" }: HeaderProps) {
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-black/95">
+        <div className="md:hidden bg-[#003693]/98">
           <div className="px-2 pt-2 pb-3 space-y-4">
             {variant === "main" ? (
               <>
@@ -115,7 +118,7 @@ export default function Header({ variant = "main" }: HeaderProps) {
                     scrollToSection("services");
                     setIsMenuOpen(false);
                   }}
-                  className="block px-4 py-3 text-base font-medium hover:text-blue-400 hover:bg-blue-900/10 transition-all duration-300 rounded-md cursor-pointer"
+                  className="block px-4 py-3 text-base font-medium text-white hover:text-[#7A9DC7] hover:bg-[#7A9DC7]/10 transition-all duration-300 rounded-md cursor-pointer"
                 >
                   Services
                 </a>
@@ -124,13 +127,13 @@ export default function Header({ variant = "main" }: HeaderProps) {
                     scrollToSection("about");
                     setIsMenuOpen(false);
                   }}
-                  className="block px-4 py-3 text-base font-medium hover:text-blue-400 hover:bg-blue-900/10 transition-all duration-300 rounded-md cursor-pointer"
+                  className="block px-4 py-3 text-base font-medium text-white hover:text-[#7A9DC7] hover:bg-[#7A9DC7]/10 transition-all duration-300 rounded-md cursor-pointer"
                 >
                   About
                 </a>
                 <Link
                   href="/contact"
-                  className="block px-4 py-3 text-base font-medium hover:text-blue-400 hover:bg-blue-900/10 transition-all duration-300 rounded-md"
+                  className="block px-4 py-3 text-base font-medium text-white hover:text-[#7A9DC7] hover:bg-[#7A9DC7]/10 transition-all duration-300 rounded-md"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Contact
@@ -139,7 +142,7 @@ export default function Header({ variant = "main" }: HeaderProps) {
             ) : (
               <Link
                 href="/"
-                className="block px-4 py-3 text-base font-medium hover:text-blue-400 hover:bg-blue-900/10 transition-all duration-300 rounded-md flex items-center"
+                className="block px-4 py-3 text-base font-medium text-white hover:text-[#7A9DC7] hover:bg-[#7A9DC7]/10 transition-all duration-300 rounded-md flex items-center"
                 onClick={() => setIsMenuOpen(false)}
               >
                 <ChevronLeft size={20} className="mr-1" />
