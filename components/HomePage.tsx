@@ -59,7 +59,7 @@ export default function HomePage() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 410);
+      setShowScrollTop(window.scrollY > 400);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -102,48 +102,107 @@ export default function HomePage() {
       </div>
 
       {/* Services Section */}
-      <AnimatedSection id="services" className="py-20 bg-gradient-to-b from-white via-gray-100 to-gray-200">
+      <AnimatedSection id="services" className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-2 hover:text-blue-600 transition-colors">Our Services</h2>
-            <h3 className="text-2xl font-medium text-gray-700">サービス</h3>
+            <h2 className="text-4xl font-bold text-white mb-2 hover:text-blue-600 transition-colors">
+              <span className="bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 hover:text-transparent transition-all duration-300">Services</span>
+            </h2>
+            <h3 className="text-2xl font-medium text-gray-300 relative">
+              サービス
+              <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full mt-2 opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
+            </h3>
           </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ServiceCard
-              icon={<Instagram size={32} className="text-blue-500" />}
+              icon={
+                <div className="relative">
+                  <div className="absolute inset-0 bg-blue-400 rounded-full opacity-20 animate-ping-slow"></div>
+                  <div className="relative bg-gradient-to-r from-pink-500 to-red-600 text-white p-3 rounded-full transform transition-transform group-hover:rotate-6">
+                    <Instagram size={28} />
+                  </div>
+                </div>
+              }
               title="SNS Consulting"
               japaneseTitle="SNSコンサルティング"
-              description="Strategic social media management and growth strategies"
+              description="戦略的なソーシャルメディア運用と成長戦略のご提案"
+              className="hover:border-pink-500 transition-all duration-500"
             />
+
             <ServiceCard
-              icon={<Users size={32} className="text-blue-500" />}
+              icon={
+                <div className="relative">
+                  <div className="absolute inset-0 bg-blue-400 rounded-full opacity-20 animate-ping-slow"></div>
+                  <div className="relative bg-gradient-to-r from-blue-500 to-blue-700 text-white p-3 rounded-full transform transition-transform group-hover:rotate-6">
+                    <Users size={28} />
+                  </div>
+                </div>
+              }
               title="Influencer Marketing"
               japaneseTitle="インフルエンサーマーケティング"
-              description="Connect with influential voices in your industry"
+              description="業界の影響力のある人物とのコネクションを活用したマーケティング"
+              className="hover:border-blue-500 transition-all duration-500"
             />
+
             <ServiceCard
-              icon={<Globe2 size={32} className="text-blue-500" />}
+              icon={
+                <div className="relative">
+                  <div className="absolute inset-0 bg-blue-400 rounded-full opacity-20 animate-ping-slow"></div>
+                  <div className="relative bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-3 rounded-full transform transition-transform group-hover:rotate-6">
+                    <Globe2 size={28} />
+                  </div>
+                </div>
+              }
               title="Web Marketing"
               japaneseTitle="WEBマーケティング"
-              description="Comprehensive digital marketing solutions"
+              description="包括的なデジタルマーケティングソリューションの提供"
+              className="hover:border-indigo-500 transition-all duration-500"
             />
+
             <ServiceCard
-              icon={<BarChart3 size={32} className="text-blue-500" />}
+              icon={
+                <div className="relative">
+                  <div className="absolute inset-0 bg-blue-400 rounded-full opacity-20 animate-ping-slow"></div>
+                  <div className="relative bg-gradient-to-r from-teal-500 to-blue-500 text-white p-3 rounded-full transform transition-transform group-hover:rotate-6">
+                    <BarChart3 size={28} />
+                  </div>
+                </div>
+              }
               title="Web Advertising"
               japaneseTitle="WEB広告"
-              description="Targeted advertising campaigns that deliver results"
+              description="結果を出すターゲットを絞った広告キャンペーンの展開"
+              className="hover:border-teal-500 transition-all duration-500"
             />
+
             <ServiceCard
-              icon={<Calendar size={32} className="text-blue-500" />}
+              icon={
+                <div className="relative">
+                  <div className="absolute inset-0 bg-blue-400 rounded-full opacity-20 animate-ping-slow"></div>
+                  <div className="relative bg-gradient-to-r from-purple-500 to-indigo-600 text-white p-3 rounded-full transform transition-transform group-hover:rotate-6">
+                    <Calendar size={28} />
+                  </div>
+                </div>
+              }
               title="Event Casting"
               japaneseTitle="イベントキャスティング"
-              description="Professional talent sourcing for your events"
+              description="イベントのための専門的な人材確保とコーディネート"
+              className="hover:border-purple-500 transition-all duration-500"
             />
+
             <ServiceCard
-              icon={<Megaphone size={32} className="text-blue-500" />}
+              icon={
+                <div className="relative">
+                  <div className="absolute inset-0 bg-blue-400 rounded-full opacity-20 animate-ping-slow"></div>
+                  <div className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white p-3 rounded-full transform transition-transform group-hover:rotate-6">
+                    <Megaphone size={28} />
+                  </div>
+                </div>
+              }
               title="Digital Strategy"
               japaneseTitle="デジタル戦略"
-              description="Customized digital transformation solutions"
+              description="カスタマイズされたデジタルトランスフォーメーションの提案"
+              className="hover:border-blue-600 transition-all duration-500"
             />
           </div>
         </div>
@@ -153,55 +212,76 @@ export default function HomePage() {
       <AnimatedSection id="about" className="py-20 bg-gradient-to-b from-white via-gray-100 to-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-2 hover:text-blue-600 transition-colors">Company Information</h2>
-            <h3 className="text-2xl font-medium text-gray-700">企業情報</h3>
+            <h2 className="text-4xl font-bold text-black mb-2 hover:text-blue-600 transition-colors">
+              <span className="bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800 hover:text-transparent transition-all duration-300">
+                Company Information
+              </span>
+            </h2>
+            <h3 className="text-2xl font-medium text-gray-700 relative">
+              企業情報
+              <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full mt-2 opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
+            </h3>
           </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div className="space-y-8">
-              <div className="border border-gray-200 p-6 hover:border-blue-600 transition-colors bg-white rounded-lg shadow-sm h-48 flex flex-col">
+              <div className="border border-gray-200 p-6 hover:border-blue-500 transition-all duration-300 bg-white rounded-lg shadow-sm hover:shadow-md hover:shadow-blue-200 transform hover:-translate-y-1 h-48 flex flex-col group">
                 <div className="flex items-center mb-2">
-                  <Users2 className="text-blue-500 mr-3" size={24} />
-                  <h3 className="text-xl font-bold text-gray-800">Representatives / 代表者</h3>
+                  <div className="bg-blue-100 p-2 rounded-full mr-3 group-hover:bg-blue-500 transition-colors duration-300">
+                    <Users2 className="text-blue-500 group-hover:text-white transition-colors duration-300" size={24} />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">Representatives / 代表者</h3>
                 </div>
-                <div className="mt-1">
+                <div className="mt-1 flex-grow">
                   <p className="text-gray-700">Managing Members:</p>
                   <p className="text-gray-700 mt-2">代表社員:</p>
-                  <p className="text-gray-700">野村優太 ・ 趙竜済</p>
+                  <p className="text-gray-700 font-medium group-hover:text-blue-700 transition-colors">野村優太 ・ 趙竜済</p>
                 </div>
+                <div className="h-1 w-0 bg-gradient-to-r from-blue-400 to-blue-600 group-hover:w-full transition-all duration-500 rounded-full"></div>
               </div>
 
-              <div className="border border-gray-200 p-6 hover:border-blue-600 transition-colors bg-white rounded-lg shadow-sm h-48 flex flex-col">
+              <div className="border border-gray-200 p-6 hover:border-blue-500 transition-all duration-300 bg-white rounded-lg shadow-sm hover:shadow-md hover:shadow-blue-200 transform hover:-translate-y-1 h-48 flex flex-col group">
                 <div className="flex items-center mb-2">
-                  <MapPin className="text-blue-500 mr-3" size={24} />
-                  <h3 className="text-xl font-bold text-gray-800">Location / 所在地</h3>
+                  <div className="bg-blue-100 p-2 rounded-full mr-3 group-hover:bg-blue-500 transition-colors duration-300">
+                    <MapPin className="text-blue-500 group-hover:text-white transition-colors duration-300" size={24} />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">Location / 所在地</h3>
                 </div>
-                <div className="mt-1">
+                <div className="mt-1 flex-grow">
                   <p className="text-gray-700">Setagaya-ku, Tokyo</p>
                   <p className="text-gray-700">東京都世田谷区</p>
                 </div>
+                <div className="h-1 w-0 bg-gradient-to-r from-blue-400 to-blue-600 group-hover:w-full transition-all duration-500 rounded-full"></div>
               </div>
             </div>
 
             <div className="space-y-8">
-              <div className="border border-gray-200 p-6 hover:border-blue-600 transition-colors bg-white rounded-lg shadow-sm h-48 flex flex-col">
+              <div className="border border-gray-200 p-6 hover:border-blue-500 transition-all duration-300 bg-white rounded-lg shadow-sm hover:shadow-md hover:shadow-blue-200 transform hover:-translate-y-1 h-48 flex flex-col group">
                 <div className="flex items-center mb-2">
-                  <Globe2 className="text-blue-500 mr-3" size={24} />
-                  <h3 className="text-xl font-bold text-gray-800">Company Name / 会社名</h3>
+                  <div className="bg-blue-100 p-2 rounded-full mr-3 group-hover:bg-blue-500 transition-colors duration-300">
+                    <Globe2 className="text-blue-500 group-hover:text-white transition-colors duration-300" size={24} />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">Company Name / 会社名</h3>
                 </div>
-                <div className="mt-1">
+                <div className="mt-1 flex-grow">
                   <p className="text-gray-700">Y3 LLC</p>
                   <p className="text-gray-700">合同会社Y3（ワイスリー）</p>
                 </div>
+                <div className="h-1 w-0 bg-gradient-to-r from-blue-400 to-blue-600 group-hover:w-full transition-all duration-500 rounded-full"></div>
               </div>
-              <div className="border border-gray-200 p-6 hover:border-blue-600 transition-colors bg-white rounded-lg shadow-sm h-48 flex flex-col">
+
+              <div className="border border-gray-200 p-6 hover:border-blue-500 transition-all duration-300 bg-white rounded-lg shadow-sm hover:shadow-md hover:shadow-blue-200 transform hover:-translate-y-1 h-48 flex flex-col group">
                 <div className="flex items-center mb-2">
-                  <Calendar className="text-blue-500 mr-3" size={24} />
-                  <h3 className="text-xl font-bold text-gray-800">Established / 設立</h3>
+                  <div className="bg-blue-100 p-2 rounded-full mr-3 group-hover:bg-blue-500 transition-colors duration-300">
+                    <Calendar className="text-blue-500 group-hover:text-white transition-colors duration-300" size={24} />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">Established / 設立</h3>
                 </div>
-                <div className="mt-1">
+                <div className="mt-1 flex-grow">
                   <p className="text-gray-700">April 4, 2025</p>
                   <p className="text-gray-700">2025年4月4日</p>
                 </div>
+                <div className="h-1 w-0 bg-gradient-to-r from-blue-400 to-blue-600 group-hover:w-full transition-all duration-500 rounded-full"></div>
               </div>
             </div>
           </div>
