@@ -168,7 +168,7 @@ export default function HomePage() {
       </div>
 
       {/* Services Section */}
-      <AnimatedSection id="services" className="py-20 bg-gradient-to-b from-[#003693] via-[#0A449E] to-[#1C5EC7]">
+      <AnimatedSection id="services" className="py-20 bg-gradient-to-b from-[#7A9DC7] via-[#a4cdff] to-[#b7d8ff]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 relative">
             {/* 背景装飾 */}
