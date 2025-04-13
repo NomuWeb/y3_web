@@ -81,8 +81,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-zinc-800 pt-6 pb-2 text-center text-sm text-gray-400">© 2025 Y3 LLC. All rights reserved.</div>
-      </div>
+      <div className="border-t border-zinc-800 pt-6 pb-2 text-center text-sm text-gray-400">© 2025 Y3 LLC. All rights reserved.</div>
+    </div>
     </footer>
   );
 }

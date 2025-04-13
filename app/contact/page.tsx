@@ -31,7 +31,7 @@ export default function ContactPage() {
           </div>
 
           <div className="mt-12 text-center">
-            <h4 className="text-lg font-medium text-[#003693] mb-4">その他のお問い合わせ方法</h4>
+            <h4 className="text-lg font-medium text-[#003693]  mb-4">その他のお問い合わせ方法</h4>
             <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8">
               <div className="flex items-center">
                 <div className="bg-[#003693] p-2 rounded-full mr-2">
@@ -54,7 +54,11 @@ export default function ContactPage() {
       </main>
 
       {/* 共通フッターコンポーネントを使用 */}
-      <Footer />
+      <footer className="bg-[rgb(24,25,26)] pt-6 pb-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="border-t border-zinc-800 pt-6 pb-2 text-center text-sm text-gray-400">© 2025 Y3 LLC. All rights reserved.</div>
+        </div>
+      </footer>
     </div>
   );
 }
