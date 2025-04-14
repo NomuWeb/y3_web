@@ -1,88 +1,168 @@
 "use client";
 
 import React from "react";
-import { Facebook, Instagram, Mail, MapPinned, Phone, Twitter } from "lucide-react";
+import { Instagram, Facebook, Twitter, Mail, Phone, MapPin, ChevronRight } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-const scrollToSection = (sectionId: string) => {
-  const element = document.getElementById(sectionId);
-  if (element) {
-    const headerHeight = 64;
-    const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth",
-    });
-  }
-};
+const Footer = () => {
+  const year = new Date().getFullYear();
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
-export default function Footer() {
+  const companyInfo = {
+    name: "合同会社Y3（ワイスリー）",
+    address: "東京都世田谷区",
+    email: "info@y3company.com",
+  };
+
+  // リンク先の設定（コンタクトページからはルートページ+アンカーへ）
+  const getHref = (anchor: string) => {
+    return isHomePage ? anchor : `/${anchor}`;
+  };
+
+  // スムーズスクロール処理（ホームページの場合のみ）
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!isHomePage) return; // ホームページでなければ通常の遷移
+
+    e.preventDefault();
+
+    // ハッシュを取得
+    const targetId = href.replace(/.*\#/, "");
+    const element = document.getElementById(targetId);
+
+    if (element) {
+      // スクロール位置を調整（ヘッダーの高さ分オフセット）
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - 120; // より大きなオフセット
+
+      // スクロール
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const footerLinks = [
+    {
+      title: "Company",
+      links: [
+        { label: "About", href: getHref("#about") },
+        { label: "Services", href: getHref("#services") },
+        { label: "News", href: getHref("#news") },
+        { label: "Contact", href: getHref("#contact") },
+      ],
+    },
+  ];
+
   return (
-    <footer className="bg-[rgb(24,25,26)] pt-6 pb-4">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
-          <div>
-            <h3 className="text-xl font-bold mb-4 text-white hover:text-blue-400 transition-colors">Y3 LLC</h3>
-            <p className="text-gray-400 mb-4">Shaping the future of digital marketing through innovative solutions and strategic partnerships.</p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors transform hover:scale-110">
-                <Facebook size={20} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors transform hover:scale-110">
-                <Twitter size={20} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors transform hover:scale-110">
-                <Instagram size={20} />
-              </a>
+    <footer className="bg-white relative overflow-hidden">
+      {/* 上部の波形装飾 */}
+      <div className="absolute top-0 left-0 right-0 transform rotate-180">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" className="w-full h-auto">
+          <path
+            fill="#f9fafb"
+            fillOpacity="1"
+            d="M0,32L60,42.7C120,53,240,75,360,74.7C480,75,600,53,720,42.7C840,32,960,32,1080,42.7C1200,53,1320,75,1380,85.3L1440,96L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
+          ></path>
+        </svg>
+      </div>
+
+      {/* 背景の円装飾 */}
+      <div className="absolute inset-0 overflow-hidden z-0">
+        <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-blue-50 opacity-40"></div>
+        <div className="absolute bottom-40 -left-20 w-80 h-80 rounded-full bg-indigo-50 opacity-30"></div>
+        <div className="absolute top-1/2 right-1/4 w-20 h-20 rounded-full bg-purple-50 opacity-40"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10 relative z-10">
+        {/* メインフッター内容 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
+          {/* 会社情報 */}
+          <div className="col-span-1 lg:col-span-2">
+            <Link href="/" className="flex items-center mb-6">
+              <span className="text-2xl font-bold text-indigo-700">Y3</span>
+              <div className="ml-1 w-2 h-2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600"></div>
+              <span className="ml-2 text-sm font-medium text-gray-600">ワイスリー</span>
+            </Link>
+
+            <div className="space-y-3">
+              <div className="flex items-start">
+                <MapPin className="text-indigo-600 mr-3 mt-1 flex-shrink-0" size={18} />
+                <span className="text-gray-600">{companyInfo.address}</span>
+              </div>
+              <div className="flex items-center">
+                <Mail className="text-indigo-600 mr-3 flex-shrink-0" size={18} />
+                <a href={`mailto:${companyInfo.email}`} className="text-gray-600 hover:text-indigo-600 transition-colors">
+                  {companyInfo.email}
+                </a>
+              </div>
             </div>
           </div>
 
-          <div>
-            <h3 className="text-xl font-bold mb-4 text-white hover:text-blue-400 transition-colors">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <a onClick={() => scrollToSection("services")} className="text-gray-400 hover:text-blue-400 transition-colors cursor-pointer">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a onClick={() => scrollToSection("about")} className="text-gray-400 hover:text-blue-400 transition-colors cursor-pointer">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="/contact" className="text-gray-400 hover:text-blue-400 transition-colors">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
+          {/* リンク */}
+          {footerLinks.map((section) => (
+            <div key={section.title}>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">{section.title}</h3>
+              <ul className="space-y-3">
+                {section.links.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      onClick={(e) => handleSmoothScroll(e, link.href)}
+                      className="text-gray-600 hover:text-indigo-600 flex items-center group transition-colors"
+                    >
+                      <ChevronRight size={16} className="mr-1 text-indigo-500 transform group-hover:translate-x-1 transition-transform" />
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
+          {/* ニュースレター */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-white hover:text-blue-400 transition-colors">Contact Info</h3>
-            <ul className="space-y-2">
-              <li className="flex items-center text-gray-400">
-                <MapPinned size={16} className="mr-2" />
-                <span>東京都世田谷区</span>
-              </li>
-              <li className="flex items-center text-gray-400">
-                <Mail size={16} className="mr-2" />
-                <a href="mailto:contact@y3llc.jp" className="hover:text-blue-400 transition-colors">
-                  nomuray3@outlook.jp
-                </a>
-              </li>
-              <li className="flex items-center text-gray-400">
-                <Phone size={16} className="mr-2" />
-                <a href="tel:+81-XX-XXXX-XXXX" className="hover:text-blue-400 transition-colors">
-                  +81-XX-XXXX-XXXX
-                </a>
-              </li>
-            </ul>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Follow Us</h3>
+            <p className="text-gray-600 mb-4">SNSで最新情報をチェック</p>
+
+            <div className="flex space-x-3">
+              <a
+                href="#"
+                className="w-10 h-10 flex items-center justify-center bg-gradient-to-br from-pink-500 to-red-600 rounded-full text-white hover:shadow-lg hover:shadow-pink-200 transform hover:scale-110 transition-all duration-300"
+                aria-label="Instagram"
+              >
+                <Instagram size={18} />
+              </a>
+              <a
+                href="#"
+                className="w-10 h-10 flex items-center justify-center bg-gradient-to-br from-blue-500 to-blue-700 rounded-full text-white hover:shadow-lg hover:shadow-blue-200 transform hover:scale-110 transition-all duration-300"
+                aria-label="Facebook"
+              >
+                <Facebook size={18} />
+              </a>
+              <a
+                href="#"
+                className="w-10 h-10 flex items-center justify-center bg-gradient-to-br from-gray-700 to-gray-900 rounded-full text-white hover:shadow-lg hover:shadow-gray-200 transform hover:scale-110 transition-all duration-300"
+                aria-label="X (formerly Twitter)"
+              >
+                <Twitter size={18} />
+              </a>
+            </div>
           </div>
         </div>
 
-      <div className="border-t border-zinc-800 pt-6 pb-2 text-center text-sm text-gray-400">© 2025 Y3 LLC. All rights reserved.</div>
-    </div>
+        {/* コピーライト */}
+        <div className="pt-8 border-t border-gray-200 text-center">
+          <p className="text-gray-500 text-sm">
+            &copy; {year} {companyInfo.name} All rights reserved.
+          </p>
+          <div className="w-20 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 mx-auto mt-4 rounded-full opacity-50"></div>
+        </div>
+      </div>
     </footer>
   );
-}
+};
+
+export default Footer;

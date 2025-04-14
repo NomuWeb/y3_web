@@ -1,50 +1,58 @@
 "use client";
 
-import React from "react";
+import React, { ReactNode } from "react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 interface ServiceCardProps {
-  icon: React.ReactNode;
+  icon: ReactNode;
   title: string;
   japaneseTitle: string;
   description: string;
   className?: string;
+  slug?: string; // 詳細ページへのスラッグ
 }
 
-export default function ServiceCard({ icon, title, japaneseTitle, description, className = "" }: ServiceCardProps) {
+const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, japaneseTitle, description, className = "", slug }) => {
   return (
-    <div
-      className={`relative p-6 bg-white border-0 shadow-lg hover:shadow-[#003693]/20 transition-all duration-500 transform hover:-translate-y-1 group overflow-hidden ${className}`}
-      style={{
-        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%, 0% 75%, 0 0)",
-      }}
-    >
-      {/* 装飾的な斜め線 */}
-      <div
-        className="absolute bottom-0 right-0 w-24 h-24 bg-[#003693]/10 transition-all duration-500 group-hover:bg-[#003693]/20"
-        style={{ clipPath: "polygon(100% 0, 100% 100%, 0 100%)" }}
-      ></div>
+    <div className={`group relative p-6 rounded-xl shadow-md border transition-all duration-500 transform hover:-translate-y-2 overflow-hidden ${className}`}>
+      {/* 背景グラデーションエフェクト - ホバー時のみ表示 */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-      {/* 左上の装飾 */}
-      <div className="absolute top-0 left-0 w-2 h-12 bg-[#003693] transform -translate-x-1 group-hover:translate-x-0 transition-all duration-500"></div>
+      {/* コンテンツ */}
+      <div className="relative z-10">
+        {/* アイコン */}
+        <div className="flex justify-center mb-6">{icon}</div>
 
-      {/* 右上の装飾 */}
-      <div className="absolute top-0 right-0 w-12 h-2 bg-[#7A9DC7] transform translate-x-1 group-hover:translate-x-0 transition-all duration-500"></div>
+        {/* タイトル */}
+        <h3 className="text-xl font-bold text-gray-900 text-center mb-1">{title}</h3>
+        <p className="text-indigo-600 text-sm font-medium text-center mb-4">{japaneseTitle}</p>
 
-      {/* アイコンと英語タイトルを横並びに */}
-      <div className="flex items-center mb-2 relative">
-        <div className="transition-transform duration-300 group-hover:scale-110 mr-4 flex-shrink-0 z-10">{icon}</div>
+        {/* 説明 */}
+        <p className="text-gray-600 text-center mb-6">{description}</p>
 
-        <h3 className="text-xl font-bold text-[#3E3A39] group-hover:text-[#003693] transition-colors z-10">{title}</h3>
+        {/* View Detail リンク */}
+        {slug && (
+          <div className="text-center mt-4">
+            <Link
+              href={`/services/${slug}`}
+              className="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium text-sm group transition-colors"
+            >
+              View Details
+              <ArrowRight size={16} className="ml-1 transform group-hover:translate-x-1 transition-transform duration-300" />
+            </Link>
+          </div>
+        )}
+
+        {/* アニメーションライン */}
+        <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
       </div>
 
-      {/* 日本語タイトルは別の行に */}
-      <h4 className="text-lg text-[#3E3A39] group-hover:text-[#7A9DC7] transition-colors mb-3 relative z-10">{japaneseTitle}</h4>
-
-      <p className="text-[#3E3A39] group-hover:text-[#3E3A39] transition-colors relative z-10">{description}</p>
-
-      <div className="mt-8 pt-3 border-t border-zinc-200 flex justify-end relative z-10">
-        <div className="h-0.5 w-0 bg-gradient-to-r from-[#7A9DC7] to-[#003693] group-hover:w-full transition-all duration-700"></div>
-      </div>
+      {/* 角の飾り */}
+      <div className="absolute top-0 right-0 w-0 h-0 border-t-8 border-r-8 border-indigo-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      <div className="absolute bottom-0 left-0 w-0 h-0 border-b-8 border-l-8 border-indigo-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
     </div>
   );
-}
+};
+
+export default ServiceCard;
