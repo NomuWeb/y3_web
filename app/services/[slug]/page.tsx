@@ -285,6 +285,7 @@ export default function ServiceDetailPage() {
               </div>
             </div>
 
+
             {/* お問い合わせセクション */}
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
               <div className={`h-2 bg-gradient-to-r ${service.bgGradient}`}></div>
