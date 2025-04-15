@@ -1,21 +1,41 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { ChevronDown, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+
+interface Particle {
+  size: number;
+  top: number;
+  left: number;
+  duration: number;
+}
+
 
 const HeroSection = () => {
   const [scrollOpacity, setScrollOpacity] = useState(1);
+  const [particles, setParticles] = useState<Particle[]>([]);
 
-  // スクロールに応じてスクロールアイコンの透明度を変更
   useEffect(() => {
+    // スクロールに応じてスクロールアイコンの透明度を変更
     const handleScroll = () => {
-      // スクロール位置に応じて不透明度を計算（200px以上スクロールすると完全に透明に）
       const opacity = Math.max(0, 1 - window.scrollY / 200);
       setScrollOpacity(opacity);
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    // クライアントサイドでパーティクルを生成
+    const generatedParticles: Particle[] = Array.from({ length: 20 }, () => ({
+      size: Math.random() * 6 + 2,
+      top: Math.random() * 100,
+      left: Math.random() * 100,
+      duration: Math.random() * 20 + 10,
+    }));
+    setParticles(generatedParticles);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
@@ -34,16 +54,16 @@ const HeroSection = () => {
 
       {/* パーティクル効果 */}
       <div className="absolute inset-0 overflow-hidden">
-        {Array.from({ length: 20 }).map((_, i) => (
+        {particles.map((particle, i) => (
           <div
             key={i}
             className="absolute bg-white rounded-full opacity-20"
             style={{
-              width: `${Math.random() * 6 + 2}px`,
-              height: `${Math.random() * 6 + 2}px`,
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animation: `float ${Math.random() * 20 + 10}s linear infinite`,
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+              top: `${particle.top}%`,
+              left: `${particle.left}%`,
+              animation: `float ${particle.duration}s linear infinite`,
             }}
           ></div>
         ))}

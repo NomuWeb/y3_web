@@ -304,15 +304,14 @@ export default function ServiceDetailPage() {
                       className={`inline-flex items-center px-8 py-3 bg-gradient-to-r ${service.bgGradient} text-white rounded-full font-medium transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg`}
                     >
                       お問い合わせ
-                      <ArrowRight size={18} className="ml-2" />
                     </a>
 
                     <Link
                       href="/services"
                       className="inline-flex items-center px-8 py-3 bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 rounded-full font-medium transition-all duration-300"
                     >
-                      <ArrowLeft size={18} className="mr-2" />
                       他のサービスを見る
+                      <ArrowRight size={18} className="ml-2" />
                     </Link>
                   </div>
                 </div>
