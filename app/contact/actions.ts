@@ -108,11 +108,6 @@ Setagaya-ku, Tokyo
 </head>
 <body style="font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9fafc;">
   <div style="border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); position: relative; background-color: white;">
-    <!-- 背景装飾 (丸いパターン) - HTMLメールの制限内で実装 -->
-    <div style="position: absolute; width: 150px; height: 150px; border-radius: 50%; background-color: rgba(224, 231, 255, 0.3); top: -50px; right: -50px; z-index: 0;"></div>
-    <div style="position: absolute; width: 120px; height: 120px; border-radius: 50%; background-color: rgba(199, 210, 254, 0.3); bottom: -30px; left: -40px; z-index: 0;"></div>
-    <div style="position: absolute; width: 80px; height: 80px; border-radius: 50%; background-color: rgba(221, 214, 254, 0.3); top: 40%; right: 20%; z-index: 0;"></div>
-    
     <!-- グラデーショントップバー -->
     <div style="background: linear-gradient(to right, #3b82f6, #6366f1, #8b5cf6); height: 6px;"></div>
     
@@ -128,13 +123,6 @@ Setagaya-ku, Tokyo
     <div style="background-color: white; padding: 30px; position: relative; z-index: 1;">
       <div style="margin-bottom: 30px;">
         <div style="display: flex; align-items: center; margin-bottom: 15px;">
-          <!-- アイコン風の装飾 -->
-          <div style="position: relative; margin-right: 12px;">
-            <div style="position: absolute; width: 30px; height: 30px; background-color: #dbeafe; border-radius: 8px; transform: rotate(6deg);"></div>
-            <div style="position: relative; width: 30px; height: 30px; background: linear-gradient(to top right, #3b82f6, #6366f1); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-              <div style="color: white; font-weight: bold; font-size: 14px;">👤</div>
-            </div>
-          </div>
           <h2 style="font-size: 18px; color: #1e293b; margin: 0;">お問い合わせ情報</h2>
         </div>
         
@@ -158,13 +146,6 @@ Setagaya-ku, Tokyo
       
       <div>
         <div style="display: flex; align-items: center; margin-bottom: 15px;">
-          <!-- アイコン風の装飾 -->
-          <div style="position: relative; margin-right: 12px;">
-            <div style="position: absolute; width: 30px; height: 30px; background-color: #e0e7ff; border-radius: 8px; transform: rotate(6deg);"></div>
-            <div style="position: relative; width: 30px; height: 30px; background: linear-gradient(to top right, #6366f1, #8b5cf6); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-              <div style="color: white; font-weight: bold; font-size: 14px;">💬</div>
-            </div>
-          </div>
           <h2 style="font-size: 18px; color: #1e293b; margin: 0;">メッセージ内容</h2>
         </div>
         
