@@ -106,52 +106,82 @@ Setagaya-ku, Tokyo
   <meta charset="utf-8">
   <title>Y3 LLC お問い合わせ</title>
 </head>
-<body style="font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-  <div style="border-radius: 6px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+<body style="font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9fafc;">
+  <div style="border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); position: relative; background-color: white;">
+    <!-- 背景装飾 (丸いパターン) - HTMLメールの制限内で実装 -->
+    <div style="position: absolute; width: 150px; height: 150px; border-radius: 50%; background-color: rgba(224, 231, 255, 0.3); top: -50px; right: -50px; z-index: 0;"></div>
+    <div style="position: absolute; width: 120px; height: 120px; border-radius: 50%; background-color: rgba(199, 210, 254, 0.3); bottom: -30px; left: -40px; z-index: 0;"></div>
+    <div style="position: absolute; width: 80px; height: 80px; border-radius: 50%; background-color: rgba(221, 214, 254, 0.3); top: 40%; right: 20%; z-index: 0;"></div>
+    
+    <!-- グラデーショントップバー -->
+    <div style="background: linear-gradient(to right, #3b82f6, #6366f1, #8b5cf6); height: 6px;"></div>
+    
     <!-- ヘッダー -->
-    <div style="background-color: #1e40af; color: white; padding: 20px; text-align: center;">
-      <h1 style="margin: 0; font-size: 24px;">Y3 LLC お問い合わせ</h1>
-      <p style="margin-top: 6px; font-size: 14px;">受信日時: ${formattedDate}</p>
+    <div style="background-color: white; color: #1e293b; padding: 30px; text-align: center; position: relative; z-index: 1;">
+      <h1 style="margin: 0; font-size: 28px; background: linear-gradient(to right, #3b82f6, #6366f1, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block;">Y3 LLC お問い合わせ</h1>
+      <p style="margin-top: 8px; font-size: 14px; color: #64748b;">受信日時: ${formattedDate}</p>
+      <!-- 区切り線 -->
+      <div style="width: 60px; height: 3px; background: linear-gradient(to right, #3b82f6, #6366f1, #8b5cf6); margin: 20px auto 0;"></div>
     </div>
     
     <!-- メイン内容 -->
-    <div style="background-color: white; padding: 30px; border-bottom: 1px solid #eee;">
-      <div style="margin-bottom: 25px;">
-        <h2 style="font-size: 18px; color: #1e40af; margin-top: 0; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee;">
-          お問い合わせ情報
-        </h2>
+    <div style="background-color: white; padding: 30px; position: relative; z-index: 1;">
+      <div style="margin-bottom: 30px;">
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+          <!-- アイコン風の装飾 -->
+          <div style="position: relative; margin-right: 12px;">
+            <div style="position: absolute; width: 30px; height: 30px; background-color: #dbeafe; border-radius: 8px; transform: rotate(6deg);"></div>
+            <div style="position: relative; width: 30px; height: 30px; background: linear-gradient(to top right, #3b82f6, #6366f1); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+              <div style="color: white; font-weight: bold; font-size: 14px;">👤</div>
+            </div>
+          </div>
+          <h2 style="font-size: 18px; color: #1e293b; margin: 0;">お問い合わせ情報</h2>
+        </div>
         
-        <table style="width: 100%; border-collapse: collapse;">
-          <tr>
-            <td style="padding: 8px 0; font-weight: bold; width: 120px;">名前:</td>
-            <td style="padding: 8px 0;">${escapedName}</td>
-          </tr>
-          <tr>
-            <td style="padding: 8px 0; font-weight: bold;">メールアドレス:</td>
-            <td style="padding: 8px 0;">
-              <a href="mailto:${escapedEmail}" style="color: #2563eb; text-decoration: none;">
-                ${escapedEmail}
-              </a>
-            </td>
-          </tr>
-        </table>
+        <div style="background-color: #f8fafc; padding: 20px; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.04); border: 1px solid #e2e8f0;">
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+              <td style="padding: 10px 0; font-weight: bold; width: 120px; color: #4b5563;">名前:</td>
+              <td style="padding: 10px 0; color: #1e40af; font-weight: 500;">${escapedName}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; font-weight: bold; color: #4b5563;">メールアドレス:</td>
+              <td style="padding: 10px 0;">
+                <a href="mailto:${escapedEmail}" style="color: #4f46e5; text-decoration: none; font-weight: 500;">
+                  ${escapedEmail}
+                </a>
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
       
       <div>
-        <h2 style="font-size: 18px; color: #1e40af; margin-top: 0; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee;">
-          メッセージ内容
-        </h2>
-        <div style="background-color: #f8fafc; padding: 20px; border-radius: 4px; border-left: 4px solid #2563eb;">
-          <p style="white-space: pre-line; margin: 0;">${escapedMessage.replace(/\n/g, "<br>")}</p>
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+          <!-- アイコン風の装飾 -->
+          <div style="position: relative; margin-right: 12px;">
+            <div style="position: absolute; width: 30px; height: 30px; background-color: #e0e7ff; border-radius: 8px; transform: rotate(6deg);"></div>
+            <div style="position: relative; width: 30px; height: 30px; background: linear-gradient(to top right, #6366f1, #8b5cf6); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+              <div style="color: white; font-weight: bold; font-size: 14px;">💬</div>
+            </div>
+          </div>
+          <h2 style="font-size: 18px; color: #1e293b; margin: 0;">メッセージ内容</h2>
+        </div>
+        
+        <div style="background-color: #f8fafc; padding: 25px; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.04); border: 1px solid #e2e8f0; position: relative;">
+          <!-- 左サイドグラデーション -->
+          <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(to bottom, #4f46e5, #8b5cf6); border-top-left-radius: 12px; border-bottom-left-radius: 12px;"></div>
+          
+          <p style="white-space: pre-line; margin: 0; color: #374151;">${escapedMessage.replace(/\n/g, "<br>")}</p>
         </div>
       </div>
     </div>
     
     <!-- フッター -->
-    <div style="background-color: #f8fafc; padding: 20px; text-align: center; font-size: 14px; color: #666;">
-      <p style="margin: 0;">Y3 LLC（ワイスリー合同会社）</p>
-      <p style="margin: 5px 0;">Setagaya-ku, Tokyo</p>
-      <p style="margin: 5px 0; font-size: 12px;">© 2024 Y3 LLC. All rights reserved.</p>
+    <div style="background-color: #f8fafc; padding: 25px; text-align: center; font-size: 14px; color: #64748b; border-top: 1px solid #e2e8f0; position: relative; z-index: 1;">
+      <p style="margin: 0; font-weight: 600; color: #4f46e5;">Y3 LLC（ワイスリー合同会社）</p>
+      <p style="margin: 8px 0; color: #4b5563;">Setagaya-ku, Tokyo</p>
+      <p style="margin: 12px 0 0; font-size: 12px; color: #94a3b8;">© 2025 Y3 LLC. All rights reserved.</p>
     </div>
   </div>
 </body>

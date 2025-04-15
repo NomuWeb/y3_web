@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Lightbulb, Sparkles, Stars } from "lucide-react";
+import { Lightbulb, Sparkles, Stars, MessageCircle, Heart } from "lucide-react";
 import { AnimatedSectionComponent } from "@/components/AnimatedSection";
 
 interface PurposeSectionProps {
@@ -37,7 +37,7 @@ const PurposeSection: React.FC<PurposeSectionProps> = ({ AnimatedSection }) => {
             <div className="relative inline-flex items-center justify-center">
               <div className="absolute inset-0 rounded-full bg-indigo-100 animate-ping opacity-25"></div>
               <div className="relative rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 p-4 text-white shadow-lg transform hover:scale-110 transition-all duration-300">
-                <Sparkles size={32} />
+                <MessageCircle size={32} />
               </div>
               <div className="absolute -right-3 -bottom-2">
                 <Stars size={20} className="text-purple-500" />
@@ -46,16 +46,21 @@ const PurposeSection: React.FC<PurposeSectionProps> = ({ AnimatedSection }) => {
           </div>
 
           <h3 className="text-3xl md:text-4xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700 mb-8">
-            意思ある個人による 新しい経済をつくる
+            想いを届けるための最強の武器
           </h3>
 
           <div className="max-w-4xl mx-auto space-y-6">
             <p className="text-lg md:text-xl text-gray-700 text-center leading-relaxed">
-              たとえどれだけAIやロボティクスによって世の中の合理化が進んでも、鳥肌が立つような感動は人間ならではの価値として残り続けると信じています。
+              SNSは、ただの情報発信ではない。<br/>&ldquo;誰に、何を、どう伝えるか&rdquo;。そこにこだわることで、共感と反応を生む時代。
             </p>
 
             <p className="text-lg md:text-xl text-gray-700 text-center leading-relaxed">
-              私たちは、感動を生み出すクリエイターやアーティスト、アスリートなどの熱狂的な個人を応援し、新しい経済のカタチを次々と作っていきます。
+              私たちは、発信者の中にある本質的なメッセージを引き出し、言葉とビジュアルに落とし込むことで、 エンドユーザーの心に届く発信を設計します。
+            </p>
+
+            <p className="text-lg md:text-xl text-gray-700 text-center leading-relaxed">
+              SNSは、気持ちを伝え、世界とつながるためのツール。
+              だからこそ、ただ投稿するのではなく、「伝えるべきこと」を明確にし、可視化することが何より重要だと考えています。
             </p>
           </div>
 
