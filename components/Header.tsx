@@ -104,8 +104,8 @@ const Header: React.FC<HeaderProps> = ({ variant = "main" }) => {
                 <span className="text-xs mt-0.5 opacity-70">{link.nameJa}</span>
               </a>
             ))}
-            <a
-              href={isHomePage ? "/contact" : "#"}
+            <Link
+              href="/contact"
               className={`ml-3 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
                 isScrolled || variant === "secondary"
                   ? "bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white hover:shadow-md hover:shadow-indigo-200"
@@ -113,7 +113,7 @@ const Header: React.FC<HeaderProps> = ({ variant = "main" }) => {
               }`}
             >
               お問い合わせ
-            </a>
+            </Link>
           </nav>
 
           {/* モバイルメニューボタン */}
@@ -147,13 +147,13 @@ const Header: React.FC<HeaderProps> = ({ variant = "main" }) => {
               </a>
             ))}
             <div className="pt-2">
-              <a
-                href={isHomePage ? "/contact" : "#"}
+              <Link
+                href="/contact"
                 className="block w-full py-3 px-4 text-center font-medium rounded-lg bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white hover:from-indigo-600 hover:to-blue-600"
                 onClick={() => setIsMenuOpen(false)}
               >
                 お問い合わせ
-              </a>
+              </Link>
             </div>
           </div>
         </div>

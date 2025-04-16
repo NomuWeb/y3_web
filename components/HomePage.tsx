@@ -11,6 +11,7 @@ import CompanyInfoSection from "@/components/CompanyInfoSection";
 import ContactSection from "@/components/ContactSection";
 import PurposeSection from "@/components/PurposeSection";
 import NewsSection from "@/components/NewsSection";
+import WhyChooseUsSection from "./WhyChooseUsSection";
 
 export default function HomePage() {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -38,6 +39,9 @@ export default function HomePage() {
 
       {/* Purpose Section */}
       <PurposeSection AnimatedSection={AnimatedSection} />
+
+      {/* Why Choose Us Section */}
+      <WhyChooseUsSection AnimatedSection={AnimatedSection} />
 
       {/* Services Section */}
       <ServicesSection AnimatedSection={AnimatedSection} />

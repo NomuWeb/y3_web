@@ -38,7 +38,7 @@ const PurposeSection: React.FC<PurposeSectionProps> = ({ AnimatedSection }) => {
               {/* カスタムアニメーションクラスを使用してアニメーション速度を遅くする */}
               <div
                 className="absolute inset-0 rounded-full bg-indigo-300 opacity-40"
-                style={{ animation: "ping 4s cubic-bezier(0, 0, 0.2, 1) infinite" }}
+                style={{ animation: "ping 2s cubic-bezier(0, 0, 0.2, 1) infinite" }}
               ></div>
               <div
                 className="absolute inset-0 scale-110 rounded-full bg-indigo-200"

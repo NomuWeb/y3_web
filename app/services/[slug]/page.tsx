@@ -6,8 +6,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import Link from "next/link";
-import { ArrowLeft, CheckCircle, ArrowRight } from "lucide-react";
-import { Instagram, Users, Globe2, BarChart3, Calendar, Megaphone } from "lucide-react";
+import { ArrowLeft, CheckCircle, ArrowRight, FileCheck, Award, Clock, Users, Target, Zap, ChartBar } from "lucide-react";
+import { Instagram, Users as UsersIcon, Globe2, BarChart3, Calendar, Megaphone } from "lucide-react";
 
 // サービスデータの型定義
 interface ServiceData {
@@ -24,9 +24,25 @@ interface ServiceData {
   cases: string[];
 }
 
+// SNSコンサルティングの追加データ型定義
+interface SNSConsultingData extends ServiceData {
+  process: {
+    icon: React.JSX.Element;
+    title: string;
+    description: string;
+  }[];
+  achievements: {
+    title: string;
+    value: string;
+    unit: string;
+    description: string;
+    icon: React.JSX.Element;
+  }[];
+}
+
 // インデックスシグネチャを追加したサービスデータの型
 interface ServicesDataType {
-  [key: string]: ServiceData;
+  [key: string]: ServiceData | SNSConsultingData;
 }
 
 // サービスデータ
@@ -50,12 +66,65 @@ const servicesData: ServicesDataType = {
       "広告運用のサポートと効果測定",
     ],
     cases: ["新規ブランド立ち上げ時のSNS戦略構築と実行", "既存アカウントの成長停滞からの脱却と活性化", "複数SNSプラットフォームの統合運用戦略"],
+    // SNSコンサルティング専用の追加データ
+    process: [
+      {
+        icon: <FileCheck size={24} />,
+        title: "ヒアリング・現状分析",
+        description: "現在のSNS運用状況や課題、目標などを詳しくヒアリング。既存アカウントの詳細な分析とベンチマーク調査を行います。",
+      },
+      {
+        icon: <Target size={24} />,
+        title: "戦略策定",
+        description: "ターゲットとKPIを明確にした上で、プラットフォーム選定からコンテンツ計画、運用体制まで含めた包括的な戦略を策定します。",
+      },
+      {
+        icon: <Zap size={24} />,
+        title: "実行支援",
+        description: "計画に基づいたコンテンツ制作や投稿のサポート、コミュニティ管理、広告運用など、実行フェーズを強力にバックアップします。",
+      },
+      {
+        icon: <ChartBar size={24} />,
+        title: "効果測定・改善",
+        description: "定期的なレポーティングと分析を通じて、施策の効果を可視化。データに基づく継続的な改善提案を行います。",
+      },
+    ],
+    achievements: [
+      {
+        title: "フォロワー増加率",
+        value: "250",
+        unit: "%",
+        description: "アパレルブランドのInstagramアカウント（6ヶ月間）",
+        icon: <Users size={24} />,
+      },
+      {
+        title: "エンゲージメント率",
+        value: "5.8",
+        unit: "%",
+        description: "飲食チェーンのInstagramアカウント（業界平均の3倍）",
+        icon: <Award size={24} />,
+      },
+      {
+        title: "投稿リーチ",
+        value: "12",
+        unit: "倍",
+        description: "美容クリニックのTikTokアカウント（3ヶ月間）",
+        icon: <Globe2 size={24} />,
+      },
+      {
+        title: "コンバージョン増加",
+        value: "180",
+        unit: "%",
+        description: "ECサイトへの誘導からの購入率（12ヶ月間）",
+        icon: <ChartBar size={24} />,
+      },
+    ],
   },
   "influencer-marketing": {
     title: "Influencer Marketing",
     japaneseTitle: "インフルエンサーマーケティング",
     description: "業界の影響力のある人物とのコネクションを活用したマーケティング",
-    icon: <Users size={32} className="text-blue-500" />,
+    icon: <UsersIcon size={32} className="text-blue-500" />,
     iconBg: "bg-blue-100",
     color: "text-blue-600",
     colorLight: "text-blue-500",
@@ -75,6 +144,7 @@ const servicesData: ServicesDataType = {
       "特定ターゲット層へのリーチを目的としたニッチインフルエンサー起用",
     ],
   },
+  // 他のサービスは変更なし（省略）
   "web-marketing": {
     title: "Web Marketing",
     japaneseTitle: "WEBマーケティング",
@@ -184,6 +254,10 @@ export default function ServiceDetailPage() {
 
   const service = servicesData[slug];
 
+  // SNSコンサルティングの場合は拡張データあり
+  const isSNSConsulting = slug === "sns-consulting";
+  const snsService = isSNSConsulting ? (service as SNSConsultingData) : null;
+
   return (
     <div className="min-h-screen bg-white text-gray-800">
       {/* ヘッダー */}
@@ -193,9 +267,9 @@ export default function ServiceDetailPage() {
       <div className="pt-20 relative overflow-hidden bg-gradient-to-b from-indigo-900 to-blue-900 text-white">
         {/* 背景装飾 - 丸い形 */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-blue-500 opacity-80 animate-pulse" style={{ animationDuration: "8s" }}></div>
-          <div className="absolute top-1/3 right-1/4 w-80 h-80 rounded-full bg-indigo-500 opacity-70 animate-pulse" style={{ animationDuration: "12s" }}></div>
-          <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-purple-500 opacity-80"></div>
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-blue-500 opacity-10 animate-pulse" style={{ animationDuration: "8s" }}></div>
+          <div className="absolute top-1/3 right-1/4 w-80 h-80 rounded-full bg-indigo-500 opacity-10 animate-pulse" style={{ animationDuration: "12s" }}></div>
+          <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-purple-500 opacity-5"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 relative z-10">
@@ -251,6 +325,39 @@ export default function ServiceDetailPage() {
               <div className="w-20 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 rounded-full"></div>
             </div>
 
+            {/* SNSコンサルティング専用: 契約の流れセクション */}
+            {isSNSConsulting && snsService && (
+              <div className="mb-12">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                  <span className={`bg-clip-text text-transparent bg-gradient-to-r ${service.bgGradient}`}>契約の流れ</span>
+                </h2>
+
+                <div className="space-y-6">
+                  {snsService.process.map((step, index) => (
+                    <div key={index} className="bg-white rounded-xl shadow-md hover:shadow-lg border border-gray-100 p-5 transition-all duration-300">
+                      <div className="flex items-start">
+                        <div className="flex-shrink-0">
+                          <div className="relative p-2">
+                            <div className="absolute inset-0 bg-pink-100 rounded-lg rotate-6"></div>
+                            <div className="relative bg-gradient-to-r from-pink-500 to-red-500 text-white p-3 rounded-lg">{step.icon}</div>
+                          </div>
+                        </div>
+                        <div className="ml-5">
+                          <div className="flex items-center">
+                            <span className="bg-pink-100 text-pink-800 text-xs font-medium rounded-full w-6 h-6 flex items-center justify-center mr-2">
+                              {index + 1}
+                            </span>
+                            <h3 className="text-xl font-bold text-gray-900">{step.title}</h3>
+                          </div>
+                          <p className="mt-2 text-gray-600">{step.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             <div className="mb-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
                 <span className={`bg-clip-text text-transparent bg-gradient-to-r ${service.bgGradient}`}>サービスの特徴</span>
@@ -265,6 +372,37 @@ export default function ServiceDetailPage() {
                 ))}
               </ul>
             </div>
+
+            {/* SNSコンサルティング専用: 実績セクション */}
+            {isSNSConsulting && snsService && (
+              <div className="mb-12">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                  <span className={`bg-clip-text text-transparent bg-gradient-to-r ${service.bgGradient}`}>実績</span>
+                </h2>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {snsService.achievements.map((achievement, index) => (
+                    <div key={index} className="bg-white rounded-xl shadow-md border border-gray-100 p-6 transition-all duration-300 hover:shadow-lg">
+                      <div className="flex items-center mb-4">
+                        <div className="p-2 bg-pink-100 rounded-lg mr-4">
+                          <div className="text-pink-600">{achievement.icon}</div>
+                        </div>
+                        <h3 className="text-lg font-semibold text-gray-800">{achievement.title}</h3>
+                      </div>
+
+                      <div className="flex items-baseline mb-3">
+                        <span className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-red-500">{achievement.value}</span>
+                        <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-red-500 ml-1">
+                          {achievement.unit}
+                        </span>
+                      </div>
+
+                      <p className="text-gray-600">{achievement.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             <div className="mb-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
@@ -285,7 +423,6 @@ export default function ServiceDetailPage() {
               </div>
             </div>
 
-
             {/* お問い合わせセクション */}
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
               <div className={`h-2 bg-gradient-to-r ${service.bgGradient}`}></div>
@@ -300,12 +437,12 @@ export default function ServiceDetailPage() {
                   </p>
 
                   <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                    <a
+                    <Link
                       href="/contact"
                       className={`inline-flex items-center px-8 py-3 bg-gradient-to-r ${service.bgGradient} text-white rounded-full font-medium transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg`}
                     >
                       お問い合わせ
-                    </a>
+                    </Link>
 
                     <Link
                       href="/services"

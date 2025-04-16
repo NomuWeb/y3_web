@@ -3,6 +3,7 @@
 import React from "react";
 import { Instagram, Facebook, Twitter, Mail, Phone, MapPin, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const Footer = () => {
@@ -56,6 +57,13 @@ const Footer = () => {
     },
   ];
 
+  // フッター画像
+  const footerImages = [
+    { src: "/images/footer/img_01.png", alt: "Image 1" },
+    { src: "/images/footer/img_02.png", alt: "Image 2" },
+    { src: "/images/footer/img_03.png", alt: "Image 3" },
+  ];
+
   return (
     <footer className="bg-white relative overflow-hidden">
       {/* 上部の波形装飾 */}
@@ -87,7 +95,7 @@ const Footer = () => {
               <span className="ml-2 text-sm font-medium text-gray-600">ワイスリー</span>
             </Link>
 
-            <div className="space-y-3">
+            <div className="space-y-3 mb-6">
               <div className="flex items-start">
                 <MapPin className="text-indigo-600 mr-3 mt-1 flex-shrink-0" size={18} />
                 <span className="text-gray-600">{companyInfo.address}</span>
@@ -98,6 +106,22 @@ const Footer = () => {
                   {companyInfo.email}
                 </a>
               </div>
+            </div>
+
+            {/* フッター画像を追加（サイズ固定でstyle適用、優先読み込み） */}
+            <div className="flex space-x-4 mt-6">
+              {footerImages.map((image, index) => (
+                <div key={index} style={{ width: "40px", height: "40px" }} className="rounded-lg overflow-hidden">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={80}
+                    height={60}
+                    style={{ objectFit: "cover", width: "100%", height: "100%" }}
+                    priority={index === 0} // 最初の画像にのみpriorityを設定
+                  />
+                </div>
+              ))}
             </div>
           </div>
 
