@@ -13,8 +13,8 @@ const PurposeSection: React.FC<PurposeSectionProps> = ({ AnimatedSection }) => {
     <AnimatedSection id="purpose" className="py-20 overflow-hidden relative bg-white">
       {/* 背景装飾 - 浮かぶ形 */}
       <div className="absolute inset-0 overflow-hidden z-0">
-        <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-blue-50 opacity-50"></div>
-        <div className="absolute top-40 -left-20 w-80 h-80 rounded-full bg-indigo-50 opacity-60"></div>
+        <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-blue-50 opacity-40"></div>
+        <div className="absolute top-40 -left-20 w-80 h-80 rounded-full bg-indigo-50 opacity-50"></div>
         <div className="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-purple-50 opacity-40"></div>
         <div className="absolute top-60 right-1/3 w-20 h-20 rounded-full bg-cyan-50 opacity-60 animate-pulse"></div>
       </div>
@@ -35,10 +35,22 @@ const PurposeSection: React.FC<PurposeSectionProps> = ({ AnimatedSection }) => {
 
           <div className="mb-12 flex justify-center">
             <div className="relative inline-flex items-center justify-center">
-              <div className="absolute inset-0 rounded-full bg-indigo-100 animate-ping opacity-25"></div>
+              {/* カスタムアニメーションクラスを使用してアニメーション速度を遅くする */}
+              <div
+                className="absolute inset-0 rounded-full bg-indigo-300 opacity-40"
+                style={{ animation: "ping 4s cubic-bezier(0, 0, 0.2, 1) infinite" }}
+              ></div>
+              <div
+                className="absolute inset-0 scale-110 rounded-full bg-indigo-200"
+                style={{ animation: "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite" }}
+              ></div>
+
+              {/* メインのアイコン */}
               <div className="relative rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 p-4 text-white shadow-lg transform hover:scale-110 transition-all duration-300">
                 <MessageCircle size={32} />
               </div>
+
+              {/* 星のアイコン */}
               <div className="absolute -right-3 -bottom-2">
                 <Stars size={20} className="text-purple-500" />
               </div>
@@ -51,7 +63,9 @@ const PurposeSection: React.FC<PurposeSectionProps> = ({ AnimatedSection }) => {
 
           <div className="max-w-4xl mx-auto space-y-6">
             <p className="text-lg md:text-xl text-gray-700 text-center leading-relaxed">
-              SNSは、ただの情報発信ではない。<br/>&ldquo;誰に、何を、どう伝えるか&rdquo;。そこにこだわることで、共感と反応を生む時代。
+              SNSは、ただの情報発信ではない。
+              <br />
+              &ldquo;誰に、何を、どう伝えるか&rdquo;。そこにこだわることで、共感と反応を生む時代。
             </p>
 
             <p className="text-lg md:text-xl text-gray-700 text-center leading-relaxed">
