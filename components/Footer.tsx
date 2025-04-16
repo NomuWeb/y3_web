@@ -13,7 +13,7 @@ const Footer = () => {
   const companyInfo = {
     name: "合同会社Y3（ワイスリー）",
     address: "東京都世田谷区",
-    email: "info@y3company.com",
+    email: "contact@yyy-3.com",
   };
 
   // リンク先の設定（コンタクトページからはルートページ+アンカーへ）

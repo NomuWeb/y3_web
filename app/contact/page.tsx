@@ -84,7 +84,7 @@ export default function ContactPage() {
                   </div>
                   <h4 className="text-lg font-semibold text-gray-900 mb-2">Email</h4>
                   <a href="mailto:nomuray3@outlook.jp" className="text-indigo-600 hover:text-indigo-800 transition-colors">
-                    nomuray3@outlook.jp
+                    contact@yyy-3.com
                   </a>
                 </div>
 
