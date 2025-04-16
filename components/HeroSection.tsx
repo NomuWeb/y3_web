@@ -98,7 +98,7 @@ const HeroSection = () => {
       </div>
 
       {/* スクロールダウンアイコン */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 transition-opacity duration-300 z-10" style={{ opacity: scrollOpacity }}>
+      <div className="absolute bottom-24 left-1/2 transform -translate-x-1/2 transition-opacity duration-300 z-10" style={{ opacity: scrollOpacity }}>
         <div className="flex flex-col items-center">
           <p className="text-white/80 text-sm mb-2">Scroll Down</p>
           <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
