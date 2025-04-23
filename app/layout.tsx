@@ -6,8 +6,11 @@ import { Analytics } from "@vercel/analytics/react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Y3 LLC - Digital Marketing Solutions",
+  title: "合同会社Y3　企業ページ",
   description: "Y3 LLC provides comprehensive digital marketing solutions, including SNS consulting, influencer marketing, and web advertising services.",
+  icons: {
+    icon: "/images/logo_02.svg", // publicフォルダ内の既存SVGへのパス
+  },  
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
