@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 interface HeaderProps {
   variant?: "main" | "secondary";
@@ -79,11 +80,7 @@ const Header: React.FC<HeaderProps> = ({ variant = "main" }) => {
           {/* ロゴ */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
-              <span className={`text-2xl font-bold ${isScrolled || variant === "secondary" ? "text-indigo-700" : "text-white"}`}>Y3</span>
-              <div
-                className={`ml-1 w-2 h-2 rounded-full ${isScrolled || variant === "secondary" ? "bg-gradient-to-r from-blue-600 to-indigo-600" : "bg-white"}`}
-              ></div>
-              <span className={`ml-2 text-sm font-medium ${isScrolled || variant === "secondary" ? "text-gray-600" : "text-white/80"}`}>ワイスリー</span>
+              <Image src="/images/logo.svg" alt="Y3 合同会社ワイスリー" width={60} height={20} priority />
             </Link>
           </div>
 
