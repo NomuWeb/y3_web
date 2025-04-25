@@ -41,7 +41,7 @@ const HeroSection = () => {
           </div>
           {/* Heading */}
           <h1 className="text-xl text-white text-left mb-8 mx-10 leading-snug">
-            鳥肌が立つような感動は、<br className="mt-4"></br>人間ならではの価値として残り続ける。
+            成果にこだわり、<br className="mt-4"></br>信頼でつながる
           </h1>
           {/* CTA Button */}
           <div className="flex justify-center">
@@ -62,7 +62,7 @@ const HeroSection = () => {
             </div>
             {/* Heading */}
             <h1 className="text-4xl text-white text-left font-bold leading-snug">
-              鳥肌が立つような感動は、<br></br>人間ならではの価値として残り続ける。
+              成果にこだわり、<br className="mt-4"></br>信頼でつながる
             </h1>
           </div>
           {/* CTA Button */}
