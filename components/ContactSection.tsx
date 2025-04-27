@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Mail, Instagram, Facebook, Twitter } from "lucide-react";
+import { Mail, Instagram, Facebook, Twitter, X } from "lucide-react";
 import { AnimatedSectionComponent } from "@/components/AnimatedSection";
 
 interface ContactSectionProps {
@@ -80,9 +80,9 @@ const ContactSection: React.FC<ContactSectionProps> = ({ AnimatedSection }) => {
               <a
                 href="#"
                 className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-gray-700 to-gray-900 rounded-full text-white shadow-lg hover:shadow-gray-200 transform hover:scale-110 transition-all duration-300"
-                aria-label="X (formerly Twitter)"
+                aria-label="X (formerly X)"
               >
-                <Twitter size={22} />
+                <X size={22} />
               </a>
             </div>
             <p className="text-center text-gray-500 mt-6 text-sm">SNSでも最新情報を発信しています</p>

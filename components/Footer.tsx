@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Instagram, Facebook, Twitter, Mail, Phone, MapPin, ChevronRight } from "lucide-react";
+import { Instagram, Facebook, X, Mail, Phone, MapPin, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -171,7 +171,7 @@ const Footer = () => {
                 className="w-10 h-10 flex items-center justify-center bg-gradient-to-br from-gray-700 to-gray-900 rounded-full text-white hover:shadow-lg hover:shadow-gray-200 transform hover:scale-110 transition-all duration-300"
                 aria-label="X (formerly Twitter)"
               >
-                <Twitter size={18} />
+                <X size={18} />
               </a>
             </div>
           </div>
