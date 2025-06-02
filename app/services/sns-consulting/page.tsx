@@ -73,7 +73,7 @@ export default function SNSConsultingPage() {
     japaneseTitle: "SNSコンサルティング",
     description: "戦略的なソーシャルメディア運用と成長戦略のご提案",
     icon: <Instagram size={32} className="text-pink-500" />,
-    iconBg: "bg-pink-100",
+    iconBg: "bg-white",
     color: "text-pink-600",
     colorLight: "text-pink-500",
     bgGradient: "from-pink-500 to-red-500",
@@ -188,11 +188,8 @@ export default function SNSConsultingPage() {
           <div className="max-w-3xl mx-auto">
             {/* サービス概要 */}
             <div className="mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                <span className={`bg-clip-text text-transparent bg-gradient-to-r ${service.bgGradient}`}>サービス概要</span>
-              </h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">サービス概要</h2>
               <p className="text-gray-700 text-sm md:text-lg leading-relaxed mb-8">{service.longDescription}</p>
-              <div className="w-20 h-1 bg-gradient-to-r from-pink-500 to-red-500 rounded-full"></div>
             </div>
 
             {/* レスポンシブ画像セクション */}
@@ -235,18 +232,12 @@ export default function SNSConsultingPage() {
 
             {/* 私たちの強み */}
             <div className="mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                <span className={`bg-clip-text text-transparent bg-gradient-to-r ${service.bgGradient}`}>私たちの強み</span>
-              </h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">私たちの強み</h2>
 
               <div className="space-y-8">
                 {/* 強み1 - 画像の上に追加 */}
                 <div className="mb-6">
-                  <h3 className="text-xl font-bold mb-3">
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-red-600">
-                      1. ファン化し、ビジネスを加速させるマーケティング
-                    </span>
-                  </h3>
+                  <h3 className="text-xl font-bold mb-3 text-gray-900">1. ファン化し、ビジネスを加速させるマーケティング</h3>
                   <p className="text-gray-700 leading-relaxed">
                     私たちは、単なるSNS運用や集客ではなく、
                     <br />
@@ -268,16 +259,12 @@ export default function SNSConsultingPage() {
                 {/* 強み2と3 - 画像の下に追加 */}
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
-                    <h3 className="text-xl font-bold mb-3">
-                      <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-red-600">2. 業界に特化した提案力</span>
-                    </h3>
+                    <h3 className="text-xl font-bold mb-3 text-gray-900">2. 業界に特化した提案力</h3>
                     <p className="text-gray-700 leading-relaxed">業種・業界ごとの市場特性を理解したプロが、あなたのビジネスに最適な戦略をご提案します。</p>
                   </div>
 
                   <div>
-                    <h3 className="text-xl font-bold mb-3">
-                      <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-red-600">3. 分析に基づいた改善提案</span>
-                    </h3>
+                    <h3 className="text-xl font-bold mb-3 text-gray-900">3. 分析に基づいた改善提案</h3>
                     <p className="text-gray-700 leading-relaxed">
                       「いいね」やフォロワー数だけを追わず、エンゲージメント率や保存数など深い指標から、伸びる傾向や改善策を導き出します。
                     </p>
@@ -288,9 +275,7 @@ export default function SNSConsultingPage() {
 
             {/* 実績 - スライド機能付き */}
             <div className="mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                <span className={`bg-clip-text text-transparent bg-gradient-to-r ${service.bgGradient}`}>実績</span>
-              </h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">実績</h2>
 
               {/* スライダーコンテナ */}
               <div className="relative">
@@ -339,9 +324,7 @@ export default function SNSConsultingPage() {
 
             {/* 契約の流れ */}
             <div className="mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                <span className={`bg-clip-text text-transparent bg-gradient-to-r ${service.bgGradient}`}>契約の流れ</span>
-              </h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">契約の流れ</h2>
               <div className="space-y-6">
                 {service.process.map((step, index) => (
                   <div key={index} className="bg-white rounded-xl shadow-md hover:shadow-lg border border-gray-100 p-5 transition-all duration-300">
@@ -369,9 +352,7 @@ export default function SNSConsultingPage() {
 
             {/* よくある質問 */}
             <div className="mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                <span className={`bg-clip-text text-transparent bg-gradient-to-r ${service.bgGradient}`}>よくある質問</span>
-              </h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">よくある質問</h2>
 
               <div className="space-y-4">
                 {faqData.map((faq, index) => (
@@ -408,9 +389,7 @@ export default function SNSConsultingPage() {
               <div className={`h-2 bg-gradient-to-r ${service.bgGradient}`}></div>
               <div className="p-8">
                 <div className="text-center">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                    <span className={`bg-clip-text text-transparent bg-gradient-to-r ${service.bgGradient}`}>サービスについてのご相談</span>
-                  </h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">サービスについてのご相談</h2>
                   <p className="text-gray-600 text-sm sm:text-base mb-8">
                     本サービスの詳細や、あなたのプロジェクトに最適なプランについてご相談ください。
                     専門のコンサルタントがお客様のニーズに合わせたご提案をいたします。
