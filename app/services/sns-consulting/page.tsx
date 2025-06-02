@@ -87,47 +87,31 @@ export default function SNSConsultingPage() {
       {/* ヘッダー */}
       <Header variant="secondary" />
 
-      {/* ヒーローセクション - SNS専用背景画像 */}
-      <div className="pt-20 relative overflow-hidden bg-gradient-to-b from-indigo-900/90 to-blue-900/90 text-white">
+      {/* ヒーローセクション - シンプルな背景画像 */}
+      <div className="relative text-white">
         {/* 背景画像 */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: `url('/images/services/sns-consulting/sns_consulting_kv.jpg')`,
           }}
-        >
-          {/* オーバーレイ */}
-          <div className="absolute inset-0 bg-gradient-to-b from-indigo-900/85 to-blue-900/85"></div>
-        </div>
+        ></div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 sm:pt-32 sm:pb-24 relative z-10">
           <div className="flex flex-col items-center">
-            <Link href="/services" className="inline-flex items-center text-blue-200 hover:text-white mb-8 transition-colors">
+            <Link href="/services" className="inline-flex items-center text-white/80 hover:text-white mb-8 transition-colors">
               <ArrowLeft size={16} className="mr-2" />
               Back to all services
             </Link>
 
             <div className={`w-16 h-16 ${service.iconBg} rounded-full flex items-center justify-center mb-6 shadow-lg`}>{service.icon}</div>
 
-            <h1 className="text-4xl sm:text-5xl font-bold mb-3 text-center">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-200 via-white to-indigo-200">{service.title}</span>
-            </h1>
+            <h1 className="text-4xl sm:text-5xl font-bold mb-3 text-center text-white">{service.title}</h1>
 
-            <h2 className="text-2xl text-blue-100 mb-6 text-center">{service.japaneseTitle}</h2>
+            <h2 className="text-2xl text-white/90 mb-6 text-center">{service.japaneseTitle}</h2>
 
-            <p className="max-w-2xl mx-auto text-lg text-blue-100 text-center">{service.description}</p>
+            <p className="max-w-2xl mx-auto text-lg text-white/90 text-center">{service.description}</p>
           </div>
-        </div>
-
-        {/* 波形装飾（下部） */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" className="w-full h-auto">
-            <path
-              fill="#ffffff"
-              fillOpacity="1"
-              d="M0,32L60,42.7C120,53,240,75,360,74.7C480,75,600,53,720,42.7C840,32,960,32,1080,42.7C1200,53,1320,75,1380,85.3L1440,96L1440,100L1380,100C1320,100,1200,100,1080,100C960,100,840,100,720,100C600,100,480,100,360,100C240,100,120,100,60,100L0,100Z"
-            ></path>
-          </svg>
         </div>
       </div>
 
@@ -179,66 +163,6 @@ export default function SNSConsultingPage() {
                     </div>
                   </div>
                 ))}
-              </div>
-            </div>
-
-            {/* サービスの特徴 */}
-            <div className="mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                <span className={`bg-clip-text text-transparent bg-gradient-to-r ${service.bgGradient}`}>サービスの特徴</span>
-              </h2>
-              <ul className="space-y-4">
-                {service.benefits.map((benefit, index) => (
-                  <li key={index} className="flex items-start">
-                    <CheckCircle className={`mt-1 mr-3 flex-shrink-0 ${service.colorLight}`} size={20} />
-                    <span className="text-gray-700">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* 実績 */}
-            <div className="mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                <span className={`bg-clip-text text-transparent bg-gradient-to-r ${service.bgGradient}`}>実績</span>
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {service.achievements.map((achievement, index) => (
-                  <div key={index} className="bg-white rounded-xl shadow-md border border-gray-100 p-6 transition-all duration-300 hover:shadow-lg">
-                    <div className="flex items-center mb-4">
-                      <div className="p-2 bg-pink-100 rounded-lg mr-4">
-                        <div className="text-pink-600">{achievement.icon}</div>
-                      </div>
-                      <h3 className="text-lg font-semibold text-gray-800">{achievement.title}</h3>
-                    </div>
-                    <div className="flex items-baseline mb-3">
-                      <span className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-red-500">{achievement.value}</span>
-                      <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-red-500 ml-1">
-                        {achievement.unit}
-                      </span>
-                    </div>
-                    <p className="text-gray-600">{achievement.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* 活用事例 */}
-            <div className="mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                <span className={`bg-clip-text text-transparent bg-gradient-to-r ${service.bgGradient}`}>活用事例</span>
-              </h2>
-              <div className="bg-gray-50 rounded-xl p-6 border border-gray-100">
-                <ul className="space-y-4">
-                  {service.cases.map((caseItem, index) => (
-                    <li key={index} className="flex items-start">
-                      <div className={`w-6 h-6 ${service.iconBg} flex items-center justify-center rounded-full mr-3 mt-0.5`}>
-                        <span className={`font-medium text-sm ${service.color}`}>{index + 1}</span>
-                      </div>
-                      <span className="text-gray-700">{caseItem}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             </div>
 
