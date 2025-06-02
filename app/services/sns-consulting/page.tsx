@@ -10,6 +10,7 @@ import { Instagram, Globe2 } from "lucide-react";
 
 export default function SNSConsultingPage() {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const faqData = [
     {
@@ -43,6 +44,30 @@ export default function SNSConsultingPage() {
   const toggleFaq = (index: number) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
   };
+
+  const achievementImages = [
+    {
+      src: "/images/services/sns-consulting/ex01.jpg",
+      alt: "SNSコンサルティング実績事例1",
+    },
+    {
+      src: "/images/services/sns-consulting/ex02.jpg",
+      alt: "SNSコンサルティング実績事例2",
+    },
+    {
+      src: "/images/services/sns-consulting/ex03.jpg",
+      alt: "SNSコンサルティング実績事例3",
+    },
+  ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % achievementImages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + achievementImages.length) % achievementImages.length);
+  };
+
   const service = {
     title: "SNS Consulting",
     japaneseTitle: "SNSコンサルティング",
@@ -261,20 +286,54 @@ export default function SNSConsultingPage() {
               </div>
             </div>
 
-            {/* 実績 */}
+            {/* 実績 - スライド機能付き */}
             <div className="mb-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
                 <span className={`bg-clip-text text-transparent bg-gradient-to-r ${service.bgGradient}`}>実績</span>
               </h2>
 
-              <div className="text-center">
-                <Image
-                  src="/images/services/sns-consulting/ex01.jpg"
-                  alt="SNSコンサルティング実績事例"
-                  width={1000}
-                  height={600}
-                  className="w-full h-auto rounded-lg shadow-lg mx-auto"
-                />
+              {/* スライダーコンテナ */}
+              <div className="relative">
+                {/* メイン画像表示エリア */}
+                <div className="overflow-hidden rounded-lg shadow-lg">
+                  <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+                    {achievementImages.map((image, index) => (
+                      <div key={index} className="w-full flex-shrink-0">
+                        <Image src={image.src} alt={image.alt} width={1000} height={600} className="w-full h-auto" priority={index === 0} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* 前後のナビゲーションボタン */}
+                <button
+                  onClick={prevSlide}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110"
+                  aria-label="前の画像"
+                >
+                  <ArrowLeft size={20} />
+                </button>
+                <button
+                  onClick={nextSlide}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110"
+                  aria-label="次の画像"
+                >
+                  <ArrowRight size={20} />
+                </button>
+
+                {/* ドットインジケーター */}
+                <div className="flex justify-center mt-4 space-x-2">
+                  {achievementImages.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentSlide(index)}
+                      className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                        index === currentSlide ? "bg-gradient-to-r from-pink-500 to-red-500" : "bg-gray-300 hover:bg-gray-400"
+                      }`}
+                      aria-label={`スライド ${index + 1} を表示`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -379,7 +438,6 @@ export default function SNSConsultingPage() {
       </div>
 
       {/* フッター */}
-
       <Footer />
     </div>
   );
