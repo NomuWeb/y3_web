@@ -72,7 +72,21 @@ export default function SNSConsultingPage() {
     title: "SNS Consulting",
     japaneseTitle: "SNSコンサルティング",
     description: "戦略的なソーシャルメディア運用と成長戦略のご提案",
-    icon: <Instagram size={32} className="text-pink-500" />,
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="instagramGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#FCD34D" />
+            <stop offset="30%" stopColor="#FB923C" />
+            <stop offset="70%" stopColor="#E11D48" />
+            <stop offset="100%" stopColor="#BE185D" />
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="url(#instagramGradient)" strokeWidth="2" fill="none" />
+        <circle cx="12" cy="12" r="4" stroke="url(#instagramGradient)" strokeWidth="2" fill="none" />
+        <circle cx="18" cy="6" r="1.5" fill="url(#instagramGradient)" />
+      </svg>
+    ),
     iconBg: "bg-white",
     color: "text-pink-600",
     colorLight: "text-pink-500",
