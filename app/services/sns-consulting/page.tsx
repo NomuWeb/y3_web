@@ -197,6 +197,17 @@ export default function SNSConsultingPage() {
               </div>
             </div>
 
+            {/* Flow画像 - 私たちの強みセクションの上に移動 */}
+            <div className="mb-12 text-center">
+              <Image
+                src="/images/services/sns-consulting/flow.png"
+                alt="SNSコンサルティングのフロー"
+                width={1000}
+                height={600}
+                className="w-full h-auto rounded-lg shadow-lg mx-auto"
+              />
+            </div>
+
             {/* 私たちの強み */}
             <div className="mb-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
@@ -204,15 +215,18 @@ export default function SNSConsultingPage() {
               </h2>
 
               <div className="space-y-8">
-                {/* Flow画像 */}
-                <div className="text-center">
-                  <Image
-                    src="/images/services/sns-consulting/flow.png"
-                    alt="SNSコンサルティングのフロー"
-                    width={1000}
-                    height={600}
-                    className="w-full h-auto rounded-lg shadow-lg mx-auto"
-                  />
+                {/* 強み1 - 画像の上に追加 */}
+                <div className="mb-6">
+                  <h3 className="text-xl font-bold mb-3">
+                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-red-600">
+                      1. ファン化し、ビジネスを加速させるマーケティング
+                    </span>
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed">
+                    私たちは、単なるSNS運用や集客ではなく、
+                    <br />
+                    「ファン化」→「信頼構築」→「継続的なマネタイズ」までを見据えたマーケティングを提供しています。
+                  </p>
                 </div>
 
                 {/* Funnel画像 */}
@@ -224,6 +238,25 @@ export default function SNSConsultingPage() {
                     height={600}
                     className="w-full h-auto rounded-lg shadow-lg mx-auto"
                   />
+                </div>
+
+                {/* 強み2と3 - 画像の下に追加 */}
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <h3 className="text-xl font-bold mb-3">
+                      <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-red-600">2. 業界に特化した提案力</span>
+                    </h3>
+                    <p className="text-gray-700 leading-relaxed">業種・業界ごとの市場特性を理解したプロが、あなたのビジネスに最適な戦略をご提案します。</p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-bold mb-3">
+                      <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-red-600">3. 分析に基づいた改善提案</span>
+                    </h3>
+                    <p className="text-gray-700 leading-relaxed">
+                      「いいね」やフォロワー数だけを追わず、エンゲージメント率や保存数など深い指標から、伸びる傾向や改善策を導き出します。
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -346,7 +379,7 @@ export default function SNSConsultingPage() {
       </div>
 
       {/* フッター */}
-      
+
       <Footer />
     </div>
   );
