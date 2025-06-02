@@ -5,8 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import AnimatedSection from "@/components/AnimatedSection";
-import { ArrowLeft, CheckCircle, ArrowRight, FileCheck, Award, Users, Target, Zap, ChartBar, ChevronDown } from "lucide-react";
+import { ArrowLeft, ArrowRight, FileCheck, Award, Users, Target, Zap, ChartBar, ChevronDown } from "lucide-react";
 import { Instagram, Globe2 } from "lucide-react";
 
 export default function SNSConsultingPage() {
