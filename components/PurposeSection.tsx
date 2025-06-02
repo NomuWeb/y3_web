@@ -62,19 +62,18 @@ const PurposeSection: React.FC<PurposeSectionProps> = ({ AnimatedSection }) => {
           </h3>
 
           <div className="max-w-4xl mx-auto space-y-4 md:space-y-6">
-            <p className="text-base md:text-xl text-gray-800 text-center leading-relaxed tracking-wide">
+            <p className="text-sm md:text-xl text-gray-800 text-center leading-relaxed tracking-wide">
               <span className="font-bold text-indigo-700">SNSは、ただの情報発信ではない。</span>
               <br className="hidden md:block" />
               <span className="inline md:hidden"> </span>
-            誰に、何を、どう伝えるか。そこにこだわることで、共感と反応を生む時代。
+              誰に、何を、どう伝えるか。そこにこだわることで、共感と反応を生む時代。
             </p>
 
-            <p className="text-base md:text-xl text-gray-700 text-center leading-relaxed">
-              私たちは、発信者の中にある本質的なメッセージを引き出し、言葉とビジュアルに落とし込むことで、
-              エンドユーザーの心に届く発信を設計します。
+            <p className="text-sm md:text-xl text-gray-700 text-center leading-relaxed">
+              私たちは、発信者の中にある本質的なメッセージを引き出し、言葉とビジュアルに落とし込むことで、 エンドユーザーの心に届く発信を設計します。
             </p>
 
-            <p className="text-base md:text-xl text-gray-700 text-center leading-relaxed">
+            <p className="text-sm md:text-xl text-gray-700 text-center leading-relaxed">
               SNSは、気持ちを伝え、世界とつながるためのツール。
               <br className="hidden md:block" />
               だからこそ、ただ投稿するのではなく、
