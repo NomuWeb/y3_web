@@ -347,6 +347,7 @@ export default function SNSConsultingPage() {
       </div>
 
       {/* フッター */}
+      
       <Footer />
     </div>
   );
