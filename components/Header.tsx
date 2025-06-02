@@ -80,7 +80,17 @@ const Header: React.FC<HeaderProps> = ({ variant = "main" }) => {
           {/* ロゴ */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
-              <Image src="/images/logo.svg" alt="Y3 合同会社ワイスリー" width={60} height={20} priority />
+              <div
+                className={`transition-all duration-300 ${isScrolled || variant === "secondary" ? "brightness-0 saturate-100" : "brightness-0 invert"}`}
+                style={{
+                  filter:
+                    isScrolled || variant === "secondary"
+                      ? "brightness(0) saturate(100%) invert(11%) sepia(100%) saturate(4831%) hue-rotate(214deg) brightness(96%) contrast(127%)"
+                      : undefined,
+                }}
+              >
+                <Image src="/images/logo.svg" alt="Y3 合同会社ワイスリー" width={60} height={20} priority />
+              </div>
             </Link>
           </div>
 

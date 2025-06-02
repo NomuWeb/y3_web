@@ -1,14 +1,49 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
-import { ArrowLeft, CheckCircle, ArrowRight, FileCheck, Award, Users, Target, Zap, ChartBar } from "lucide-react";
+import { ArrowLeft, CheckCircle, ArrowRight, FileCheck, Award, Users, Target, Zap, ChartBar, ChevronDown } from "lucide-react";
 import { Instagram, Globe2 } from "lucide-react";
 
 export default function SNSConsultingPage() {
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+
+  const faqData = [
+    {
+      question: "どのSNSに対応していますか？",
+      answer: "Instagram、X（旧Twitter）、Facebook、TikTok、LINE公式アカウントなど主要なSNSに対応しています。複数媒体の連携も可能です。",
+    },
+    {
+      question: "フォロワー数って増えますか？",
+      answer: "増やすことは可能ですが、「質の高いフォロワー＝見込み客」にこだわることが重要です。エンゲージメントと売上につながる運用をご提案します。",
+    },
+    {
+      question: "どれくらいの期間で効果が出ますか？",
+      answer: "SNSは中長期的な育成メディアです。目安としては3～6ヶ月でフォロワーの反応や売上への影響が見えてきます。",
+    },
+    {
+      question: "契約期間や料金について教えてください。",
+      answer: "最低3ヶ月からのご契約が多いですが、内容によりご相談可能です。料金はご希望のサポート範囲によって異なりますので、まずは無料相談をご利用ください。",
+    },
+    {
+      question: "どのように複数のSNSを使い分けるべきですか？",
+      answer:
+        "各SNSには独自の特徴があり、例えばTikTokやInstagramリールは認知拡大に最適で、YouTubeはブランドイメージを高めるためのコンテンツ作成にぴったりです。Instagramは、ファンとの関係を深め、コミュニティを育てるのに最適なプラットフォームです。私たちは、これらの特性を最大限に活かしたマーケティング戦略を提供します。",
+    },
+    {
+      question: "SNSマーケティングの運用代行を依頼するメリットは何ですか？",
+      answer:
+        "SNS運用を私たちにお任せいただければ、専門知識と経験を持つプロフェッショナルがしっかりサポートします。その結果、効果的なコンテンツ制作や戦略を立てることができ、時間と労力を節約しながら、あなたのブランド力を高められます。また、私たちの代表の豊富な実績を活かして、SNSを使った成功を実現します。",
+    },
+  ];
+
+  const toggleFaq = (index: number) => {
+    setOpenFaqIndex(openFaqIndex === index ? null : index);
+  };
   const service = {
     title: "SNS Consulting",
     japaneseTitle: "SNSコンサルティング",
@@ -88,7 +123,7 @@ export default function SNSConsultingPage() {
       <Header variant="secondary" />
 
       {/* ヒーローセクション - シンプルな背景画像 */}
-      <div className="relative text-white">
+      <div className="relative text-white mt-20">
         {/* 背景画像 */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -97,7 +132,7 @@ export default function SNSConsultingPage() {
           }}
         ></div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 sm:pt-32 sm:pb-24 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 relative z-10">
           <div className="flex flex-col items-center">
             <Link href="/services" className="inline-flex items-center text-white/80 hover:text-white mb-8 transition-colors">
               <ArrowLeft size={16} className="mr-2" />
@@ -116,7 +151,7 @@ export default function SNSConsultingPage() {
       </div>
 
       {/* サービス詳細セクション */}
-      <AnimatedSection className="py-16 relative">
+      <div className="py-16 relative">
         {/* 背景装飾 - SNS専用デザイン */}
         <div className="absolute inset-0 overflow-hidden z-0">
           <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-pink-50 opacity-40"></div>
@@ -132,8 +167,83 @@ export default function SNSConsultingPage() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
                 <span className={`bg-clip-text text-transparent bg-gradient-to-r ${service.bgGradient}`}>サービス概要</span>
               </h2>
-              <p className="text-gray-700 text-lg leading-relaxed mb-8">{service.longDescription}</p>
+              <p className="text-gray-700 text-sm md:text-lg leading-relaxed mb-8">{service.longDescription}</p>
               <div className="w-20 h-1 bg-gradient-to-r from-pink-500 to-red-500 rounded-full"></div>
+            </div>
+
+            {/* レスポンシブ画像セクション */}
+            <div className="mb-12">
+              {/* PC用画像 */}
+              <div className="hidden md:block">
+                <Image
+                  src="/images/services/sns-consulting/worry_pc.png"
+                  alt="SNSコンサルティングサービス詳細"
+                  width={1200}
+                  height={600}
+                  className="w-full h-auto rounded-lg shadow-lg"
+                  priority
+                />
+              </div>
+
+              {/* スマホ用画像 */}
+              <div className="block md:hidden">
+                <Image
+                  src="/images/services/sns-consulting/worry_sp.png"
+                  alt="SNSコンサルティングサービス詳細"
+                  width={600}
+                  height={800}
+                  className="w-full h-auto rounded-lg shadow-lg"
+                  priority
+                />
+              </div>
+            </div>
+
+            {/* 私たちの強み */}
+            <div className="mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                <span className={`bg-clip-text text-transparent bg-gradient-to-r ${service.bgGradient}`}>私たちの強み</span>
+              </h2>
+
+              <div className="space-y-8">
+                {/* Flow画像 */}
+                <div className="text-center">
+                  <Image
+                    src="/images/services/sns-consulting/flow.png"
+                    alt="SNSコンサルティングのフロー"
+                    width={1000}
+                    height={600}
+                    className="w-full h-auto rounded-lg shadow-lg mx-auto"
+                  />
+                </div>
+
+                {/* Funnel画像 */}
+                <div className="text-center">
+                  <Image
+                    src="/images/services/sns-consulting/funnel.png"
+                    alt="SNSマーケティングファネル"
+                    width={1000}
+                    height={600}
+                    className="w-full h-auto rounded-lg shadow-lg mx-auto"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* 実績 */}
+            <div className="mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                <span className={`bg-clip-text text-transparent bg-gradient-to-r ${service.bgGradient}`}>実績</span>
+              </h2>
+
+              <div className="text-center">
+                <Image
+                  src="/images/services/sns-consulting/ex01.jpg"
+                  alt="SNSコンサルティング実績事例"
+                  width={1000}
+                  height={600}
+                  className="w-full h-auto rounded-lg shadow-lg mx-auto"
+                />
+              </div>
             </div>
 
             {/* 契約の流れ */}
@@ -166,6 +276,42 @@ export default function SNSConsultingPage() {
               </div>
             </div>
 
+            {/* よくある質問 */}
+            <div className="mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                <span className={`bg-clip-text text-transparent bg-gradient-to-r ${service.bgGradient}`}>よくある質問</span>
+              </h2>
+
+              <div className="space-y-4">
+                {faqData.map((faq, index) => (
+                  <div key={index} className="bg-white border border-gray-200 rounded-lg">
+                    <button
+                      onClick={() => toggleFaq(index)}
+                      className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200 rounded-lg"
+                    >
+                      <span className="font-semibold text-gray-900 pr-4">Q. {faq.question}</span>
+                      <div className={`flex-shrink-0 text-pink-500 transition-transform duration-300 ${openFaqIndex === index ? "rotate-180" : "rotate-0"}`}>
+                        <ChevronDown size={20} />
+                      </div>
+                    </button>
+
+                    <div
+                      className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                        openFaqIndex === index ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                      }`}
+                    >
+                      <div className="px-6 pb-4 pt-0 border-t border-gray-100 bg-gray-50">
+                        <div className="pt-4">
+                          <span className="font-semibold text-pink-600 mr-2">A.</span>
+                          <span className="text-gray-700 leading-relaxed">{faq.answer}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             {/* お問い合わせセクション */}
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
               <div className={`h-2 bg-gradient-to-r ${service.bgGradient}`}></div>
@@ -174,7 +320,7 @@ export default function SNSConsultingPage() {
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">
                     <span className={`bg-clip-text text-transparent bg-gradient-to-r ${service.bgGradient}`}>サービスについてのご相談</span>
                   </h2>
-                  <p className="text-gray-600 mb-8">
+                  <p className="text-gray-600 text-sm sm:text-base mb-8">
                     本サービスの詳細や、あなたのプロジェクトに最適なプランについてご相談ください。
                     専門のコンサルタントがお客様のニーズに合わせたご提案をいたします。
                   </p>
@@ -198,7 +344,7 @@ export default function SNSConsultingPage() {
             </div>
           </div>
         </div>
-      </AnimatedSection>
+      </div>
 
       {/* フッター */}
       <Footer />
