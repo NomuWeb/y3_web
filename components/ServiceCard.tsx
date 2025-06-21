@@ -21,19 +21,25 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, japaneseTitle, d
 
       {/* コンテンツ */}
       <div className="relative z-10">
-        {/* アイコン */}
-        <div className="flex justify-center mb-6">{icon}</div>
+        {/* メインコンテンツエリア - 左右配置 */}
+        <div className="flex items-start justify-between gap-4 mb-6">
+          {/* 左側: テキストコンテンツ */}
+          <div className="flex-1">
+            {/* タイトル */}
+            <h3 className="text-2xl font-bold text-gray-900 mb-2 leading-tight">{title}</h3>
+            <p className="text-indigo-600 text-base font-medium mb-4">{japaneseTitle}</p>
 
-        {/* タイトル */}
-        <h3 className="text-xl font-bold text-gray-900 text-center mb-1">{title}</h3>
-        <p className="text-indigo-600 text-sm font-medium text-center mb-4">{japaneseTitle}</p>
+            {/* 説明 */}
+            <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
+          </div>
 
-        {/* 説明 */}
-        <p className="text-gray-600 text-center mb-6">{description}</p>
+          {/* 右側: アイコン */}
+          <div className="flex-shrink-0 ml-4">{icon}</div>
+        </div>
 
         {/* View Detail リンク */}
         {slug && (
-          <div className="text-center mt-4">
+          <div className="mt-4">
             <Link
               href={`/services/${slug}`}
               className="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium text-sm group transition-colors"
