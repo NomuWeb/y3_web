@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Instagram, Users, Globe2, BarChart3, Calendar, Megaphone, ArrowRight } from "lucide-react";
+import { Instagram, Users, Monitor, BarChart3, Calendar, Megaphone, ArrowRight } from "lucide-react";
 import ServiceCard from "@/components/ServiceCard";
 import { AnimatedSectionComponent } from "@/components/AnimatedSection";
 import Link from "next/link";
@@ -48,14 +48,14 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ AnimatedSection }) =>
         <div className="relative">
           <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-teal-400 rounded-full opacity-20 animate-pulse"></div>
           <div className="relative bg-gradient-to-br from-green-500 to-teal-500 text-white p-4 rounded-full transform transition-transform group-hover:scale-110 duration-300">
-            <Globe2 size={28} />
+            <Monitor size={28} />
           </div>
         </div>
       ),
-      title: "Web Marketing",
-      japaneseTitle: "WEBマーケティング",
-      description: "包括的なデジタルマーケティングソリューションの提供",
-      slug: "web-marketing",
+      title: "Website Development & Management",
+      japaneseTitle: "WEBサイト制作・運用",
+      description: "魅力的なWebサイトの制作から継続的な運用・保守まで",
+      slug: "web-development",
       className: "bg-white border-gray-100 hover:border-green-300 hover:shadow-lg hover:shadow-green-100 transition-all duration-300",
     },
     {
@@ -72,36 +72,6 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ AnimatedSection }) =>
       description: "結果を出すターゲットを絞った広告キャンペーンの展開",
       slug: "web-advertising",
       className: "bg-white border-gray-100 hover:border-purple-300 hover:shadow-lg hover:shadow-purple-100 transition-all duration-300",
-    },
-    {
-      icon: (
-        <div className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-amber-400 to-orange-400 rounded-full opacity-20 animate-pulse"></div>
-          <div className="relative bg-gradient-to-br from-amber-500 to-orange-500 text-white p-4 rounded-full transform transition-transform group-hover:scale-110 duration-300">
-            <Calendar size={28} />
-          </div>
-        </div>
-      ),
-      title: "Event Casting",
-      japaneseTitle: "イベントキャスティング",
-      description: "イベントのための専門的な人材確保とコーディネート",
-      slug: "event-casting",
-      className: "bg-white border-gray-100 hover:border-amber-300 hover:shadow-lg hover:shadow-amber-100 transition-all duration-300",
-    },
-    {
-      icon: (
-        <div className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full opacity-20 animate-pulse"></div>
-          <div className="relative bg-gradient-to-br from-cyan-500 to-blue-500 text-white p-4 rounded-full transform transition-transform group-hover:scale-110 duration-300">
-            <Megaphone size={28} />
-          </div>
-        </div>
-      ),
-      title: "Digital Strategy",
-      japaneseTitle: "デジタル戦略",
-      description: "カスタマイズされたデジタルトランスフォーメーションの提案",
-      slug: "digital-strategy",
-      className: "bg-white border-gray-100 hover:border-cyan-300 hover:shadow-lg hover:shadow-cyan-100 transition-all duration-300",
     },
   ];
 

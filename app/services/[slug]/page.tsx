@@ -7,7 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import { ArrowLeft, CheckCircle, ArrowRight } from "lucide-react";
-import { Users as UsersIcon, Globe2, BarChart3, Calendar, Megaphone } from "lucide-react";
+import { Users as UsersIcon, Monitor, BarChart3, Calendar, Megaphone } from "lucide-react";
 
 // サービスデータの型定義
 interface ServiceData {
@@ -50,28 +50,28 @@ const servicesData: { [key: string]: ServiceData } = {
       "特定ターゲット層へのリーチを目的としたニッチインフルエンサー起用",
     ],
   },
-  "web-marketing": {
-    title: "Web Marketing",
-    japaneseTitle: "WEBマーケティング",
-    description: "包括的なデジタルマーケティングソリューションの提供",
-    icon: <Globe2 size={32} className="text-green-500" />,
+  "web-development": {
+    title: "Website Development & Management",
+    japaneseTitle: "WEBサイト制作・運用",
+    description: "魅力的なWebサイトの制作から継続的な運用・保守まで",
+    icon: <Monitor size={32} className="text-green-500" />,
     iconBg: "bg-green-100",
     color: "text-green-600",
     colorLight: "text-green-500",
     bgGradient: "from-green-500 to-teal-500",
     longDescription:
-      "ウェブマーケティングは、オンライン上でのビジネス成長に不可欠です。当社のウェブマーケティングサービスでは、SEO対策、コンテンツマーケティング、メールマーケティング、ウェブ解析など、デジタルマーケティングの全領域をカバーし、クライアントのビジネス目標達成をサポートします。データドリブンなアプローチで、効果的なマーケティング戦略を構築し、継続的な改善を行います。",
+      "デジタル時代において、Webサイトはビジネスの顔となる重要な存在です。当社のWebサイト制作・運用サービスでは、ユーザー体験を重視したデザインと機能性を兼ね備えたサイトの制作から、継続的な運用・保守、コンテンツ更新まで包括的にサポートします。レスポンシブデザインによるマルチデバイス対応、SEO最適化、高速化、セキュリティ対策など、現代のWebサイトに求められる要素を満たしたサイトを提供します。",
     benefits: [
-      "包括的なウェブマーケティング戦略の策定",
-      "SEOとSEM対策によるオーガニックトラフィックの増加",
-      "コンテンツマーケティングによるブランド価値向上",
-      "ユーザー行動分析に基づいたウェブサイト最適化",
-      "コンバージョン率最適化（CRO）と顧客獲得コスト削減",
+      "ユーザー体験を重視したレスポンシブWebサイトの制作",
+      "SEO対策とパフォーマンス最適化による検索エンジン対応",
+      "継続的なコンテンツ更新と機能改善のサポート",
+      "セキュリティ対策と定期的なバックアップによる安全な運用",
+      "アクセス解析とユーザー行動分析に基づいた改善提案",
     ],
     cases: [
-      "ECサイトの売上向上のための総合的なウェブマーケティング",
-      "BtoB企業の見込み顧客獲得のためのコンテンツマーケティング",
-      "サービス認知拡大とリード獲得のためのインバウンドマーケティング",
+      "個人ブランディングのためのポートフォリオサイト制作",
+      "ECサイトの構築と継続的な運用・改善",
+      "企業サイトのリニューアルとコンテンツマーケティング支援",
     ],
   },
   "web-advertising": {
@@ -96,54 +96,6 @@ const servicesData: { [key: string]: ServiceData } = {
       "新規顧客獲得のためのリスティング広告とリターゲティング広告の組み合わせ",
       "認知拡大を目的としたSNS広告キャンペーン",
       "季節商品のタイムリーな販売促進のための期間限定広告",
-    ],
-  },
-  "event-casting": {
-    title: "Event Casting",
-    japaneseTitle: "イベントキャスティング",
-    description: "イベントのための専門的な人材確保とコーディネート",
-    icon: <Calendar size={32} className="text-amber-500" />,
-    iconBg: "bg-amber-100",
-    color: "text-amber-600",
-    colorLight: "text-amber-500",
-    bgGradient: "from-amber-500 to-orange-500",
-    longDescription:
-      "イベントの成功には、適切な人材の配置が不可欠です。当社のイベントキャスティングサービスでは、企業イベント、プロモーション、セミナー、展示会など、様々なイベントに最適な人材を提供します。司会者、モデル、インフルエンサー、専門家など、イベントの目的や雰囲気に合った人材を厳選し、イベントの価値を最大化します。",
-    benefits: [
-      "イベントコンセプトに合わせた最適な人材の選定",
-      "人材のブリーフィングとトレーニングのサポート",
-      "イベント当日の人材管理とコーディネート",
-      "複数人材の効果的なチームビルディング",
-      "イベント後のフィードバックと改善提案",
-    ],
-    cases: [
-      "大規模展示会での複数ブース対応スタッフの配置",
-      "新製品発表会での専門知識を持つプレゼンターの起用",
-      "ファンイベントでの人気インフルエンサーとの協業",
-    ],
-  },
-  "digital-strategy": {
-    title: "Digital Strategy",
-    japaneseTitle: "デジタル戦略",
-    description: "カスタマイズされたデジタルトランスフォーメーションの提案",
-    icon: <Megaphone size={32} className="text-cyan-500" />,
-    iconBg: "bg-cyan-100",
-    color: "text-cyan-600",
-    colorLight: "text-cyan-500",
-    bgGradient: "from-cyan-500 to-blue-500",
-    longDescription:
-      "デジタル化が進む現代のビジネス環境において、適切なデジタル戦略の策定は企業の競争力維持に不可欠です。当社のデジタル戦略サービスでは、クライアントのビジネスの現状分析から始め、中長期的なデジタルトランスフォーメーションのロードマップを策定します。テクノロジーの導入だけでなく、組織文化や業務プロセスの変革まで含めた包括的なアプローチで、デジタル時代における持続的な成長をサポートします。",
-    benefits: [
-      "ビジネスモデルのデジタル化と新たな収益源の創出",
-      "データドリブン経営のための基盤構築",
-      "顧客体験の向上とカスタマージャーニーの最適化",
-      "デジタルツールの選定と導入支援",
-      "組織のデジタルケイパビリティ向上のための人材育成",
-    ],
-    cases: [
-      "伝統的な業界企業のデジタルトランスフォーメーション",
-      "スタートアップの急成長を支えるデジタル基盤の構築",
-      "既存事業のデジタルシフトによる新たな顧客層の開拓",
     ],
   },
 };

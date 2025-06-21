@@ -269,27 +269,12 @@ export default function SNSConsultingPage() {
                     className="w-full h-auto rounded-lg shadow-lg mx-auto"
                   />
                 </div>
-
-                {/* 強み2と3 - 画像の下に追加 */}
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h3 className="text-xl font-bold mb-3 text-gray-900">2. 業界に特化した提案力</h3>
-                    <p className="text-gray-700 leading-relaxed">業種・業界ごとの市場特性を理解したプロが、あなたのビジネスに最適な戦略をご提案します。</p>
-                  </div>
-
-                  <div>
-                    <h3 className="text-xl font-bold mb-3 text-gray-900">3. 分析に基づいた改善提案</h3>
-                    <p className="text-gray-700 leading-relaxed">
-                      「いいね」やフォロワー数だけを追わず、エンゲージメント率や保存数など深い指標から、伸びる傾向や改善策を導き出します。
-                    </p>
-                  </div>
-                </div>
               </div>
             </div>
 
             {/* 実績 - スライド機能付き */}
             <div className="mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">実績</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">運用実績</h2>
 
               {/* スライダーコンテナ */}
               <div className="relative">
