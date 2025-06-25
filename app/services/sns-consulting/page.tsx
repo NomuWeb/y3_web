@@ -45,27 +45,46 @@ export default function SNSConsultingPage() {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
   };
 
-  const achievementImages = [
+  // 実績データ（画像とテキストをセット）
+  const achievementSlides = [
     {
-      src: "/images/services/sns-consulting/ex01.jpg",
-      alt: "SNSコンサルティング実績事例1",
+      image: {
+        src: "/images/services/sns-consulting/ex01.jpg",
+        alt: "運用実績事例　スンギの美味スンギ飯",
+      },
+      title: "運用実績事例",
+      subtitle: "スンギの美味スンギ飯",
+      description1: "キムチ販売に向けたSNS戦略で、Tiktokは7ヶ月で”+5万人フォロワー”を獲得！。",
+      description2: "Instagramは2000人 → 8万人へと急成長。",
     },
     {
-      src: "/images/services/sns-consulting/ex02.jpg",
-      alt: "SNSコンサルティング実績事例2",
+      image: {
+        src: "/images/services/sns-consulting/ex02.jpg",
+        alt: "運用実績事例　カノック⭐︎セイヤ",
+      },
+      title: "運用実績事例",
+      subtitle: "カノック⭐︎セイヤ",
+      description1: "「デブ専ホスト」として差別化した戦略が成功。",
+      description2: "たった2ヶ月で指名・売上No.1を獲得し、SNSフォロワーは8000人越え。",
     },
     {
-      src: "/images/services/sns-consulting/ex03.jpg",
-      alt: "SNSコンサルティング実績事例3",
+      image: {
+        src: "/images/services/sns-consulting/ex03.jpg",
+        alt: "運用実績事例　咲人",
+      },
+      title: "運用実績事例",
+      subtitle: "咲人",
+      description1: "SNSインフルエンサーとして様々なメディア露出に成功",
+      description2: "SNSを駆使した自身のホストクラブ、美容サロンの集客・人材確保にも成功",
     },
   ];
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % achievementImages.length);
+    setCurrentSlide((prev) => (prev + 1) % achievementSlides.length);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + achievementImages.length) % achievementImages.length);
+    setCurrentSlide((prev) => (prev - 1 + achievementSlides.length) % achievementSlides.length);
   };
 
   const service = {
@@ -266,18 +285,29 @@ export default function SNSConsultingPage() {
               </div>
             </div>
 
-            {/* 実績 - スライド機能付き */}
+            {/* 実績 - スライド機能付き（テキストセクション追加） */}
             <div className="mb-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-6">運用実績</h2>
 
               {/* スライダーコンテナ */}
               <div className="relative">
-                {/* メイン画像表示エリア */}
-                <div className="overflow-hidden rounded-lg shadow-lg">
+                {/* メインコンテンツ表示エリア */}
+                <div className="overflow-hidden rounded-lg shadow-lg bg-white">
                   <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
-                    {achievementImages.map((image, index) => (
+                    {achievementSlides.map((slide, index) => (
                       <div key={index} className="w-full flex-shrink-0">
-                        <Image src={image.src} alt={image.alt} width={1000} height={600} className="w-full h-auto" priority={index === 0} />
+                        {/* テキストセクション */}
+                        <div className="p-6 md:p-8 bg-gradient-to-r from-pink-50 to-red-50">
+                          <h3 className="text-2xl font-bold text-gray-900 mb-2">{slide.title}</h3>
+                          <h3 className="text-2xl font-bold text-gray-900 mb-2">{slide.subtitle}</h3>
+                          <p className="text-gray-700 leading-relaxed">{slide.description1}</p>
+                          <p className="text-gray-700 leading-relaxed">{slide.description2}</p>
+                        </div>
+
+                        {/* 画像セクション */}
+                        <div>
+                          <Image src={slide.image.src} alt={slide.image.alt} width={1000} height={600} className="w-full h-auto" priority={index === 0} />
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -286,29 +316,29 @@ export default function SNSConsultingPage() {
                 {/* 前後のナビゲーションボタン */}
                 <button
                   onClick={prevSlide}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110"
-                  aria-label="前の画像"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 shadow-lg transition-all duration-200 hover:scale-110 z-10"
+                  aria-label="前の実績"
                 >
                   <ArrowLeft size={20} />
                 </button>
                 <button
                   onClick={nextSlide}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110"
-                  aria-label="次の画像"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 shadow-lg transition-all duration-200 hover:scale-110 z-10"
+                  aria-label="次の実績"
                 >
                   <ArrowRight size={20} />
                 </button>
 
                 {/* ドットインジケーター */}
-                <div className="flex justify-center mt-4 space-x-2">
-                  {achievementImages.map((_, index) => (
+                <div className="flex justify-center mt-6 space-x-2">
+                  {achievementSlides.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentSlide(index)}
                       className={`w-3 h-3 rounded-full transition-all duration-200 ${
                         index === currentSlide ? "bg-gradient-to-r from-pink-500 to-red-500" : "bg-gray-300 hover:bg-gray-400"
                       }`}
-                      aria-label={`スライド ${index + 1} を表示`}
+                      aria-label={`実績 ${index + 1} を表示`}
                     />
                   ))}
                 </div>
