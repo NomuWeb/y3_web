@@ -285,7 +285,7 @@ export default function SNSConsultingPage() {
               </div>
             </div>
 
-            {/* 実績 - スライド機能付き（テキストセクション追加） */}
+            {/* 実績 - スライド機能付き（テキストと写真分離） */}
             <div className="mb-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-6">運用実績</h2>
 
@@ -296,17 +296,31 @@ export default function SNSConsultingPage() {
                   <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
                     {achievementSlides.map((slide, index) => (
                       <div key={index} className="w-full flex-shrink-0">
-                        {/* テキストセクション */}
-                        <div className="p-6 md:p-8 bg-gradient-to-r from-pink-50 to-red-50">
-                          <h3 className="text-2xl font-bold text-gray-900 mb-2">{slide.title}</h3>
-                          <h3 className="text-2xl font-bold text-gray-900 mb-2">{slide.subtitle}</h3>
-                          <p className="text-gray-700 leading-relaxed">{slide.description1}</p>
-                          <p className="text-gray-700 leading-relaxed">{slide.description2}</p>
+                        {/* コンパクトなテキストセクション */}
+                        <div className="px-4 py-3 sm:px-6 sm:py-4 bg-gradient-to-r from-pink-50 to-red-50">
+                          <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1">{slide.title}</h3>
+                          <h4 className="text-base sm:text-lg font-bold text-pink-600 mb-2">{slide.subtitle}</h4>
+                          <div className="text-xs sm:text-sm text-gray-700 leading-relaxed space-y-1">
+                            <p>{slide.description1}</p>
+                            <p>{slide.description2}</p>
+                          </div>
                         </div>
 
-                        {/* 画像セクション */}
-                        <div>
-                          <Image src={slide.image.src} alt={slide.image.alt} width={1000} height={600} className="w-full h-auto" priority={index === 0} />
+                        {/* 大きな写真セクション */}
+                        <div className="w-full">
+                          <Image
+                            src={slide.image.src}
+                            alt={slide.image.alt}
+                            width={1200}
+                            height={900}
+                            className="w-full h-auto object-cover"
+                            priority={index === 0}
+                            style={{
+                              width: "100%",
+                              height: "auto",
+                              display: "block",
+                            }}
+                          />
                         </div>
                       </div>
                     ))}
@@ -316,26 +330,26 @@ export default function SNSConsultingPage() {
                 {/* 前後のナビゲーションボタン */}
                 <button
                   onClick={prevSlide}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 shadow-lg transition-all duration-200 hover:scale-110 z-10"
+                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 rounded-full p-2 sm:p-3 shadow-lg transition-all duration-200 hover:scale-110 z-20"
                   aria-label="前の実績"
                 >
-                  <ArrowLeft size={20} />
+                  <ArrowLeft size={16} className="sm:w-5 sm:h-5" />
                 </button>
                 <button
                   onClick={nextSlide}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 shadow-lg transition-all duration-200 hover:scale-110 z-10"
+                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 rounded-full p-2 sm:p-3 shadow-lg transition-all duration-200 hover:scale-110 z-20"
                   aria-label="次の実績"
                 >
-                  <ArrowRight size={20} />
+                  <ArrowRight size={16} className="sm:w-5 sm:h-5" />
                 </button>
 
                 {/* ドットインジケーター */}
-                <div className="flex justify-center mt-6 space-x-2">
+                <div className="flex justify-center mt-4 sm:mt-6 space-x-2">
                   {achievementSlides.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentSlide(index)}
-                      className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                      className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-200 ${
                         index === currentSlide ? "bg-gradient-to-r from-pink-500 to-red-500" : "bg-gray-300 hover:bg-gray-400"
                       }`}
                       aria-label={`実績 ${index + 1} を表示`}
