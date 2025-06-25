@@ -104,23 +104,28 @@ export default function SNSConsultingPage() {
     process: [
       {
         icon: <FileCheck size={24} />,
-        title: "ヒアリング・現状分析",
-        description: "現在のSNS運用状況や課題、目標などを詳しくヒアリング。既存アカウントの詳細な分析とベンチマーク調査を行います。",
+        title: "お問い合わせ",
+        description: "フォームからお問い合わせ下さい。1営業日以内に担当よりご連絡差し上げます。",
       },
       {
         icon: <Target size={24} />,
-        title: "戦略策定",
-        description: "ターゲットとKPIを明確にした上で、プラットフォーム選定からコンテンツ計画、運用体制まで含めた包括的な戦略を策定します。",
+        title: "お打合せ",
+        description: "現状の課題やお困りごとお困りのことなど、お気軽にご相談下さい。",
       },
       {
         icon: <Zap size={24} />,
-        title: "実行支援",
-        description: "計画に基づいたコンテンツ制作や投稿のサポート、コミュニティ管理、広告運用など、実行フェーズを強力にバックアップします。",
+        title: "ご提案・お見積",
+        description: "課題を解決するための最適なサービスをご提案いたします。",
       },
       {
         icon: <ChartBar size={24} />,
-        title: "効果測定・改善",
-        description: "定期的なレポーティングと分析を通じて、施策の効果を可視化。データに基づく継続的な改善提案を行います。",
+        title: "ご契約",
+        description: "業務開始にあたり、契約書の取り交わしを行います。",
+      },
+      {
+        icon: <ChartBar size={24} />,
+        title: "開始",
+        description: "プロジェクトを開始します。運用代行の場合、初回お打合わせから最短１〜2ヶ月ほどで開始できます。",
       },
     ],
     achievements: [
@@ -233,17 +238,6 @@ export default function SNSConsultingPage() {
               </div>
             </div>
 
-            {/* Flow画像 - 私たちの強みセクションの上に移動 */}
-            <div className="mb-12 text-center">
-              <Image
-                src="/images/services/sns-consulting/flow.png"
-                alt="SNSコンサルティングのフロー"
-                width={1000}
-                height={600}
-                className="w-full h-auto rounded-lg shadow-lg mx-auto"
-              />
-            </div>
-
             {/* 私たちの強み */}
             <div className="mb-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-6">私たちの強み</h2>
@@ -251,7 +245,7 @@ export default function SNSConsultingPage() {
               <div className="space-y-8">
                 {/* 強み1 - 画像の上に追加 */}
                 <div className="mb-6">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900">1. ファン化し、ビジネスを加速させるマーケティング</h3>
+                  <h3 className="text-xl font-bold mb-3 text-gray-900">・ファン化し、ビジネスを加速させるマーケティング</h3>
                   <p className="text-gray-700 leading-relaxed">
                     私たちは、単なるSNS運用や集客ではなく、
                     <br />
