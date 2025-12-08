@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
-import { Users } from "lucide-react";
+import { Users, ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -60,43 +60,35 @@ export default function CreatorsPage() {
       {/* ヘッダー */}
       <Header variant="secondary" />
 
-      {/* ヒーローセクション */}
-      <div className="pt-20 relative overflow-hidden bg-gradient-to-b from-indigo-900 to-blue-900 text-white">
-        {/* 背景装飾 */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-blue-500 opacity-10 animate-pulse" style={{ animationDuration: "8s" }}></div>
-          <div className="absolute top-1/3 right-1/4 w-80 h-80 rounded-full bg-indigo-500 opacity-10 animate-pulse" style={{ animationDuration: "12s" }}></div>
-          <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-purple-500 opacity-5"></div>
-        </div>
+      {/* ヒーローセクション - 背景画像 */}
+      <div className="relative text-white mt-20">
+        {/* 背景画像 */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('/images/services/sns-consulting/sns_consulting_kv.jpg')`,
+          }}
+        ></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 relative z-10">
-          <div className="text-center">
-            <div className="flex justify-center mb-6">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-full opacity-20 animate-pulse"></div>
-                <div className="relative bg-gradient-to-br from-blue-500 to-indigo-500 text-white p-6 rounded-full">
-                  <Users size={40} />
-                </div>
-              </div>
+          <div className="flex flex-col items-center">
+            <Link href="/services" className="inline-flex items-center text-white/80 hover:text-white mb-8 transition-colors">
+              <ArrowLeft size={16} className="mr-2" />
+              Back to all services
+            </Link>
+
+            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 shadow-lg">
+              <Users size={32} className="text-indigo-600" />
             </div>
-            <h1 className="text-4xl sm:text-5xl font-bold mb-6">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-200 via-white to-indigo-200">Our Creators</span>
-            </h1>
-            <p className="max-w-2xl mx-auto text-lg text-blue-100 mb-8">
+
+            <h1 className="text-4xl sm:text-5xl font-bold mb-3 text-center text-white">Our Creators</h1>
+
+            <h2 className="text-2xl text-white/90 mb-6 text-center">所属クリエイター</h2>
+
+            <p className="max-w-2xl mx-auto text-lg text-white/90 text-center">
               Y3に所属する才能豊かなクリエイターたちをご紹介します
             </p>
           </div>
-        </div>
-
-        {/* 波形装飾（下部） */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" className="w-full h-auto">
-            <path
-              fill="#ffffff"
-              fillOpacity="1"
-              d="M0,32L60,42.7C120,53,240,75,360,74.7C480,75,600,53,720,42.7C840,32,960,32,1080,42.7C1200,53,1320,75,1380,85.3L1440,96L1440,100L1380,100C1320,100,1200,100,1080,100C960,100,840,100,720,100C600,100,480,100,360,100C240,100,120,100,60,100L0,100Z"
-            ></path>
-          </svg>
         </div>
       </div>
 
