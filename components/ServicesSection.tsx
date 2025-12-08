@@ -60,9 +60,10 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ AnimatedSection }) =>
       ),
       title: "Influencer Marketing",
       japaneseTitle: "インフルエンサーマーケティング",
-      description: "業界の影響力のある人物とのコネクションを活用したマーケティング",
+      description: "業界の影響力のある人物とのコネクションを活用",
       slug: "influencer-marketing",
       className: "bg-white border-gray-100 hover:border-blue-300 hover:shadow-lg hover:shadow-blue-100 transition-all duration-300",
+      featured: false,
     },
     {
       icon: (
@@ -73,11 +74,12 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ AnimatedSection }) =>
           </div>
         </div>
       ),
-      title: "Website Development & Management",
+      title: "Website Development",
       japaneseTitle: "WEBサイト制作・運用",
-      description: "魅力的なWebサイトの制作から継続的な運用・保守まで",
+      description: "魅力的なWebサイトの制作から継続的な運用",
       slug: "web-development",
       className: "bg-white border-gray-100 hover:border-green-300 hover:shadow-lg hover:shadow-green-100 transition-all duration-300",
+      featured: false,
     },
     {
       icon: (
@@ -90,9 +92,10 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ AnimatedSection }) =>
       ),
       title: "Web Advertising",
       japaneseTitle: "WEB広告",
-      description: "結果を出すターゲットを絞った広告キャンペーンの展開",
+      description: "ターゲットを絞った広告キャンペーンの展開",
       slug: "web-advertising",
       className: "bg-white border-gray-100 hover:border-purple-300 hover:shadow-lg hover:shadow-purple-100 transition-all duration-300",
+      featured: false,
     },
   ];
 
