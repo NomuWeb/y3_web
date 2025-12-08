@@ -1,0 +1,240 @@
+"use client";
+
+import React, { useState } from "react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import AnimatedSection from "@/components/AnimatedSection";
+import { Users } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+
+// クリエイター情報の型定義
+interface Creator {
+  id: string;
+  name: string;
+  nameJa: string;
+  category: string;
+  image: string;
+  slug: string;
+  instagram?: string;
+  description?: string;
+}
+
+export default function CreatorsPage() {
+  const [selectedCategory, setSelectedCategory] = useState<string>("ALL");
+
+  // クリエイター情報
+  const creators: Creator[] = [
+      {
+        id: "1",
+        name: "Lee Seung Gi",
+        nameJa: "イ・スンギ",
+        category: "韓国",
+        image: "/images/creators/seunggi.jpg",
+        slug: "seunggi",
+        instagram: "seunggi.lee888",
+        description: "多才なエンターテイナー",
+      },
+      {
+      id: "2",
+      name: "Momosan",
+      nameJa: "双松桃子",
+      category: "料理",
+      image: "/images/creators/momosan.jpg",
+      slug: "momosan",
+      instagram: "momosan0627",
+      description: "胃袋沼らせモテレシピを発信する料理クリエイター",
+      },
+  ];
+
+  // カテゴリー一覧
+  const categories = ["ALL", "料理", "エンタメ", "アウトドア", "韓国", "美容", "ファッション"];
+
+  // フィルタリングされたクリエイター
+  const filteredCreators = selectedCategory === "ALL"
+    ? creators
+    : creators.filter((creator) => creator.category === selectedCategory);
+
+  return (
+    <div className="min-h-screen bg-white text-gray-800">
+      {/* ヘッダー */}
+      <Header variant="secondary" />
+
+      {/* ヒーローセクション */}
+      <div className="pt-20 relative overflow-hidden bg-gradient-to-b from-indigo-900 to-blue-900 text-white">
+        {/* 背景装飾 */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-blue-500 opacity-10 animate-pulse" style={{ animationDuration: "8s" }}></div>
+          <div className="absolute top-1/3 right-1/4 w-80 h-80 rounded-full bg-indigo-500 opacity-10 animate-pulse" style={{ animationDuration: "12s" }}></div>
+          <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-purple-500 opacity-5"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 relative z-10">
+          <div className="text-center">
+            <div className="flex justify-center mb-6">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-full opacity-20 animate-pulse"></div>
+                <div className="relative bg-gradient-to-br from-blue-500 to-indigo-500 text-white p-6 rounded-full">
+                  <Users size={40} />
+                </div>
+              </div>
+            </div>
+            <h1 className="text-4xl sm:text-5xl font-bold mb-6">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-200 via-white to-indigo-200">Our Creators</span>
+            </h1>
+            <p className="max-w-2xl mx-auto text-lg text-blue-100 mb-8">
+              Y3に所属する才能豊かなクリエイターたちをご紹介します
+            </p>
+          </div>
+        </div>
+
+        {/* 波形装飾（下部） */}
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" className="w-full h-auto">
+            <path
+              fill="#ffffff"
+              fillOpacity="1"
+              d="M0,32L60,42.7C120,53,240,75,360,74.7C480,75,600,53,720,42.7C840,32,960,32,1080,42.7C1200,53,1320,75,1380,85.3L1440,96L1440,100L1380,100C1320,100,1200,100,1080,100C960,100,840,100,720,100C600,100,480,100,360,100C240,100,120,100,60,100L0,100Z"
+            ></path>
+          </svg>
+        </div>
+      </div>
+
+      {/* クリエイター一覧セクション */}
+      <AnimatedSection className="py-16 relative">
+        {/* 背景装飾 */}
+        <div className="absolute inset-0 overflow-hidden z-0">
+          <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-blue-50 opacity-80"></div>
+          <div className="absolute top-40 -left-20 w-80 h-80 rounded-full bg-indigo-50 opacity-80"></div>
+          <div className="absolute bottom-10 left-10 w-40 h-40 rounded-full bg-purple-50 opacity-70"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* セクションヘッダー */}
+          <div className="text-center mb-12">
+            <span className="inline-block py-1 px-3 rounded-full text-sm font-semibold bg-indigo-100 text-indigo-800 mb-3">
+              Creators
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
+                所属クリエイター
+              </span>
+            </h2>
+            <p className="text-gray-600 max-w-3xl mx-auto">
+              多様なジャンルで活躍する、個性豊かなクリエイターたちをご紹介します
+            </p>
+            <div className="w-20 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 mx-auto mt-6 rounded-full"></div>
+          </div>
+
+          {/* カテゴリーフィルター */}
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
+                  selectedCategory === category
+                    ? "bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-lg transform scale-105"
+                    : "bg-white text-gray-700 border border-gray-300 hover:border-indigo-400 hover:text-indigo-600"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
+          {/* クリエイターグリッド */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredCreators.map((creator) => (
+              <div
+                key={creator.id}
+                className="group bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 hover:shadow-2xl hover:border-indigo-300 transition-all duration-500 transform hover:-translate-y-2"
+              >
+                {/* サムネイル画像 */}
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={creator.image}
+                    alt={creator.name}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+
+                {/* クリエイター情報 */}
+                <div className="p-6 pt-2">
+                  <div className="mb-3">
+                    <span className="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-semibold rounded-full">
+                      {creator.category}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-1">{creator.nameJa}</h3>
+                  <p className="text-sm text-gray-600 mb-4">{creator.name}</p>
+
+                  {/* VIEW MORE リンク */}
+                  <Link
+                    href={`/services/creators/${creator.slug}`}
+                    className="inline-flex items-center justify-center w-full px-6 py-3 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-indigo-600 hover:via-purple-600 hover:to-blue-600 text-white rounded-full font-medium transition-all duration-300 transform group-hover:shadow-lg"
+                  >
+                    VIEW MORE
+                    <svg
+                      className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </Link>
+                </div>
+
+                {/* ホバー時のボーダーアニメーション */}
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+              </div>
+            ))}
+          </div>
+
+          {/* クリエイターが見つからない場合 */}
+          {filteredCreators.length === 0 && (
+            <div className="text-center py-16">
+              <p className="text-gray-500 text-lg">
+                このカテゴリーにはまだクリエイターが登録されていません
+              </p>
+            </div>
+          )}
+        </div>
+      </AnimatedSection>
+
+      {/* お問い合わせセクション */}
+      <AnimatedSection className="py-16 bg-gradient-to-b from-gray-50 to-white relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 p-8 md:p-12">
+            <div className="text-center max-w-3xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
+                  クリエイターとのコラボレーション
+                </span>
+              </h2>
+              <p className="text-gray-600 mb-8">
+                所属クリエイターとのコラボレーションやキャスティングに関するご相談を承っております。
+                お気軽にお問い合わせください。
+              </p>
+
+              <a
+                href="/contact"
+                className="inline-flex items-center px-8 py-3.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-indigo-600 hover:via-purple-600 hover:to-blue-600 text-white rounded-full font-medium transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
+              >
+                お問い合わせ
+                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </AnimatedSection>
+
+      {/* フッター */}
+      <Footer />
+    </div>
+  );
+}

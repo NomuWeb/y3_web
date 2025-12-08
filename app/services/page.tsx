@@ -3,7 +3,7 @@
 import React from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Instagram, Users, Monitor, BarChart3, Calendar, Megaphone } from "lucide-react";
+import { Instagram, Users, Monitor, BarChart3, Calendar, Megaphone, UserCheck } from "lucide-react";
 import ServiceCard from "@/components/ServiceCard";
 import AnimatedSection from "@/components/AnimatedSection";
 
@@ -24,6 +24,22 @@ export default function ServicesPage() {
       description: "戦略的なソーシャルメディア運用と成長戦略のご提案。最適なプラットフォーム選定からコンテンツ作成、分析までサポートします。",
       slug: "sns-consulting",
       className: "bg-white border-gray-100 hover:border-pink-300 hover:shadow-lg hover:shadow-pink-100 transition-all duration-300",
+    },
+    {
+      icon: (
+        <div className="relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-amber-400 rounded-full opacity-20 animate-pulse"></div>
+          <div className="relative bg-gradient-to-br from-orange-500 to-amber-500 text-white p-4 rounded-full transform transition-transform group-hover:scale-110 duration-300">
+            <UserCheck size={28} />
+          </div>
+        </div>
+      ),
+      title: "Our Creators",
+      japaneseTitle: "所属クリエイター",
+      description:
+        "Y3に所属する才能豊かなクリエイターたち。多様なジャンルで活躍する個性豊かなクリエイターをご紹介します。コラボレーションやキャスティングのご相談も承ります。",
+      slug: "creators",
+      className: "bg-white border-gray-100 hover:border-orange-300 hover:shadow-lg hover:shadow-orange-100 transition-all duration-300",
     },
     {
       icon: (

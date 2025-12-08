@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Instagram, Users, Monitor, BarChart3, Calendar, Megaphone, ArrowRight } from "lucide-react";
+import { Instagram, Users, Monitor, BarChart3, Calendar, Megaphone, ArrowRight, UserCheck } from "lucide-react";
 import ServiceCard from "@/components/ServiceCard";
 import { AnimatedSectionComponent } from "@/components/AnimatedSection";
 import Link from "next/link";
@@ -27,6 +27,21 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ AnimatedSection }) =>
       description: "戦略的なソーシャルメディア運用と成長戦略のご提案",
       slug: "sns-consulting",
       className: "bg-white border-gray-100 hover:border-pink-300 hover:shadow-lg hover:shadow-pink-100 transition-all duration-300",
+    },
+    {
+      icon: (
+        <div className="relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-amber-400 rounded-full opacity-20 animate-pulse"></div>
+          <div className="relative bg-gradient-to-br from-orange-500 to-amber-500 text-white p-4 rounded-full transform transition-transform group-hover:scale-110 duration-300">
+            <UserCheck size={28} />
+          </div>
+        </div>
+      ),
+      title: "Our Creators",
+      japaneseTitle: "所属クリエイター",
+      description: "Y3に所属する才能豊かなクリエイターたち",
+      slug: "creators",
+      className: "bg-white border-gray-100 hover:border-orange-300 hover:shadow-lg hover:shadow-orange-100 transition-all duration-300",
     },
     {
       icon: (
@@ -97,7 +112,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ AnimatedSection }) =>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 mx-auto mt-4 rounded-full"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <ServiceCard
               key={index}
