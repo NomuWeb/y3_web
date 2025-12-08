@@ -11,38 +11,44 @@ interface ServicesSectionProps {
 }
 
 const ServicesSection: React.FC<ServicesSectionProps> = ({ AnimatedSection }) => {
-  // サービス情報の配列（slugを追加）
-  const services = [
+  // 注目サービス（目立たせる）
+  const featuredServices = [
     {
       icon: (
         <div className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-red-400 rounded-full opacity-20 animate-pulse"></div>
-          <div className="relative bg-gradient-to-br from-pink-500 to-red-500 text-white p-4 rounded-full transform transition-transform group-hover:scale-110 duration-300">
-            <Instagram size={28} />
+          <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-red-400 rounded-full opacity-30 animate-pulse"></div>
+          <div className="relative bg-gradient-to-br from-pink-500 to-red-500 text-white p-5 rounded-full transform transition-transform group-hover:scale-110 duration-300 shadow-lg">
+            <Instagram size={32} />
           </div>
         </div>
       ),
       title: "SNS Consulting",
       japaneseTitle: "SNSコンサルティング",
-      description: "戦略的なソーシャルメディア運用と成長戦略のご提案",
+      description: "戦略的なソーシャルメディア運用と成長戦略のご提案。最適なプラットフォーム選定からコンテンツ作成、分析までサポートします。",
       slug: "sns-consulting",
-      className: "bg-white border-gray-100 hover:border-pink-300 hover:shadow-lg hover:shadow-pink-100 transition-all duration-300",
+      className: "bg-gradient-to-br from-pink-50 via-white to-red-50 border-2 border-pink-300 hover:border-pink-400 hover:shadow-2xl hover:shadow-pink-200 transition-all duration-300 ring-2 ring-pink-200 ring-offset-2",
+      featured: true,
     },
     {
       icon: (
         <div className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-amber-400 rounded-full opacity-20 animate-pulse"></div>
-          <div className="relative bg-gradient-to-br from-orange-500 to-amber-500 text-white p-4 rounded-full transform transition-transform group-hover:scale-110 duration-300">
-            <UserCheck size={28} />
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-amber-400 rounded-full opacity-30 animate-pulse"></div>
+          <div className="relative bg-gradient-to-br from-orange-500 to-amber-500 text-white p-5 rounded-full transform transition-transform group-hover:scale-110 duration-300 shadow-lg">
+            <UserCheck size={32} />
           </div>
         </div>
       ),
       title: "Our Creators",
       japaneseTitle: "所属クリエイター",
-      description: "Y3に所属する才能豊かなクリエイターたち",
+      description: "Y3に所属する才能豊かなクリエイターたち。多様なジャンルで活躍する個性豊かなクリエイターをご紹介します。",
       slug: "creators",
-      className: "bg-white border-gray-100 hover:border-orange-300 hover:shadow-lg hover:shadow-orange-100 transition-all duration-300",
+      className: "bg-gradient-to-br from-orange-50 via-white to-amber-50 border-2 border-orange-300 hover:border-orange-400 hover:shadow-2xl hover:shadow-orange-200 transition-all duration-300 ring-2 ring-orange-200 ring-offset-2",
+      featured: true,
     },
+  ];
+
+  // その他のサービス
+  const otherServices = [
     {
       icon: (
         <div className="relative">
@@ -112,8 +118,33 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ AnimatedSection }) =>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 mx-auto mt-4 rounded-full"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
+        {/* 注目サービス - 大きく表示 */}
+        <div className="mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {featuredServices.map((service, index) => (
+              <div key={index} className="relative">
+                {/* Featured Badge */}
+                <div className="absolute -top-4 -right-4 z-20">
+                  <span className="inline-flex items-center px-4 py-2 rounded-full text-xs font-bold bg-gradient-to-r from-yellow-400 to-orange-400 text-white shadow-lg animate-pulse">
+                    ⭐ FEATURED
+                  </span>
+                </div>
+                <ServiceCard
+                  icon={service.icon}
+                  title={service.title}
+                  japaneseTitle={service.japaneseTitle}
+                  description={service.description}
+                  className={service.className}
+                  slug={service.slug}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* その他のサービス - 通常サイズ */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {otherServices.map((service, index) => (
             <ServiceCard
               key={index}
               icon={service.icon}
