@@ -92,7 +92,7 @@ export default function CreatorDetailPage() {
       <Header variant="secondary" />
 
       {/* スペーサー */}
-      <div className="pt-20"></div>
+      <div className="pt-6 md:pt-14"></div>
 
       {/* クリエイター詳細セクション */}
       <AnimatedSection className="py-16 relative">
