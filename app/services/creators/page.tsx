@@ -18,6 +18,7 @@ interface Creator {
   slug: string;
   instagram?: string;
   description?: string;
+  imagePosition?: string;
 }
 
 export default function CreatorsPage() {
@@ -34,6 +35,7 @@ export default function CreatorsPage() {
         slug: "seunggi",
         instagram: "seunggi.lee888",
         description: "多才なエンターテイナー",
+        imagePosition: "object-[center_30%]",
       },
       {
       id: "2",
@@ -44,6 +46,7 @@ export default function CreatorsPage() {
       slug: "momosan",
       instagram: "momosan0627",
       description: "胃袋沼らせモテレシピを発信する料理クリエイター",
+      imagePosition: "object-[center_20%]",
       },
   ];
 
@@ -148,7 +151,7 @@ export default function CreatorsPage() {
                     src={creator.image}
                     alt={creator.name}
                     fill
-                    className="object-cover object-top group-hover:scale-110 transition-transform duration-500"
+                    className={`object-cover ${creator.imagePosition || 'object-[center_20%]'} group-hover:scale-110 transition-transform duration-500`}
                   />
                 </div>
 

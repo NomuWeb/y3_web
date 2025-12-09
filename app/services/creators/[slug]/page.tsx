@@ -21,6 +21,7 @@ interface Creator {
   description?: string;
   bio?: string;
   achievements?: string[];
+  imagePosition?: string;
 }
 
 // クリエイター情報（実際のデータ）
@@ -39,6 +40,7 @@ const creatorsData: Creator[] = [
       "調理師免許日本最年少取得",
       "ラブトランジット2出演",
     ],
+    imagePosition: "object-[center_30%]",
   },
   {
     id: "2",
@@ -55,6 +57,7 @@ const creatorsData: Creator[] = [
       "料理研究家",
       "ラブトランジット出演",
     ],
+    imagePosition: "object-[center_20%]",
   },
 ];
 
@@ -247,7 +250,7 @@ export default function CreatorDetailPage() {
                       src={otherCreator.image}
                       alt={otherCreator.name}
                       fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      className={`object-cover ${otherCreator.imagePosition || 'object-[center_20%]'} group-hover:scale-110 transition-transform duration-500`}
                     />
                   </div>
                   <div className="p-6">
