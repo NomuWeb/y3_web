@@ -91,35 +91,8 @@ export default function CreatorDetailPage() {
       {/* ヘッダー */}
       <Header variant="secondary" />
 
-      {/* ヒーローセクション */}
-      <div className="pt-20 relative overflow-hidden bg-gradient-to-b from-indigo-900 to-blue-900 text-white">
-        {/* 背景装飾 */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-blue-500 opacity-10 animate-pulse" style={{ animationDuration: "8s" }}></div>
-          <div className="absolute top-1/3 right-1/4 w-80 h-80 rounded-full bg-indigo-500 opacity-10 animate-pulse" style={{ animationDuration: "12s" }}></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
-          <Link
-            href="/services/creators"
-            className="inline-flex items-center text-blue-200 hover:text-white transition-colors mb-8"
-          >
-            <ArrowLeft size={20} className="mr-2" />
-            クリエイター一覧に戻る
-          </Link>
-        </div>
-
-        {/* 波形装飾（下部） */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" className="w-full h-auto">
-            <path
-              fill="#ffffff"
-              fillOpacity="1"
-              d="M0,32L60,42.7C120,53,240,75,360,74.7C480,75,600,53,720,42.7C840,32,960,32,1080,42.7C1200,53,1320,75,1380,85.3L1440,96L1440,100L1380,100C1320,100,1200,100,1080,100C960,100,840,100,720,100C600,100,480,100,360,100C240,100,120,100,60,100L0,100Z"
-            ></path>
-          </svg>
-        </div>
-      </div>
+      {/* スペーサー */}
+      <div className="pt-20"></div>
 
       {/* クリエイター詳細セクション */}
       <AnimatedSection className="py-16 relative">
