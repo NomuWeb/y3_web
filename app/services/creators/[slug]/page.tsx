@@ -9,6 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Instagram, ExternalLink } from "lucide-react";
 
+
 // クリエイター情報の型定義
 interface Creator {
   id: string;
