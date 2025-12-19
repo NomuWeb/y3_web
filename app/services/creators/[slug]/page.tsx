@@ -112,7 +112,7 @@ export default function CreatorDetailPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* 左側: 画像 */}
             <div className="relative">
-              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-[0_30px_80px_-10px_rgba(0,0,0,0.4)] hover:shadow-[0_35px_90px_-5px_rgba(0,0,0,0.5)] transition-shadow duration-300 border border-gray-100">
+              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-[0_30px_80px_-10px_rgba(0,0,0,0.4)] hover:shadow-[0_35px_90px_-5px_rgba(0,0,0,0.5)] transition-shadow duration-300 border border-gray-100">
                 <Image src={creator.image} alt={creator.name} fill className={`object-cover ${creator.imagePosition || "object-center"}`} priority />
               </div>
               {/* カテゴリーバッジ */}
