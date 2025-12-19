@@ -115,7 +115,7 @@ export default function CreatorsPage() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* セクションヘッダー */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-6 sm:mb-8 lg:mb-12">
             <span className="inline-block py-1 px-3 rounded-full text-sm font-semibold bg-indigo-100 text-indigo-800 mb-3">Creators</span>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">所属クリエイター</span>
