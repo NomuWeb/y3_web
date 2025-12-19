@@ -105,7 +105,7 @@ export default function CreatorsPage() {
       </div>
 
       {/* クリエイター一覧セクション */}
-      <div className="py-16 relative">
+      <div className="py-8 sm:py-12 lg:py-16 relative">
         {/* 背景装飾 */}
         <div className="absolute inset-0 overflow-hidden z-0">
           <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-blue-50 opacity-80"></div>
@@ -125,12 +125,12 @@ export default function CreatorsPage() {
           </div>
 
           {/* カテゴリーフィルター */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
+                className={`px-3 py-1.5 sm:px-6 sm:py-2 rounded-full font-medium transition-all duration-300 text-sm sm:text-base ${
                   selectedCategory === category
                     ? "bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-lg transform scale-105"
                     : "bg-white text-gray-700 border border-gray-300 hover:border-indigo-400 hover:text-indigo-600"
