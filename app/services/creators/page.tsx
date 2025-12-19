@@ -13,7 +13,7 @@ interface Creator {
   id: string;
   name: string;
   nameJa: string;
-  category: string;
+  category: string | string[];
   image: string;
   slug: string;
   instagram?: string;
@@ -26,18 +26,18 @@ export default function CreatorsPage() {
 
   // クリエイター情報
   const creators: Creator[] = [
-      {
-        id: "1",
-        name: "Lee Seung Gi",
-        nameJa: "イ・スンギ",
-        category: "韓国",
-        image: "/images/creators/seunggi.jpg",
-        slug: "seunggi",
-        instagram: "seunggi.lee888",
-        description: "多才なエンターテイナー",
-        imagePosition: "object-[center_30%]",
-      },
-      {
+    {
+      id: "1",
+      name: "Lee Seung Gi",
+      nameJa: "イ・スンギ",
+      category: "韓国",
+      image: "/images/creators/seunggi.jpg",
+      slug: "seunggi",
+      instagram: "seunggi.lee888",
+      description: "多才なエンターテイナー",
+      imagePosition: "object-[center_30%]",
+    },
+    {
       id: "2",
       name: "Momosan",
       nameJa: "双松桃子",
@@ -47,16 +47,27 @@ export default function CreatorsPage() {
       instagram: "momosan0627",
       description: "胃袋沼らせモテレシピを発信する料理クリエイター",
       imagePosition: "object-[center_20%]",
-      },
+    },
+    {
+      id: "3",
+      name: "Fukawa",
+      nameJa: "ふかわ",
+      category: ["エンタメ", "韓国", "美容"],
+      image: "/images/creators/fukawa.jpg",
+      slug: "fukawa",
+      description: "エンタメ・韓国・美容の3ジャンルで活躍するYouTuber",
+      imagePosition: "object-[center_55%]",
+    },
   ];
 
   // カテゴリー一覧
   const categories = ["ALL", "料理", "エンタメ", "アウトドア", "韓国", "美容", "ファッション"];
 
   // フィルタリングされたクリエイター
-  const filteredCreators = selectedCategory === "ALL"
-    ? creators
-    : creators.filter((creator) => creator.category === selectedCategory);
+  const filteredCreators =
+    selectedCategory === "ALL"
+      ? creators
+      : creators.filter((creator) => (Array.isArray(creator.category) ? creator.category.includes(selectedCategory) : creator.category === selectedCategory));
 
   return (
     <div className="min-h-screen bg-white text-gray-800">
@@ -88,9 +99,7 @@ export default function CreatorsPage() {
 
             <h2 className="text-2xl text-white/90 mb-6 text-center">所属クリエイター</h2>
 
-            <p className="max-w-2xl mx-auto text-lg text-white/90 text-center">
-              Y3に所属する才能豊かなクリエイターたちをご紹介します
-            </p>
+            <p className="max-w-2xl mx-auto text-lg text-white/90 text-center">Y3に所属する才能豊かなクリエイターたちをご紹介します</p>
           </div>
         </div>
       </div>
@@ -107,17 +116,11 @@ export default function CreatorsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* セクションヘッダー */}
           <div className="text-center mb-12">
-            <span className="inline-block py-1 px-3 rounded-full text-sm font-semibold bg-indigo-100 text-indigo-800 mb-3">
-              Creators
-            </span>
+            <span className="inline-block py-1 px-3 rounded-full text-sm font-semibold bg-indigo-100 text-indigo-800 mb-3">Creators</span>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
-                所属クリエイター
-              </span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">所属クリエイター</span>
             </h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">
-              多様なジャンルで活躍する、個性豊かなクリエイターたちをご紹介します
-            </p>
+            <p className="text-gray-600 max-w-3xl mx-auto">多様なジャンルで活躍する、個性豊かなクリエイターたちをご紹介します</p>
             <div className="w-20 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 mx-auto mt-6 rounded-full"></div>
           </div>
 
@@ -151,16 +154,24 @@ export default function CreatorsPage() {
                     src={creator.image}
                     alt={creator.name}
                     fill
-                    className={`object-cover ${creator.imagePosition || 'object-[center_20%]'} group-hover:scale-110 transition-transform duration-500`}
+                    className={`object-cover ${creator.imagePosition || "object-[center_20%]"} group-hover:scale-110 transition-transform duration-500`}
                   />
                 </div>
 
                 {/* クリエイター情報 */}
                 <div className="p-6 pt-2">
                   <div className="mb-3">
-                    <span className="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-semibold rounded-full">
-                      {creator.category}
-                    </span>
+                    {Array.isArray(creator.category) ? (
+                      <div className="flex flex-wrap gap-1">
+                        {creator.category.map((cat, index) => (
+                          <span key={index} className="inline-block px-2 py-1 bg-indigo-100 text-indigo-800 text-xs font-semibold rounded-full">
+                            {cat}
+                          </span>
+                        ))}
+                      </div>
+                    ) : (
+                      <span className="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-semibold rounded-full">{creator.category}</span>
+                    )}
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-1">{creator.nameJa}</h3>
                   <p className="text-sm text-gray-600 mb-4">{creator.name}</p>
@@ -191,9 +202,7 @@ export default function CreatorsPage() {
           {/* クリエイターが見つからない場合 */}
           {filteredCreators.length === 0 && (
             <div className="text-center py-16">
-              <p className="text-gray-500 text-lg">
-                このカテゴリーにはまだクリエイターが登録されていません
-              </p>
+              <p className="text-gray-500 text-lg">このカテゴリーにはまだクリエイターが登録されていません</p>
             </div>
           )}
         </div>
@@ -210,8 +219,7 @@ export default function CreatorsPage() {
                 </span>
               </h2>
               <p className="text-gray-600 mb-8">
-                所属クリエイターとのコラボレーションやキャスティングに関するご相談を承っております。
-                お気軽にお問い合わせください。
+                所属クリエイターとのコラボレーションやキャスティングに関するご相談を承っております。 お気軽にお問い合わせください。
               </p>
 
               <a

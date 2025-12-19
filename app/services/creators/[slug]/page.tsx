@@ -9,13 +9,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Instagram, ExternalLink } from "lucide-react";
 
-
 // クリエイター情報の型定義
 interface Creator {
   id: string;
   name: string;
   nameJa: string;
-  category: string;
+  category: string | string[];
   image: string;
   slug: string;
   instagram?: string;
@@ -37,10 +36,7 @@ const creatorsData: Creator[] = [
     instagram: "seunggi.lee888",
     description: "多才なエンターテイナー",
     bio: "TikTok 【スンギの美味スンギ飯】を初め、幅広い分野で活躍しています。",
-    achievements: [
-      "調理師免許日本最年少取得",
-      "ラブトランジット2出演",
-    ],
+    achievements: ["調理師免許日本最年少取得", "ラブトランジット2出演"],
     imagePosition: "object-[center_30%]",
   },
   {
@@ -53,12 +49,20 @@ const creatorsData: Creator[] = [
     instagram: "momosan0627",
     description: "胃袋沼らせモテレシピを発信する料理クリエイター",
     bio: "料理を通じて人々の心と胃袋を掴むレシピを日々発信しています。簡単で美味しい、そして見た目も華やかな料理が得意です。",
-    achievements: [
-      "Instagram フォロワー数20万人以上",
-      "料理研究家",
-      "ラブトランジット出演",
-    ],
+    achievements: ["Instagram フォロワー数20万人以上", "料理研究家", "ラブトランジット出演"],
     imagePosition: "object-[center_20%]",
+  },
+  {
+    id: "3",
+    name: "Fukawa",
+    nameJa: "ふかわ",
+    category: ["エンタメ", "韓国", "美容"],
+    image: "/images/creators/fukawa.jpg",
+    slug: "fukawa",
+    description: "YouTuber登録者数32万人を抱えるYouTuber",
+    bio: "エンタメ、韓国、美容の3つのジャンルを中心に、累計再生回数8000万回以上を記録。幅広いコンテンツで多くのファンを魅了しています。",
+    achievements: ["YouTube登録者数32万人", "累計再生回数8000万回以上", "エンタメ・韓国・美容の3ジャンルで活躍"],
+    imagePosition: "object-[center_50%]",
   },
 ];
 
@@ -109,27 +113,32 @@ export default function CreatorDetailPage() {
             {/* 左側: 画像 */}
             <div className="relative">
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-[0_30px_80px_-10px_rgba(0,0,0,0.4)] hover:shadow-[0_35px_90px_-5px_rgba(0,0,0,0.5)] transition-shadow duration-300 border border-gray-100">
-                <Image
-                  src={creator.image}
-                  alt={creator.name}
-                  fill
-                  className="object-cover"
-                  priority
-                />
+                <Image src={creator.image} alt={creator.name} fill className={`object-cover ${creator.imagePosition || "object-center"}`} priority />
               </div>
               {/* カテゴリーバッジ */}
               <div className="absolute top-4 left-4">
-                <span className="inline-block px-4 py-2 bg-white/90 backdrop-blur-sm text-indigo-800 text-sm font-semibold rounded-full shadow-lg">
-                  {creator.category}
-                </span>
+                {Array.isArray(creator.category) ? (
+                  <div className="flex flex-wrap gap-2">
+                    {creator.category.map((cat, index) => (
+                      <span
+                        key={index}
+                        className="inline-block px-3 py-1 bg-white/90 backdrop-blur-sm text-indigo-800 text-xs font-semibold rounded-full shadow-lg"
+                      >
+                        {cat}
+                      </span>
+                    ))}
+                  </div>
+                ) : (
+                  <span className="inline-block px-4 py-2 bg-white/90 backdrop-blur-sm text-indigo-800 text-sm font-semibold rounded-full shadow-lg">
+                    {creator.category}
+                  </span>
+                )}
               </div>
             </div>
 
             {/* 右側: 情報 */}
             <div className="lg:pt-8">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                {creator.nameJa}
-              </h1>
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">{creator.nameJa}</h1>
               <p className="text-xl text-gray-600 mb-6">{creator.name}</p>
 
               <div className="mb-8">
@@ -162,8 +171,7 @@ export default function CreatorDetailPage() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg"
                   >
-                    <Instagram size={20} className="mr-2" />
-                    @{creator.instagram}
+                    <Instagram size={20} className="mr-2" />@{creator.instagram}
                     <ExternalLink size={16} className="ml-2" />
                   </a>
                 </div>
@@ -171,26 +179,14 @@ export default function CreatorDetailPage() {
 
               {/* お問い合わせボタン */}
               <div className="pt-6 border-t border-gray-200">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                  コラボレーションのお問い合わせ
-                </h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">コラボレーションのお問い合わせ</h3>
                 <Link
                   href="/contact"
                   className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-indigo-600 hover:via-purple-600 hover:to-blue-600 text-white rounded-full font-medium transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"
                 >
                   お問い合わせ
-                  <svg
-                    className="ml-2 w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
+                  <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </Link>
               </div>
@@ -204,9 +200,7 @@ export default function CreatorDetailPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
-                他のクリエイター
-              </span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">他のクリエイター</span>
             </h2>
           </div>
 
@@ -224,14 +218,22 @@ export default function CreatorDetailPage() {
                       src={otherCreator.image}
                       alt={otherCreator.name}
                       fill
-                      className={`object-cover ${otherCreator.imagePosition || 'object-[center_20%]'} group-hover:scale-110 transition-transform duration-500`}
+                      className={`object-cover ${otherCreator.imagePosition || "object-[center_20%]"} group-hover:scale-110 transition-transform duration-500`}
                     />
                   </div>
                   <div className="p-6">
                     <div className="mb-3">
-                      <span className="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-semibold rounded-full">
-                        {otherCreator.category}
-                      </span>
+                      {Array.isArray(otherCreator.category) ? (
+                        <div className="flex flex-wrap gap-1">
+                          {otherCreator.category.map((cat, index) => (
+                            <span key={index} className="inline-block px-2 py-1 bg-indigo-100 text-indigo-800 text-xs font-semibold rounded-full">
+                              {cat}
+                            </span>
+                          ))}
+                        </div>
+                      ) : (
+                        <span className="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-semibold rounded-full">{otherCreator.category}</span>
+                      )}
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-1">{otherCreator.nameJa}</h3>
                     <p className="text-sm text-gray-600">{otherCreator.name}</p>
@@ -241,10 +243,7 @@ export default function CreatorDetailPage() {
           </div>
 
           <div className="text-center mt-12">
-            <Link
-              href="/services/creators"
-              className="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium transition-colors"
-            >
+            <Link href="/services/creators" className="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium transition-colors">
               すべてのクリエイターを見る
               <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
