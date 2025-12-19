@@ -84,7 +84,7 @@ export default function CreatorsPage() {
           }}
         ></div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-24 relative z-10">
           <div className="flex flex-col items-center">
             <Link href="/services" className="inline-flex items-center text-white/80 hover:text-white mb-8 transition-colors">
               <ArrowLeft size={16} className="mr-2" />
@@ -105,7 +105,7 @@ export default function CreatorsPage() {
       </div>
 
       {/* クリエイター一覧セクション */}
-      <AnimatedSection className="py-16 relative">
+      <div className="py-16 relative">
         {/* 背景装飾 */}
         <div className="absolute inset-0 overflow-hidden z-0">
           <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-blue-50 opacity-80"></div>
@@ -206,10 +206,10 @@ export default function CreatorsPage() {
             </div>
           )}
         </div>
-      </AnimatedSection>
+      </div>
 
       {/* お問い合わせセクション */}
-      <AnimatedSection className="py-16 bg-gradient-to-b from-gray-50 to-white relative">
+      <div className="py-16 bg-gradient-to-b from-gray-50 to-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 p-8 md:p-12">
             <div className="text-center max-w-3xl mx-auto">
@@ -234,7 +234,7 @@ export default function CreatorsPage() {
             </div>
           </div>
         </div>
-      </AnimatedSection>
+      </div>
 
       {/* フッター */}
       <Footer />
