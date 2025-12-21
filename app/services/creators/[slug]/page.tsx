@@ -64,6 +64,19 @@ const creatorsData: Creator[] = [
     achievements: ["YouTube登録者数32万人", "累計再生回数8000万回以上", "エンタメ・韓国・美容の3ジャンルで活躍"],
     imagePosition: "object-[center_50%]",
   },
+  {
+    id: "4",
+    name: "Ryota",
+    nameJa: "りょーた",
+    category: "エンタメ",
+    image: "/images/creators/ryota.jpg",
+    slug: "ryota",
+    instagram: "ryota_influencer",
+    description: "Instagramを中心に活動するインフルエンサー",
+    bio: "フォロワー数約15万を誇り、日常のライフスタイル・トレンドを切り取った投稿で幅広い共感を獲得。SNSではリアルな日常・イベント参加・ビジュアル表現を軸に、ブランドとのタイアップ投稿や体験発信など多様なコンテンツ制作を展開。",
+    achievements: ["Instagram フォロワー数約15万人", "ライフスタイル・トレンド投稿で幅広い共感獲得", "ブランドタイアップ・体験発信コンテンツ制作"],
+    imagePosition: "object-[center_10%]",
+  },
 ];
 
 export default function CreatorDetailPage() {

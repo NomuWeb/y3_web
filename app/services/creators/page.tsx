@@ -58,6 +58,17 @@ export default function CreatorsPage() {
       description: "エンタメ・韓国・美容の3ジャンルで活躍するYouTuber",
       imagePosition: "object-[center_55%]",
     },
+    {
+      id: "4",
+      name: "Ryota",
+      nameJa: "りょーた",
+      category: "エンタメ",
+      image: "/images/creators/ryota.jpg",
+      slug: "ryota",
+      instagram: "ryota_influencer",
+      description: "Instagramを中心に活動するインフルエンサー",
+      imagePosition: "object-[center_10%]",
+    },
   ];
 
   // カテゴリー一覧
