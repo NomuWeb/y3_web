@@ -65,7 +65,7 @@ export default function CreatorsPage() {
       category: "エンタメ",
       image: "/images/creators/ryota.jpg",
       slug: "ryota",
-      instagram: "ryota_influencer",
+      instagram: "ryota_926",
       description: "Instagramを中心に活動するインフルエンサー",
       imagePosition: "object-[center_10%]",
     },

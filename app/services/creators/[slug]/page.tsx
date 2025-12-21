@@ -71,7 +71,7 @@ const creatorsData: Creator[] = [
     category: "エンタメ",
     image: "/images/creators/ryota.jpg",
     slug: "ryota",
-    instagram: "ryota_influencer",
+    instagram: "ryota_926",
     description: "Instagramを中心に活動するインフルエンサー",
     bio: "フォロワー数約15万を誇り、日常のライフスタイル・トレンドを切り取った投稿で幅広い共感を獲得。SNSではリアルな日常・イベント参加・ビジュアル表現を軸に、ブランドとのタイアップ投稿や体験発信など多様なコンテンツ制作を展開。",
     achievements: ["Instagram フォロワー数約15万人", "ライフスタイル・トレンド投稿で幅広い共感獲得", "ブランドタイアップ・体験発信コンテンツ制作"],
