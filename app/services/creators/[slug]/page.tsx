@@ -18,6 +18,7 @@ interface Creator {
   image: string;
   slug: string;
   instagram?: string;
+  youtube?: string;
   description?: string;
   bio?: string;
   achievements?: string[];
@@ -59,6 +60,7 @@ const creatorsData: Creator[] = [
     category: ["エンタメ", "韓国", "美容"],
     image: "/images/creators/fukawa.jpg",
     slug: "fukawa",
+    youtube: "https://www.youtube.com/@__fukawa",
     description: "YouTuber登録者数32万人を抱えるYouTuber",
     bio: "エンタメ、韓国、美容の3つのジャンルを中心に、累計再生回数8000万回以上を記録。幅広いコンテンツで多くのファンを魅了しています。",
     achievements: ["YouTube登録者数32万人", "累計再生回数8000万回以上", "エンタメ・韓国・美容の3ジャンルで活躍"],
@@ -175,18 +177,36 @@ export default function CreatorDetailPage() {
               )}
 
               {/* SNSリンク */}
-              {creator.instagram && (
+              {(creator.instagram || creator.youtube) && (
                 <div className="mb-8">
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">SNS</h2>
-                  <a
-                    href={`https://www.instagram.com/${creator.instagram}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg"
-                  >
-                    <Instagram size={20} className="mr-2" />@{creator.instagram}
-                    <ExternalLink size={16} className="ml-2" />
-                  </a>
+                  <div className="flex flex-wrap gap-3">
+                    {creator.instagram && (
+                      <a
+                        href={`https://www.instagram.com/${creator.instagram}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg"
+                      >
+                        <Instagram size={20} className="mr-2" />@{creator.instagram}
+                        <ExternalLink size={16} className="ml-2" />
+                      </a>
+                    )}
+                    {creator.youtube && (
+                      <a
+                        href={creator.youtube}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg"
+                      >
+                        <svg className="mr-2 w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg>
+                        YouTube
+                        <ExternalLink size={16} className="ml-2" />
+                      </a>
+                    )}
+                  </div>
                 </div>
               )}
 

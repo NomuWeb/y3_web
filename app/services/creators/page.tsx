@@ -17,6 +17,7 @@ interface Creator {
   image: string;
   slug: string;
   instagram?: string;
+  youtube?: string;
   description?: string;
   imagePosition?: string;
 }
@@ -55,6 +56,7 @@ export default function CreatorsPage() {
       category: ["エンタメ", "韓国", "美容"],
       image: "/images/creators/fukawa.jpg",
       slug: "fukawa",
+      youtube: "https://www.youtube.com/@__fukawa",
       description: "エンタメ・韓国・美容の3ジャンルで活躍するYouTuber",
       imagePosition: "object-[center_55%]",
     },
