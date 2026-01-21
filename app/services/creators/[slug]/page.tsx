@@ -82,6 +82,20 @@ const creatorsData: Creator[] = [
     achievements: ["Instagram フォロワー数約15万人", "ライフスタイル・トレンド投稿で幅広い共感獲得", "ブランドタイアップ・体験発信コンテンツ制作"],
     imagePosition: "object-[center_10%]",
   },
+  {
+    id: "5",
+    name: "Unpai",
+    nameJa: "うんぱい",
+    category: "エンタメ",
+    image: "/images/creators/unpai_coming_soon.svg",
+    slug: "unpai",
+    instagram: "unpai_3",
+    tiktok: "unpai3",
+    description: "Coming Soon",
+    bio: "プロフィール準備中です。",
+    achievements: [],
+    imagePosition: "object-center",
+  },
 ];
 
 export default function CreatorDetailPage() {

@@ -74,6 +74,18 @@ export default function CreatorsPage() {
       description: "Instagramを中心に活動するインフルエンサー",
       imagePosition: "object-[center_10%]",
     },
+    {
+      id: "5",
+      name: "Unpai",
+      nameJa: "うんぱい",
+      category: "エンタメ",
+      image: "/images/creators/unpai_coming_soon.svg",
+      slug: "unpai",
+      instagram: "unpai_3",
+      tiktok: "unpai3",
+      description: "Coming Soon",
+      imagePosition: "object-center",
+    },
   ];
 
   // カテゴリー一覧
