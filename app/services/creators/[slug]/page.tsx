@@ -19,6 +19,7 @@ interface Creator {
   slug: string;
   instagram?: string;
   youtube?: string;
+  tiktok?: string;
   description?: string;
   bio?: string;
   achievements?: string[];
@@ -35,6 +36,7 @@ const creatorsData: Creator[] = [
     image: "/images/creators/seunggi.jpg",
     slug: "seunggi",
     instagram: "seunggi.lee888",
+    tiktok: "umasungi_cooking",
     description: "多才なエンターテイナー",
     bio: "TikTok 【スンギの美味スンギ飯】を初め、幅広い分野で活躍しています。",
     achievements: ["調理師免許日本最年少取得", "ラブトランジット2出演"],
@@ -48,6 +50,7 @@ const creatorsData: Creator[] = [
     image: "/images/creators/momosan.jpg",
     slug: "momosan",
     instagram: "momosan0627",
+    tiktok: "momosan0627",
     description: "胃袋沼らせモテレシピを発信する料理クリエイター",
     bio: "料理を通じて人々の心と胃袋を掴むレシピを日々発信しています。簡単で美味しい、そして見た目も華やかな料理が得意です。",
     achievements: ["Instagram フォロワー数20万人以上", "料理研究家", "ラブトランジット出演"],
@@ -177,7 +180,7 @@ export default function CreatorDetailPage() {
               )}
 
               {/* SNSリンク */}
-              {(creator.instagram || creator.youtube) && (
+              {(creator.instagram || creator.youtube || creator.tiktok) && (
                 <div className="mb-8">
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">SNS</h2>
                   <div className="flex flex-wrap gap-3">
@@ -203,6 +206,20 @@ export default function CreatorDetailPage() {
                           <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                         </svg>
                         YouTube
+                        <ExternalLink size={16} className="ml-2" />
+                      </a>
+                    )}
+                    {creator.tiktok && (
+                      <a
+                        href={`https://www.tiktok.com/@${creator.tiktok}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-gray-900 to-gray-800 hover:from-black hover:to-gray-900 text-white rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg"
+                      >
+                        <svg className="mr-2 w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                        </svg>
+                        @{creator.tiktok}
                         <ExternalLink size={16} className="ml-2" />
                       </a>
                     )}

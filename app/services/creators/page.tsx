@@ -18,6 +18,7 @@ interface Creator {
   slug: string;
   instagram?: string;
   youtube?: string;
+  tiktok?: string;
   description?: string;
   imagePosition?: string;
 }
@@ -35,6 +36,7 @@ export default function CreatorsPage() {
       image: "/images/creators/seunggi.jpg",
       slug: "seunggi",
       instagram: "seunggi.lee888",
+      tiktok: "umasungi_cooking",
       description: "多才なエンターテイナー",
       imagePosition: "object-[center_30%]",
     },
@@ -46,6 +48,7 @@ export default function CreatorsPage() {
       image: "/images/creators/momosan.jpg",
       slug: "momosan",
       instagram: "momosan0627",
+      tiktok: "momosan0627",
       description: "胃袋沼らせモテレシピを発信する料理クリエイター",
       imagePosition: "object-[center_20%]",
     },
