@@ -194,33 +194,25 @@ export default function SNSConsultingPage() {
           }}
         ></div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-24 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 relative z-10">
           <div className="flex flex-col items-center">
-            <Link href="/services" className="inline-flex items-center text-white/80 hover:text-white mb-8 transition-colors">
-              <ArrowLeft size={16} className="mr-2" />
+            <Link href="/services" className="inline-flex items-center text-white/80 hover:text-white mb-4 transition-colors text-sm font-mono">
+              <ArrowLeft size={14} className="mr-2" />
               Back to all services
             </Link>
 
-            <div className={`w-16 h-16 ${service.iconBg} rounded-full flex items-center justify-center mb-6 shadow-lg`}>{service.icon}</div>
+            <div className="w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center mb-4">{service.icon}</div>
 
-            <h1 className="text-4xl sm:text-5xl font-bold mb-3 text-center text-white">{service.title}</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold mb-2 text-center text-white tracking-tight">{service.japaneseTitle}</h1>
 
-            <h2 className="text-2xl text-white/90 mb-6 text-center">{service.japaneseTitle}</h2>
-
-            <p className="max-w-2xl mx-auto text-lg text-white/90 text-center">{service.description}</p>
+            <p className="max-w-2xl mx-auto text-sm text-white/80 text-center mt-1">{service.description}</p>
           </div>
         </div>
       </div>
 
       {/* サービス詳細セクション */}
-      <div className="py-8 sm:py-12 lg:py-16 relative">
-        {/* 背景装飾 - SNS専用デザイン */}
-        <div className="absolute inset-0 overflow-hidden z-0">
-          <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-pink-50 opacity-40"></div>
-          <div className="absolute top-40 -left-20 w-80 h-80 rounded-full bg-red-50 opacity-30"></div>
-          <div className="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-pink-50 opacity-30"></div>
-          <div className="absolute top-60 right-1/3 w-20 h-20 rounded-full bg-red-50 opacity-40 animate-pulse"></div>
-        </div>
+      <div className="py-8 sm:py-12 lg:py-16 relative bg-gray-50">
+        <div className="absolute inset-0 bg-dot-pattern"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto">
@@ -239,7 +231,7 @@ export default function SNSConsultingPage() {
                   alt="SNSコンサルティングサービス詳細"
                   width={1200}
                   height={600}
-                  className="w-full h-auto rounded-lg shadow-lg"
+                  className="w-full h-auto shadow-lg"
                   priority
                 />
               </div>
@@ -251,7 +243,7 @@ export default function SNSConsultingPage() {
                   alt="SNSコンサルティングサービス詳細"
                   width={600}
                   height={800}
-                  className="w-full h-auto rounded-lg shadow-lg"
+                  className="w-full h-auto shadow-lg"
                   priority
                 />
               </div>
@@ -297,9 +289,9 @@ export default function SNSConsultingPage() {
                     {achievementSlides.map((slide, index) => (
                       <div key={index} className="w-full flex-shrink-0">
                         {/* コンパクトなテキストセクション */}
-                        <div className="px-4 py-3 sm:px-6 sm:py-4 bg-gradient-to-r from-pink-50 to-red-50">
+                        <div className="px-4 py-3 sm:px-6 sm:py-4 bg-gradient-to-r from-blue-50 to-cyan-50">
                           <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1">{slide.title}</h3>
-                          <h4 className="text-base sm:text-lg font-bold text-pink-600 mb-2">{slide.subtitle}</h4>
+                          <h4 className="text-base sm:text-lg font-bold text-blue-600 mb-2">{slide.subtitle}</h4>
                           <div className="text-xs sm:text-sm text-gray-700 leading-relaxed space-y-1">
                             <p>{slide.description1}</p>
                             <p>{slide.description2}</p>
@@ -350,7 +342,7 @@ export default function SNSConsultingPage() {
                       key={index}
                       onClick={() => setCurrentSlide(index)}
                       className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-200 ${
-                        index === currentSlide ? "bg-gradient-to-r from-pink-500 to-red-500" : "bg-gray-300 hover:bg-gray-400"
+                        index === currentSlide ? "bg-gradient-to-r from-blue-500 to-cyan-500" : "bg-gray-300 hover:bg-gray-400"
                       }`}
                       aria-label={`実績 ${index + 1} を表示`}
                     />
@@ -364,17 +356,15 @@ export default function SNSConsultingPage() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6">契約の流れ</h2>
               <div className="space-y-6">
                 {service.process.map((step, index) => (
-                  <div key={index} className="bg-white rounded-xl shadow-md hover:shadow-lg border border-gray-100 p-5 transition-all duration-300">
+                  <div key={index} className="group relative bg-white border border-gray-200 p-5 transition-all duration-300 hover:border-blue-300 hover:shadow-lg hover:shadow-blue-100/50">
+                    <div className="absolute top-0 left-0 w-0 group-hover:w-full h-[2px] bg-gradient-to-r from-blue-500 to-cyan-500 transition-all duration-500"></div>
                     <div className="flex items-start">
                       <div className="flex-shrink-0">
-                        <div className="relative p-2">
-                          <div className="absolute inset-0 bg-pink-100 rounded-lg rotate-6"></div>
-                          <div className="relative bg-gradient-to-r from-pink-500 to-red-500 text-white p-3 rounded-lg">{step.icon}</div>
-                        </div>
+                        <div className="bg-gradient-to-br from-blue-500 to-cyan-500 text-white p-3">{step.icon}</div>
                       </div>
                       <div className="ml-5">
                         <div className="flex items-center">
-                          <span className="bg-pink-100 text-pink-800 text-xs font-medium rounded-full w-6 h-6 flex items-center justify-center mr-2">
+                          <span className="bg-blue-50 text-blue-600 text-xs font-mono font-bold w-6 h-6 flex items-center justify-center mr-2">
                             {index + 1}
                           </span>
                           <h3 className="text-xl font-bold text-gray-900">{step.title}</h3>
@@ -393,13 +383,13 @@ export default function SNSConsultingPage() {
 
               <div className="space-y-4">
                 {faqData.map((faq, index) => (
-                  <div key={index} className="bg-white border border-gray-200 rounded-lg">
+                  <div key={index} className="bg-white border border-gray-200">
                     <button
                       onClick={() => toggleFaq(index)}
-                      className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200 rounded-lg"
+                      className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
                     >
                       <span className="font-semibold text-gray-900 pr-4">Q. {faq.question}</span>
-                      <div className={`flex-shrink-0 text-pink-500 transition-transform duration-300 ${openFaqIndex === index ? "rotate-180" : "rotate-0"}`}>
+                      <div className={`flex-shrink-0 text-blue-500 transition-transform duration-300 ${openFaqIndex === index ? "rotate-180" : "rotate-0"}`}>
                         <ChevronDown size={20} />
                       </div>
                     </button>
@@ -411,7 +401,7 @@ export default function SNSConsultingPage() {
                     >
                       <div className="px-6 pb-4 pt-0 border-t border-gray-100 bg-gray-50">
                         <div className="pt-4">
-                          <span className="font-semibold text-pink-600 mr-2">A.</span>
+                          <span className="font-semibold text-blue-600 mr-2">A.</span>
                           <span className="text-gray-700 leading-relaxed">{faq.answer}</span>
                         </div>
                       </div>
@@ -422,11 +412,11 @@ export default function SNSConsultingPage() {
             </div>
 
             {/* お問い合わせセクション */}
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
-              <div className={`h-2 bg-gradient-to-r ${service.bgGradient}`}></div>
+            <div className="relative bg-white border border-gray-200 overflow-hidden">
+              <div className="h-[2px] bg-gradient-to-r from-blue-500 to-cyan-500"></div>
               <div className="p-8">
                 <div className="text-center">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">サービスについてのご相談</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4 tracking-tight">サービスについてのご相談</h2>
                   <p className="text-gray-600 text-sm sm:text-base mb-8">
                     本サービスの詳細や、あなたのプロジェクトに最適なプランについてご相談ください。
                     専門のコンサルタントがお客様のニーズに合わせたご提案をいたします。
@@ -434,13 +424,13 @@ export default function SNSConsultingPage() {
                   <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
                     <Link
                       href="/contact"
-                      className={`inline-flex items-center px-8 py-3 bg-gradient-to-r ${service.bgGradient} text-white rounded-full font-medium transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg`}
+                      className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-200 tracking-wide"
                     >
                       お問い合わせ
                     </Link>
                     <Link
                       href="/services"
-                      className="inline-flex items-center px-8 py-3 bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 rounded-full font-medium transition-all duration-300"
+                      className="inline-flex items-center px-8 py-3 bg-white border border-gray-200 text-gray-700 hover:border-blue-300 font-medium transition-all duration-300 tracking-wide"
                     >
                       他のサービスを見る
                       <ArrowRight size={18} className="ml-2" />

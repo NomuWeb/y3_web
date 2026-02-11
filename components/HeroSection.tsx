@@ -47,7 +47,7 @@ const HeroSection = () => {
           <div className="flex justify-center">
             <a
               href="#services"
-              className="bg-white text-indigo-800 px-16 py-3 rounded-full inline-block font-medium shadow-lg hover:shadow-xl transition duration-300"
+              className="bg-white text-gray-900 px-16 py-3 inline-block font-medium tracking-wide shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
             >
               サービスを見る →
             </a>
@@ -69,7 +69,7 @@ const HeroSection = () => {
           <div className="flex justify-center">
             <a
               href="#services"
-              className="bg-white text-indigo-800 px-20 py-4 rounded-full inline-block font-medium shadow-lg hover:shadow-xl transition duration-300"
+              className="bg-white text-gray-900 px-20 py-4 inline-block font-medium tracking-wide shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
             >
               サービスを見る →
             </a>

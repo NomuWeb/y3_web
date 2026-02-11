@@ -3,12 +3,10 @@
 import React, { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import AnimatedSection from "@/components/AnimatedSection";
 import { Users, ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-// クリエイター情報の型定義
 interface Creator {
   id: string;
   name: string;
@@ -26,7 +24,6 @@ interface Creator {
 export default function CreatorsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("ALL");
 
-  // クリエイター情報
   const creators: Creator[] = [
     {
       id: "1",
@@ -88,10 +85,8 @@ export default function CreatorsPage() {
     },
   ];
 
-  // カテゴリー一覧
   const categories = ["ALL", "料理", "エンタメ", "アウトドア", "韓国", "美容", "ファッション"];
 
-  // フィルタリングされたクリエイター
   const filteredCreators =
     selectedCategory === "ALL"
       ? creators
@@ -99,12 +94,10 @@ export default function CreatorsPage() {
 
   return (
     <div className="min-h-screen bg-white text-gray-800">
-      {/* ヘッダー */}
       <Header variant="secondary" />
 
-      {/* ヒーローセクション - 背景画像 */}
+      {/* ヒーローセクション */}
       <div className="relative text-white mt-20">
-        {/* 背景画像 */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
@@ -112,56 +105,39 @@ export default function CreatorsPage() {
           }}
         ></div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-24 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 relative z-10">
           <div className="flex flex-col items-center">
-            <Link href="/services" className="inline-flex items-center text-white/80 hover:text-white mb-8 transition-colors">
-              <ArrowLeft size={16} className="mr-2" />
+            <Link href="/services" className="inline-flex items-center text-white/80 hover:text-white mb-4 transition-colors text-sm font-mono">
+              <ArrowLeft size={14} className="mr-2" />
               Back to all services
             </Link>
 
-            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 shadow-lg">
-              <Users size={32} className="text-indigo-600" />
+            <div className="w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center mb-4">
+              <Users size={24} className="text-white" />
             </div>
 
-            <h1 className="text-4xl sm:text-5xl font-bold mb-3 text-center text-white">Our Creators</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold mb-2 text-center text-white tracking-tight">所属クリエイター</h1>
 
-            <h2 className="text-2xl text-white/90 mb-6 text-center">所属クリエイター</h2>
-
-            <p className="max-w-2xl mx-auto text-lg text-white/90 text-center">Y3に所属する才能豊かなクリエイターたちをご紹介します</p>
+            <p className="max-w-2xl mx-auto text-sm text-white/80 text-center mt-1">Y3に所属する才能豊かなクリエイターたちをご紹介します</p>
           </div>
         </div>
       </div>
 
       {/* クリエイター一覧セクション */}
-      <div className="py-8 sm:py-12 lg:py-16 relative">
-        {/* 背景装飾 */}
-        <div className="absolute inset-0 overflow-hidden z-0">
-          <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-blue-50 opacity-80"></div>
-          <div className="absolute top-40 -left-20 w-80 h-80 rounded-full bg-indigo-50 opacity-80"></div>
-          <div className="absolute bottom-10 left-10 w-40 h-40 rounded-full bg-purple-50 opacity-70"></div>
-        </div>
+      <div className="py-8 sm:py-12 lg:py-16 relative bg-gray-50">
+        <div className="absolute inset-0 bg-dot-pattern"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* セクションヘッダー */}
-          <div className="text-center mb-6 sm:mb-8 lg:mb-12">
-            <span className="inline-block py-1 px-3 rounded-full text-sm font-semibold bg-indigo-100 text-indigo-800 mb-3">Creators</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">所属クリエイター</span>
-            </h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">多様なジャンルで活躍する、個性豊かなクリエイターたちをご紹介します</p>
-            <div className="w-20 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 mx-auto mt-6 rounded-full"></div>
-          </div>
-
           {/* カテゴリーフィルター */}
           <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-3 py-1.5 sm:px-6 sm:py-2 rounded-full font-medium transition-all duration-300 text-sm sm:text-base ${
+                className={`px-3 py-1.5 sm:px-6 sm:py-2 font-medium transition-all duration-300 text-sm sm:text-base ${
                   selectedCategory === category
-                    ? "bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-lg transform scale-105"
-                    : "bg-white text-gray-700 border border-gray-300 hover:border-indigo-400 hover:text-indigo-600"
+                    ? "bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg"
+                    : "bg-white text-gray-700 border border-gray-200 hover:border-blue-300 hover:text-blue-600"
                 }`}
               >
                 {category}
@@ -170,11 +146,11 @@ export default function CreatorsPage() {
           </div>
 
           {/* クリエイターグリッド */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredCreators.map((creator) => (
               <div
                 key={creator.id}
-                className="group bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 hover:shadow-2xl hover:border-indigo-300 transition-all duration-500 transform hover:-translate-y-2"
+                className="group bg-white overflow-hidden border border-gray-200 hover:border-blue-300 hover:shadow-xl hover:shadow-blue-100/50 transition-all duration-300 transform hover:-translate-y-1"
               >
                 {/* サムネイル画像 */}
                 <div className="relative aspect-[4/3] overflow-hidden">
@@ -182,36 +158,35 @@ export default function CreatorsPage() {
                     src={creator.image}
                     alt={creator.name}
                     fill
-                    className={`object-cover ${creator.imagePosition || "object-[center_20%]"} group-hover:scale-110 transition-transform duration-500`}
+                    className={`object-cover ${creator.imagePosition || "object-[center_20%]"} group-hover:scale-105 transition-transform duration-500`}
                   />
                 </div>
 
                 {/* クリエイター情報 */}
-                <div className="p-6 pt-2">
+                <div className="p-6 pt-4">
                   <div className="mb-3">
                     {Array.isArray(creator.category) ? (
                       <div className="flex flex-wrap gap-1">
                         {creator.category.map((cat, index) => (
-                          <span key={index} className="inline-block px-2 py-1 bg-indigo-100 text-indigo-800 text-xs font-semibold rounded-full">
+                          <span key={index} className="inline-block px-2 py-0.5 bg-blue-50 text-blue-700 text-xs font-mono font-semibold">
                             {cat}
                           </span>
                         ))}
                       </div>
                     ) : (
-                      <span className="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-semibold rounded-full">{creator.category}</span>
+                      <span className="inline-block px-2 py-0.5 bg-blue-50 text-blue-700 text-xs font-mono font-semibold">{creator.category}</span>
                     )}
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-1">{creator.nameJa}</h3>
-                  <p className="text-sm text-gray-600 mb-4">{creator.name}</p>
+                  <p className="text-sm text-gray-500 mb-4 font-mono">{creator.name}</p>
 
-                  {/* VIEW MORE リンク */}
                   <Link
                     href={`/services/creators/${creator.slug}`}
-                    className="inline-flex items-center justify-center w-full px-6 py-3 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-indigo-600 hover:via-purple-600 hover:to-blue-600 text-white rounded-full font-medium transition-all duration-300 transform group-hover:shadow-lg"
+                    className="inline-flex items-center justify-center w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-blue-200 hover:-translate-y-0.5 tracking-wide text-sm"
                   >
                     VIEW MORE
                     <svg
-                      className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                      className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -221,13 +196,12 @@ export default function CreatorsPage() {
                   </Link>
                 </div>
 
-                {/* ホバー時のボーダーアニメーション */}
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                {/* ホバー時のアクセントライン */}
+                <div className="absolute top-0 left-0 w-0 group-hover:w-full h-[2px] bg-gradient-to-r from-blue-500 to-cyan-500 transition-all duration-500"></div>
               </div>
             ))}
           </div>
 
-          {/* クリエイターが見つからない場合 */}
           {filteredCreators.length === 0 && (
             <div className="text-center py-16">
               <p className="text-gray-500 text-lg">このカテゴリーにはまだクリエイターが登録されていません</p>
@@ -237,25 +211,30 @@ export default function CreatorsPage() {
       </div>
 
       {/* お問い合わせセクション */}
-      <div className="py-16 bg-gradient-to-b from-gray-50 to-white relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 p-8 md:p-12">
+      <div className="py-16 bg-[#0a1628] relative">
+        <div className="absolute inset-0 bg-grid-pattern opacity-20"></div>
+        <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-500"></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="relative bg-white/[0.03] backdrop-blur-sm border border-white/10 p-8 md:p-12">
+            <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-blue-500 to-cyan-500"></div>
+            <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-blue-500"></div>
+            <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-cyan-500"></div>
+
             <div className="text-center max-w-3xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
-                  クリエイターとのコラボレーション
-                </span>
+              <h2 className="text-3xl font-bold text-white mb-4 tracking-tight">
+                クリエイターとのコラボレーション
               </h2>
-              <p className="text-gray-600 mb-8">
+              <p className="text-gray-400 mb-8">
                 所属クリエイターとのコラボレーションやキャスティングに関するご相談を承っております。 お気軽にお問い合わせください。
               </p>
 
               <a
                 href="/contact"
-                className="inline-flex items-center px-8 py-3.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-indigo-600 hover:via-purple-600 hover:to-blue-600 text-white rounded-full font-medium transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
+                className="inline-flex items-center px-10 py-3.5 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-500/20 tracking-wide"
               >
                 お問い合わせ
-                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                 </svg>
               </a>
@@ -264,7 +243,6 @@ export default function CreatorsPage() {
         </div>
       </div>
 
-      {/* フッター */}
       <Footer />
     </div>
   );

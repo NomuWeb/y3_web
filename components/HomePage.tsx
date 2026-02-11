@@ -60,11 +60,11 @@ export default function HomePage() {
       {/* Scroll to Top Button */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 bg-[#003693] bg-opacity-70 p-3 text-white rounded-full shadow-lg transition-all duration-300 transform hover:bg-opacity-100 hover:scale-110 hover:rotate-6 ${
-          showScrollTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"
+        className={`fixed bottom-8 right-8 bg-gradient-to-r from-blue-600 to-cyan-600 p-3 text-white shadow-lg shadow-blue-500/20 transition-all duration-300 transform hover:shadow-xl hover:shadow-blue-500/30 hover:-translate-y-1 ${
+          showScrollTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16 pointer-events-none"
         }`}
       >
-        <ChevronUp size={24} />
+        <ChevronUp size={22} />
       </button>
     </div>
   );
