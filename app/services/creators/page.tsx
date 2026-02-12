@@ -76,12 +76,12 @@ export default function CreatorsPage() {
       name: "Unpai",
       nameJa: "うんぱい",
       category: "エンタメ",
-      image: "/images/creators/unpai_coming_soon.svg",
+      image: "/images/creators/unpai.jpeg",
       slug: "unpai",
       instagram: "unpai_3",
       tiktok: "unpai3",
-      description: "Coming Soon",
-      imagePosition: "object-center",
+      description: "TikTokフォロワー400万人超えの人気クリエイター",
+      imagePosition: "object-[center_20%]",
     },
   ];
 
