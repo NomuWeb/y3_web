@@ -11,9 +11,10 @@ interface ServiceCardProps {
   description: string;
   className?: string;
   slug?: string;
+  featured?: boolean;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, japaneseTitle, description, className = "", slug }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, japaneseTitle, description, className = "", slug, featured = false }) => {
   return (
     <div className={`group relative p-7 border shadow-md transition-all duration-300 transform hover:-translate-y-1 overflow-hidden ${className}`}>
       {/* 上部アクセントライン */}
@@ -37,7 +38,11 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, japaneseTitle, d
           <div className="mt-5 pt-4 border-t border-gray-100">
             <Link
               href={`/services/${slug}`}
-              className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm tracking-wide transition-colors"
+              className={
+                featured
+                  ? "inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-medium text-sm tracking-wide rounded shadow-md hover:shadow-lg hover:from-blue-600 hover:to-cyan-600 transition-all duration-300"
+                  : "inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm tracking-wide transition-colors"
+              }
             >
               View Details
               <ArrowRight size={14} className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300" />

@@ -32,25 +32,29 @@ const PurposeSection: React.FC<PurposeSectionProps> = ({ AnimatedSection }) => {
         </div>
 
         {/* 2カラムレイアウト: 左=タイトル固定、右=3ステップ */}
-        <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 lg:gap-8 max-w-6xl mx-auto items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-8 lg:gap-10 items-start">
           {/* 左カラム: アイコン+メインメッセージ（デスクトップではsticky） */}
-          <div className="lg:sticky lg:top-32 text-center lg:text-left">
-            <div className="mb-6 flex justify-center lg:justify-start">
-              <div className="relative inline-flex items-center justify-center">
-                <div className="relative bg-gradient-to-r from-blue-500 to-cyan-500 p-5 text-white shadow-lg shadow-blue-500/20">
-                  <MessageCircle size={32} className="md:w-10 md:h-10" />
-                </div>
-                <div className="absolute -right-2 -bottom-2">
-                  <Stars size={18} className="text-cyan-500 md:w-5 md:h-5" />
+          <div className="lg:sticky lg:top-32">
+            <div className="flex items-center justify-center gap-4 lg:block lg:text-left">
+              <div className="flex-shrink-0 lg:mb-6 flex justify-center lg:justify-start">
+                <div className="relative inline-flex items-center justify-center">
+                  <div className="relative bg-gradient-to-r from-blue-500 to-cyan-500 p-2.5 lg:p-5 text-white shadow-lg shadow-blue-500/20">
+                    <MessageCircle size={20} className="lg:w-10 lg:h-10" />
+                  </div>
+                  <div className="absolute -right-1.5 -bottom-1.5 lg:-right-2 lg:-bottom-2">
+                    <Stars size={12} className="text-cyan-500 lg:w-5 lg:h-5" />
+                  </div>
                 </div>
               </div>
+              <div>
+                <h3 className="text-base md:text-lg lg:text-4xl font-bold text-gray-900 leading-tight tracking-tight whitespace-nowrap lg:mb-4">
+                  想いを届けるための
+                  <br className="hidden lg:block" />
+                  最強の武器
+                </h3>
+                <div className="hidden lg:block w-12 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500"></div>
+              </div>
             </div>
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight tracking-tight mb-4">
-              想いを届けるための
-              <br />
-              最強の武器
-            </h3>
-            <div className="w-12 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto lg:mx-0"></div>
           </div>
 
           {/* 右カラム: 3段階ステップ */}

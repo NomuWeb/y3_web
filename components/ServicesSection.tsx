@@ -130,6 +130,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ AnimatedSection }) =>
                   description={service.description}
                   className={service.className}
                   slug={service.slug}
+                  featured
                 />
               </div>
             ))}

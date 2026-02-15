@@ -22,6 +22,7 @@ export default function ServicesPage() {
       description: "戦略的なソーシャルメディア運用と成長戦略のご提案。最適なプラットフォーム選定からコンテンツ作成、分析までサポートします。",
       slug: "sns-consulting",
       className: "bg-white border-gray-200 hover:border-blue-300 hover:shadow-lg hover:shadow-blue-50",
+      featured: true,
     },
     {
       icon: (
@@ -37,6 +38,7 @@ export default function ServicesPage() {
         "Y3に所属する才能豊かなクリエイターたち。多様なジャンルで活躍する個性豊かなクリエイターをご紹介します。コラボレーションやキャスティングのご相談も承ります。",
       slug: "creators",
       className: "bg-white border-gray-200 hover:border-cyan-300 hover:shadow-lg hover:shadow-cyan-50",
+      featured: true,
     },
     {
       icon: (
@@ -125,6 +127,7 @@ export default function ServicesPage() {
                 description={service.description}
                 className={service.className}
                 slug={service.slug}
+                featured={service.featured}
               />
             ))}
           </div>
