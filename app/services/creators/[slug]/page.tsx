@@ -20,6 +20,7 @@ interface Creator {
   instagram?: string;
   youtube?: string;
   tiktok?: string;
+  twitter?: string;
   description?: string;
   bio?: string;
   achievements?: string[];
@@ -94,6 +95,22 @@ const creatorsData: Creator[] = [
     description: "TikTokフォロワー400万人超えの人気クリエイター",
     bio: "TikTokを中心にSNS総フォロワー数500万人以上を誇る人気クリエイター。キャッチーなショート動画やライフスタイルコンテンツで幅広い世代から支持を集め、Instagram・X（旧Twitter）でも精力的に発信中。",
     achievements: ["TikTok フォロワー数400万人以上", "Instagram フォロワー数59万人以上", "X（旧Twitter）フォロワー数58万人以上"],
+    imagePosition: "object-[center_20%]",
+  },
+  {
+    id: "6",
+    name: "Sakito",
+    nameJa: "咲人",
+    category: "エンタメ",
+    image: "/images/creators/sakito.jpg",
+    slug: "sakito",
+    instagram: "sakito1207x_x",
+    tiktok: "sakito1207",
+    twitter: "sakito_1207",
+    youtube: "https://www.youtube.com/channel/UCdEY0y6MUh4BNWA-1aMqy-g",
+    description: "BreakingDown出場の元No.1ホスト × 格闘家 × 実業家",
+    bio: "歌舞伎町TOP DANDYの元No.1ホストにして、格闘技イベント「BreakingDown」に複数回出場する格闘家の顔も持つ異色のクリエイター。韓国にルーツを持ち、極真空手の経験を活かした格闘スタイルで注目を集める。現在はアパレルブランド「PiUDA」やエステサロンの経営など実業家としても活動し、YouTube「咲人ちゃんねる」やTikTokなどマルチプラットフォームで発信中。",
+    achievements: ["歌舞伎町TOP DANDY 元No.1ホスト", "BreakingDown複数回出場（BD15で5-0勝利）", "アパレルブランド「PiUDA」主宰", "エステサロン経営"],
     imagePosition: "object-[center_20%]",
   },
 ];
@@ -197,11 +214,25 @@ export default function CreatorDetailPage() {
               )}
 
               {/* SNSリンク */}
-              {(creator.instagram || creator.youtube || creator.tiktok) && (
+              {(creator.instagram || creator.youtube || creator.tiktok || creator.twitter) && (
                 <div className="mb-8">
                   <h2 className="text-2xl font-bold text-gray-900 mb-4 tracking-tight">SNS</h2>
                   <div className="w-12 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 mb-4"></div>
                   <div className="flex flex-wrap gap-3">
+                    {creator.twitter && (
+                      <a
+                        href={`https://twitter.com/${creator.twitter}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center px-5 py-2.5 bg-[#0a1628] text-white font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg text-sm"
+                      >
+                        <svg className="mr-2 w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                        @{creator.twitter}
+                        <ExternalLink size={14} className="ml-2 opacity-60" />
+                      </a>
+                    )}
                     {creator.instagram && (
                       <a
                         href={`https://www.instagram.com/${creator.instagram}`}

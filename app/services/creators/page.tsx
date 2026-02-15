@@ -17,6 +17,7 @@ interface Creator {
   instagram?: string;
   youtube?: string;
   tiktok?: string;
+  twitter?: string;
   description?: string;
   imagePosition?: string;
 }
@@ -81,6 +82,19 @@ export default function CreatorsPage() {
       instagram: "unpai_3",
       tiktok: "unpai3",
       description: "TikTokフォロワー400万人超えの人気クリエイター",
+      imagePosition: "object-[center_20%]",
+    },
+    {
+      id: "6",
+      name: "Sakito",
+      nameJa: "咲人",
+      category: "エンタメ",
+      image: "/images/creators/sakito.jpg",
+      slug: "sakito",
+      instagram: "sakito1207x_x",
+      tiktok: "sakito1207",
+      twitter: "sakito_1207",
+      description: "BreakingDown出場の元No.1ホスト × 格闘家 × 実業家",
       imagePosition: "object-[center_20%]",
     },
   ];
