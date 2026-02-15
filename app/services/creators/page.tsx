@@ -35,7 +35,7 @@ export default function CreatorsPage() {
       slug: "seunggi",
       instagram: "seunggi.lee888",
       tiktok: "umasungi_cooking",
-      description: "多才なエンターテイナー",
+      description: "料理×経営×エンタメ——多彩な顔を持つ韓国ルーツの実業家クリエイター",
       imagePosition: "object-[center_30%]",
     },
     {

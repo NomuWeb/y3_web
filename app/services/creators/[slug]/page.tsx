@@ -38,9 +38,9 @@ const creatorsData: Creator[] = [
     slug: "seunggi",
     instagram: "seunggi.lee888",
     tiktok: "umasungi_cooking",
-    description: "多才なエンターテイナー",
-    bio: "TikTok 【スンギの美味スンギ飯】を初め、幅広い分野で活躍しています。",
-    achievements: ["調理師免許日本最年少取得", "ラブトランジット2出演"],
+    description: "料理×経営×エンタメ——韓国ルーツの実業家クリエイター",
+    bio: "韓国生まれ日本育ち。日本最年少で調理師免許を取得し、歌舞伎町・六本木でBar「Deneb」を2店舗経営。Amazon Prime Video『ラブトランジット2』出演で注目を集め、TikTok【スンギの美味スンギ飯】では韓国家庭料理を発信中。",
+    achievements: ["調理師免許 日本最年少取得", "Amazon Prime Video『ラブトランジット2』出演", "歌舞伎町・六本木にBar「Deneb」2店舗経営", "TikTok【スンギの美味スンギ飯】フォロワー6万人超", "ライブ配信コンサルタント"],
     imagePosition: "object-[center_30%]",
   },
   {
@@ -189,24 +189,24 @@ export default function CreatorDetailPage() {
 
             {/* 右側: 情報 */}
             <div className="lg:pt-4">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2 tracking-tight">{creator.nameJa}</h1>
-              <p className="text-lg text-gray-500 mb-6 font-mono">{creator.name}</p>
+              <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-1 md:mb-2 tracking-tight">{creator.nameJa}</h1>
+              <p className="text-sm md:text-lg text-gray-500 mb-4 md:mb-6 font-mono">{creator.name}</p>
 
-              <div className="mb-8">
-                <p className="text-lg text-blue-600 font-medium mb-4">{creator.description}</p>
-                <p className="text-gray-700 leading-relaxed">{creator.bio}</p>
+              <div className="mb-6 md:mb-8">
+                <p className="text-sm md:text-lg text-blue-600 font-medium mb-2 md:mb-4">{creator.description}</p>
+                <p className="text-xs md:text-base text-gray-700 leading-relaxed">{creator.bio}</p>
               </div>
 
               {/* 実績 */}
               {creator.achievements && creator.achievements.length > 0 && (
-                <div className="mb-8">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4 tracking-tight">主な実績</h2>
-                  <div className="w-12 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 mb-4"></div>
-                  <ul className="space-y-3">
+                <div className="mb-6 md:mb-8">
+                  <h2 className="text-lg md:text-2xl font-bold text-gray-900 mb-3 md:mb-4 tracking-tight">主な実績</h2>
+                  <div className="w-12 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 mb-3 md:mb-4"></div>
+                  <ul className="space-y-2 md:space-y-3">
                     {creator.achievements.map((achievement, index) => (
                       <li key={index} className="flex items-start">
-                        <span className="inline-block w-2 h-2 bg-blue-500 mt-2 mr-3 flex-shrink-0"></span>
-                        <span className="text-gray-700">{achievement}</span>
+                        <span className="inline-block w-1.5 h-1.5 md:w-2 md:h-2 bg-blue-500 mt-1.5 md:mt-2 mr-2 md:mr-3 flex-shrink-0"></span>
+                        <span className="text-xs md:text-base text-gray-700">{achievement}</span>
                       </li>
                     ))}
                   </ul>
@@ -215,16 +215,16 @@ export default function CreatorDetailPage() {
 
               {/* SNSリンク */}
               {(creator.instagram || creator.youtube || creator.tiktok || creator.twitter) && (
-                <div className="mb-8">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4 tracking-tight">SNS</h2>
-                  <div className="w-12 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 mb-4"></div>
-                  <div className="flex flex-wrap gap-3">
+                <div className="mb-6 md:mb-8">
+                  <h2 className="text-lg md:text-2xl font-bold text-gray-900 mb-3 md:mb-4 tracking-tight">SNS</h2>
+                  <div className="w-12 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 mb-3 md:mb-4"></div>
+                  <div className="flex flex-wrap gap-2 md:gap-3">
                     {creator.twitter && (
                       <a
                         href={`https://twitter.com/${creator.twitter}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center px-5 py-2.5 bg-[#0a1628] text-white font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg text-sm"
+                        className="inline-flex items-center px-3 py-2 md:px-5 md:py-2.5 bg-[#0a1628] text-white font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg text-xs md:text-sm"
                       >
                         <svg className="mr-2 w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -238,10 +238,10 @@ export default function CreatorDetailPage() {
                         href={`https://www.instagram.com/${creator.instagram}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center px-5 py-2.5 bg-[#0a1628] text-white font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg text-sm"
+                        className="inline-flex items-center px-3 py-2 md:px-5 md:py-2.5 bg-[#0a1628] text-white font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg text-xs md:text-sm"
                       >
-                        <Instagram size={18} className="mr-2" />@{creator.instagram}
-                        <ExternalLink size={14} className="ml-2 opacity-60" />
+                        <Instagram size={16} className="mr-1.5 md:mr-2" />@{creator.instagram}
+                        <ExternalLink size={12} className="ml-1.5 md:ml-2 opacity-60" />
                       </a>
                     )}
                     {creator.youtube && (
@@ -249,13 +249,13 @@ export default function CreatorDetailPage() {
                         href={creator.youtube}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center px-5 py-2.5 bg-red-600 text-white font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg text-sm"
+                        className="inline-flex items-center px-3 py-2 md:px-5 md:py-2.5 bg-red-600 text-white font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg text-xs md:text-sm"
                       >
-                        <svg className="mr-2 w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <svg className="mr-1.5 md:mr-2 w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                         </svg>
                         YouTube
-                        <ExternalLink size={14} className="ml-2 opacity-60" />
+                        <ExternalLink size={12} className="ml-1.5 md:ml-2 opacity-60" />
                       </a>
                     )}
                     {creator.tiktok && (
@@ -263,7 +263,7 @@ export default function CreatorDetailPage() {
                         href={`https://www.tiktok.com/@${creator.tiktok}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center px-5 py-2.5 bg-[#0a1628] text-white font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg text-sm"
+                        className="inline-flex items-center px-3 py-2 md:px-5 md:py-2.5 bg-[#0a1628] text-white font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg text-xs md:text-sm"
                       >
                         <svg className="mr-2 w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
@@ -277,11 +277,11 @@ export default function CreatorDetailPage() {
               )}
 
               {/* お問い合わせボタン */}
-              <div className="pt-6 border-t border-gray-200">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">コラボレーションのお問い合わせ</h3>
+              <div className="pt-4 md:pt-6 border-t border-gray-200">
+                <h3 className="text-sm md:text-lg font-semibold text-gray-900 mb-3 md:mb-4">コラボレーションのお問い合わせ</h3>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center px-8 py-3.5 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-200 tracking-wide"
+                  className="inline-flex items-center px-6 py-3 md:px-8 md:py-3.5 bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-sm md:text-base font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-200 tracking-wide"
                 >
                   お問い合わせ
                   <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
