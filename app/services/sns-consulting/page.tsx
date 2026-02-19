@@ -65,7 +65,7 @@ export default function SNSConsultingPage() {
       title: "運用実績事例",
       subtitle: "カノック⭐︎セイヤ",
       description1: "「デブ専ホスト」として差別化した戦略が成功。",
-      description2: "たった2ヶ月で指名・売上No.1を獲得し、SNSフォロワーは8000人越え。",
+      description2: "たった2ヶ月で指名・売上No.1を獲得し、SNSフォロワーは2万人超え。",
     },
     {
       image: {
